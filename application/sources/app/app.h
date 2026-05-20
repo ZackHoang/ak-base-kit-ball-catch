@@ -109,6 +109,15 @@ enum {
 	AC_IF_DYNAMIC_MSG_OUT,
 };
 
+// Tetrix signals
+enum
+{
+	TASK_PRINT_TITLE = AK_USER_DEFINE_SIG,
+	CURSOR_UP,
+	CURSOR_DOWN,
+	CHANGE_SCREEN
+};
+
 /*****************************************************************************/
 /* UART_IF task define
  */
