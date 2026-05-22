@@ -10,7 +10,7 @@
 Print = @echo "~"
 
 # Name of build target ex: ak-base-kit-stm32l151-application.bin
-NAME_MODULE = tetrix
+NAME_MODULE = snake
 PROJECT = $(NAME_MODULE)
 
 GCC_PATH		= $(HOME)/workspace/tools/gcc-arm-none-eabi-10.3-2021.10
@@ -68,7 +68,7 @@ include sources/libraries/Makefile.mk
 include sources/sys/Makefile.mk
 include sources/networks/Makefile.mk
 include sources/platform/stm32l/Makefile.mk
-include sources/app/tetrix/Makefile.mk
+include sources/app/snake/Makefile.mk
 
 OBJECTS_DIR = build_$(NAME_MODULE)
 TARGET = $(OBJECTS_DIR)/$(NAME_MODULE).axf

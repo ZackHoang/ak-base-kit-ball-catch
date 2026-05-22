@@ -22,10 +22,10 @@
 #include "app_dbg.h"
 
 #include "bitmap.h"
+#include "game.h"
 
 // screen
 extern view_screen_t scr_title;
-extern view_screen_t scr_game;
 extern void handle_scr_title(ak_msg_t *msg);
 extern void change_screen(ak_msg_t *msg);
 

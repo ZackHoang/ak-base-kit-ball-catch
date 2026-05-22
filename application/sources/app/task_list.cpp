@@ -20,10 +20,12 @@ const task_t app_task_table[] = {
 	{AC_TASK_DBG_ID				,	TASK_PRI_LEVEL_4	,	task_dbg			},
 	{AC_TASK_DISPLAY_ID			,	TASK_PRI_LEVEL_4	,	task_display		},
 
-	//Tetrix tasks
+	//Snake tasks
 	{TASK_PRINT_TITLE_ID, TASK_PRI_LEVEL_4, task_title},
 	{TASK_CHANGE_CURSOR, TASK_PRI_LEVEL_4, change_menu_cursor},
 	{TASK_CHANGE_SCREEN, TASK_PRI_LEVEL_4, change_screen},
+	{TASK_UPDATE_POS, TASK_PRI_LEVEL_4, task_draw_snake},
+	{TASK_GAME_OVER, TASK_PRI_LEVEL_4, task_game_over},
 
 	#if defined(TASK_ZIGBEE_EN)
 	{AC_TASK_ZIGBEE_ID			,	TASK_PRI_LEVEL_4	,	task_zigbee			},
