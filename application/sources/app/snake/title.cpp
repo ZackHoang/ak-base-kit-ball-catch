@@ -53,6 +53,7 @@ view_screen_t scr_title = {
 void screen_manager() {
 	switch (curr_screen) {
 		case 0: {
+			timer_set(TASK_UPDATE_POS, CHANGE_POS, 100, TIMER_PERIODIC);
 			SCREEN_TRAN(task_game, &scr_game);
 		}
 	}

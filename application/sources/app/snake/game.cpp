@@ -11,7 +11,10 @@ static uint8_t score = 0;
 
 void render_game_over()
 {
-	view_render.drawBitmap(8, 6, image_cry_dolph_bits, 55, 32, WHITE);
+	view_render.drawBitmap(10, 20, image_cry_dolph_bits, 55, 52, WHITE);
+	view_render.setCursor(50, 50);
+	view_render.setTextSize(1);
+	view_render.print("GAME OVER!");
 }
 
 view_dynamic_t dyn_view_scr_game_over = {
@@ -30,6 +33,9 @@ view_screen_t scr_game_over = {
 
 void touch_bar() {
 	if (y + BALL_RADIUS >= y_bar && y - BALL_RADIUS <= y_bar + BAR_HEIGHT && x >= x_bar && x <= x_bar + BAR_WIDTH) {
+		BUZZER_Enable(500, 10);
+		BUZZER_PlayTones(tones_startup);
+		y_speed = -y_speed;
 		score++;
 	}
 }
@@ -43,11 +49,19 @@ void draw_game() {
 	x += x_speed;
 	y += y_speed;
 	if (x > WIDTH - BALL_RADIUS || x < BALL_RADIUS) {
+		BUZZER_Enable(500, 10);
+		BUZZER_PlayTones(tones_startup);
 		x_speed = -x_speed;
 	}
-	if (y > HEIGHT - BALL_RADIUS || y < BALL_RADIUS || (y + BALL_RADIUS >= y_bar && y - BALL_RADIUS <= y_bar + BAR_HEIGHT && x >= x_bar && x <= x_bar + BAR_WIDTH)) {
+	if (y - BALL_RADIUS <= 0) {
+		BUZZER_Enable(500, 10);
+		BUZZER_PlayTones(tones_startup);
 		y_speed = -y_speed;
-		touch_bar();
+	}
+	touch_bar();
+	if (y - BALL_RADIUS > HEIGHT) {
+		timer_remove_attr(TASK_UPDATE_POS, CHANGE_POS);
+		SCREEN_TRAN(task_game_over, &scr_game_over);
 	}
 }
 
@@ -95,7 +109,6 @@ void task_move_bar_left(ak_msg_t* msg) {
 void render_game_screen()
 {
 	draw_game();
-	timer_set(TASK_UPDATE_POS, CHANGE_POS, 100, TIMER_PERIODIC);
 }
 
 view_dynamic_t dyn_view_scr_game = {
