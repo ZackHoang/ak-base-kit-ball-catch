@@ -27,7 +27,7 @@ void change_menu_cursor(ak_msg_t* msg) {
 void item_render() {
 	view_render.setCursor(32, 24);
 	view_render.setTextSize(2);
-  view_render.print("SNAKE");
+  view_render.print("BALL");
 	view_render.setCursor(32, 48);
 	view_render.setTextSize(1);
 	view_render.print("Start");
@@ -54,6 +54,7 @@ void screen_manager() {
 	switch (curr_screen) {
 		case 0: {
 			timer_set(TASK_UPDATE_POS, CHANGE_POS, 100, TIMER_PERIODIC);
+			// timer_set(TASK_INCREASE_BALL, INCREASE_BALL, 1000, TIMER_PERIODIC);
 			SCREEN_TRAN(task_game, &scr_game);
 		}
 	}

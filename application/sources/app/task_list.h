@@ -35,6 +35,7 @@ enum {
 
 	TASK_MOVE_BAR_RIGHT,
 	TASK_MOVE_BAR_LEFT,
+	TASK_INCREASE_BALL,
 
 #if defined(TASK_ZIGBEE_EN)
 	AC_TASK_ZIGBEE_ID,
@@ -101,7 +102,7 @@ extern void task_draw_snake(ak_msg_t *);
 extern void task_game_over(ak_msg_t *);
 extern void task_move_bar_right(ak_msg_t *);
 extern void task_move_bar_left(ak_msg_t *);
-
+extern void task_increase_ball(ak_msg_t *);
 
 /* LINK TASK */
 extern void task_link_phy(ak_msg_t*);
