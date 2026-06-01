@@ -1,6 +1,0 @@
-sources/app/snake/title.cpp:27:6:void item_render()	24	static
-sources/app/snake/title.cpp:8:6:void change_menu_cursor(ak_msg_t*)	0	static
-sources/app/snake/title.cpp:53:6:void screen_manager()	8	static
-sources/app/snake/title.cpp:63:6:void change_screen(ak_msg_t*)	0	static
-sources/app/snake/title.cpp:72:6:void handle_scr_title(ak_msg_t*)	0	static
-sources/app/snake/title.cpp:74:6:void task_title(ak_msg_t*)	0	static

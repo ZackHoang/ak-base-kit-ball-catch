@@ -21,10 +21,12 @@ static uint8_t x_bar = 54;
 static uint8_t x2_bar = 74;
 static uint8_t y_bar = 60;
 static uint8_t score = 0;
-static uint8_t target_score = 3;
+static uint8_t read_score = 0;
+static uint8_t target_score = 5;
 static uint8_t ball_counter = 0;
-static bar_t bar {54, 60};
-static ball_t balls[3] = { { 20, 20, 2, 2 } };
+static bar_t bar {54, 50};
+static char game_over_buffer[50];
+static ball_t balls[MAX_BALL] = {{64, 32, 2, 2}};
 
 void render_game_over()
 {
@@ -33,6 +35,10 @@ void render_game_over()
 	view_render.setCursor(65, 30);
 	view_render.setTextSize(1);
 	view_render.print("GAME OVER!");
+	view_render.setCursor(10, 5);
+	eeprom_read(0, (uint8_t *)&read_score, sizeof(read_score));
+	snprintf(game_over_buffer, sizeof(game_over_buffer), "Best Score: %d", read_score);
+	view_render.print(game_over_buffer);
 }
 
 view_dynamic_t dyn_view_scr_game_over = {
@@ -63,50 +69,60 @@ void touch_bar() {
 }
 
 void is_touching_side_wall(ball_t &ball) {
-	if (ball.x > WIDTH - BALL_RADIUS || ball.x < BALL_RADIUS) {
-		// play_buzzer();
+	if (ball.x > WIDTH - BALL_RADIUS - 20 || ball.x < BALL_RADIUS + 20) {
+		play_buzzer();
 		ball.x_speed = -ball.x_speed;
 	}
 }
 
 void is_touching_ceiling(ball_t &ball) {
-	if (ball.y - BALL_RADIUS <= 0) {
-		// play_buzzer();
+	if (ball.y - BALL_RADIUS <= 10) {
+		play_buzzer();
 		ball.y_speed = -ball.y_speed;
 	}
 }
 
 void is_touching_bar(ball_t &ball) {
 	if (ball.y + BALL_RADIUS >= bar.y && ball.y - BALL_RADIUS <= bar.y + BAR_HEIGHT && ball.x >= bar.x && ball.x <= bar.x + BAR_WIDTH) {
-		// play_buzzer();
+		play_buzzer();
 		ball.y_speed = -ball.y_speed;
 		score++;
 	}
 }
 
 void is_game_over(ball_t &ball) {
-	if (ball.y - BALL_RADIUS > HEIGHT) {
+	if (ball.y - BALL_RADIUS > HEIGHT - 4) {
 		timer_remove_attr(TASK_UPDATE_POS, CHANGE_POS);
+		if (eeprom_read(0, (uint8_t *)&read_score, sizeof(read_score) == 0))
+		{
+			xprintf("read score before: %d\n", read_score);
+			if (read_score < score)
+			{
+				eeprom_write(0, (uint8_t *)&score, sizeof(score));
+			}
+			xprintf("read score after: %d\n", read_score);
+		}
 		SCREEN_TRAN(task_game_over, &scr_game_over);
 	}
 }
 
 void is_ball_spawning() {
-	if (score == target_score && ball_counter < 2) {
+	if (score == target_score && ball_counter < MAX_BALL - 1) {
 		ball_counter++;
-		target_score += 3;
+		target_score += 5;
 		balls[ball_counter] = {20, 20, 2, 2};
 	}
 }
 
 void draw_game() {
 	view_render.drawRect(bar.x, bar.y, BAR_WIDTH, BAR_HEIGHT, WHITE);
-	view_render.setCursor(80, 20);
+	view_render.setCursor(100, 20);
 	view_render.setTextSize(1);
+	view_render.drawRect(12, 8, 104, 54, WHITE);
 	view_render.print(score);
 	for (int i = 0; i <= ball_counter; i++)
 	{
-		xprintf("ball x: %d, ball y: %d", balls[i].x, balls[i].y);
+		// xprintf("ball x: %d, ball y: %d", balls[i].x, balls[i].y);
 		view_render.drawCircle(balls[i].x, balls[i].y, BALL_RADIUS, WHITE);
 		balls[i].x += balls[i].x_speed;
 		balls[i].y += balls[i].y_speed;
@@ -148,14 +164,14 @@ void task_increase_ball(ak_msg_t* msg) {
 
 
 void move_bar_right() {
-	if (bar.x < 110) {
+	if (bar.x <= 80) {
 		bar.x += 10;
 		xprintf("x_bar: %d\nx2_bar: %d\n\n", x_bar, x2_bar);
 	}
 }
 
 void move_bar_left() {
-	if (bar.x > 10) {
+	if (bar.x >= 20) {
 		bar.x -= 10;
 		xprintf("x_bar: %d\nx2_bar: %d\n\n", x_bar, x2_bar);
 	}
