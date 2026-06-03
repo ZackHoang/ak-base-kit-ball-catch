@@ -1,6 +1,11 @@
 #include "game.h"
 #include "stdlib.h"
 
+// TODO:
+// Title screen: smaller option text and arrow + icon next to game title
+// Game play: instead of saws, could consider either straight lines or triangles as thorns
+// Boom effect: a boom bitmap should be drawn when a ball comes in contact with thorns (maybe sound effect too?)
+
 typedef struct {
 	uint8_t x;
 	uint8_t y;
