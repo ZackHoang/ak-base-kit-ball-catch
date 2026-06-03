@@ -20,6 +20,7 @@ void btn_mode_callback(void* b) {
 	case BUTTON_SW_STATE_PRESSED: {
 		APP_DBG("[btn_mode_callback] BUTTON_SW_STATE_PRESSED\n");
 		task_post_pure_msg(TASK_CHANGE_SCREEN, CHANGE_SCREEN);
+		task_post_pure_msg(TASK_CONFIRM_GAME_OVER_CURSOR, CONFIRM_GAME_OVER);
 	}
 		break;
 
@@ -46,6 +47,7 @@ void btn_up_callback(void* b) {
 		APP_DBG("[btn_up_callback] BUTTON_SW_STATE_PRESSED\n");
 		task_post_pure_msg(TASK_CHANGE_CURSOR, CURSOR_UP);
 		task_post_pure_msg(TASK_MOVE_BAR_RIGHT, MOVE_RIGHT);
+		task_post_pure_msg(TASK_CHANGE_GAME_OVER_CURSOR, GAME_OVER_CURSOR_UP);
 	}
 		break;
 
@@ -72,6 +74,7 @@ void btn_down_callback(void* b) {
 		APP_DBG("[btn_down_callback] BUTTON_SW_STATE_PRESSED\n");
 		task_post_pure_msg(TASK_CHANGE_CURSOR, CURSOR_DOWN);
 		task_post_pure_msg(TASK_MOVE_BAR_LEFT, MOVE_LEFT);
+		task_post_pure_msg(TASK_CHANGE_GAME_OVER_CURSOR, GAME_OVER_CURSOR_DOWN);
 	}
 		break;
 
