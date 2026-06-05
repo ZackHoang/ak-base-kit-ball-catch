@@ -195,8 +195,8 @@ void draw_game() {
 	view_render.setTextSize(1);
 	view_render.drawRect(12, 8, 104, 55, WHITE);
 	view_render.print(score);
-	for (int i = 14; i <= 104; i += 20) {
-		view_render.drawBitmap(i, 52, image_saw_bits, 20, 10, WHITE);
+	for (int i = 14; i <= 115; i += 5) {
+		view_render.drawLine(i, 52, i, 62, WHITE);
 	}
 	for (int i = 0; i <= ball_counter; i++)
 	{
