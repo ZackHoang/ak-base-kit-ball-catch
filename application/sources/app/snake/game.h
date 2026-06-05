@@ -15,8 +15,6 @@
 #include "task_display.h"
 #include "view_render.h"
 
-#include "buzzer.h"
-
 #include <math.h>
 #include <vector>
 #include "app_dbg.h"
@@ -24,6 +22,8 @@
 #include "bitmap.h"
 
 #include "eeprom.h"
+
+#include "buzzer.h"
 
 #define WIDTH 128
 #define HEIGHT 64
@@ -44,5 +44,6 @@ extern view_dynamic_t dyn_view_scr_game;
 extern void task_game(ak_msg_t *msg);
 extern void task_draw_snake(ak_msg_t *msg);
 extern void init_snake_coords();
+extern void init_game();
 
 #endif

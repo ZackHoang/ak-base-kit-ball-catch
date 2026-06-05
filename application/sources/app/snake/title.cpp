@@ -56,6 +56,7 @@ void screen_manager() {
 		case 0: {
 			timer_set(TASK_UPDATE_POS, CHANGE_POS, 100, TIMER_PERIODIC);
 			// timer_set(TASK_INCREASE_BALL, INCREASE_BALL, 1000, TIMER_PERIODIC);
+			init_game();
 			SCREEN_TRAN(task_game, &scr_game);
 		}
 	}
