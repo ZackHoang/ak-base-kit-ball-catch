@@ -88,12 +88,15 @@ void task_change_game_over_cursor(ak_msg_t* msg) {
 	switch (msg->sig)
 	{
 	case GAME_OVER_CURSOR_UP:
-		/* code */
-		game_over_cursor = static_cast<GameOver>(40);
+		if (game_over == true) {
+			game_over_cursor = static_cast<GameOver>(40);
+		}
 		break;
 
 	case GAME_OVER_CURSOR_DOWN:
-		game_over_cursor = static_cast<GameOver>(50);
+		if (game_over == true) {
+			game_over_cursor = static_cast<GameOver>(50);
+		}
 		break;
 	}
 }
@@ -176,7 +179,7 @@ void is_game_over(ball_t &ball) {
 }
 
 void is_ball_spawning() {
-	if (score == target_score && ball_counter < MAX_BALL - 1) {
+	if (score == target_score && ball_counter < MAX_BALL - 1 && game_over == false) {
 		ball_counter++;
 		target_score += 5;
 		balls[ball_counter] = {20, 20, 2, 2};
@@ -196,8 +199,10 @@ void draw_game() {
 	{
 		// xprintf("ball x: %d, ball y: %d", balls[i].x, balls[i].y);
 		view_render.drawCircle(balls[i].x, balls[i].y, BALL_RADIUS, WHITE);
-		balls[i].x += balls[i].x_speed;
-		balls[i].y += balls[i].y_speed;
+		if (game_over == false) {
+			balls[i].x += balls[i].x_speed;
+			balls[i].y += balls[i].y_speed;
+		}
 		is_touching_side_wall(balls[i]);
 		is_touching_ceiling(balls[i]);
 		is_touching_bar(balls[i]);

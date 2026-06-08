@@ -3,22 +3,33 @@
 int options[2] = {50, 57};
 
 static int curr_opt = 0;
-static int curr_screen = 0;
+// static int curr_screen = 0;
+// enum StartMenu
+// {
+// 	START = 50,
+// 	OPTIONS = 57,
+// } start_menu;
 
 void change_menu_cursor(ak_msg_t* msg) {
 	switch (msg->sig) {
 		case CURSOR_UP: {
 			if (curr_opt > 0) {
 				curr_opt--;
-				curr_screen--;
+				// curr_screen--;
 			}
-		}	break;
+			// start_menu = START;
+			// xprintf("\nstart_menu value: %d\n", start_menu);
+		}
+		break;
 		case CURSOR_DOWN: {
 			if (curr_opt < 1) {
 				curr_opt++;
-				curr_screen++;
+				// curr_screen++;
 			}
-		}	break;
+			// start_menu = OPTIONS;
+			// xprintf("\nstart_menu value: %d\n", start_menu);
+		}
+		break;
 		default:
 			break;
 	}
@@ -52,7 +63,7 @@ view_screen_t scr_title = {
 };
 
 void screen_manager() {
-	switch (curr_screen) {
+	switch (curr_opt) {
 		case 0: {
 			timer_set(TASK_UPDATE_POS, CHANGE_POS, 100, TIMER_PERIODIC);
 			// timer_set(TASK_INCREASE_BALL, INCREASE_BALL, 1000, TIMER_PERIODIC);
