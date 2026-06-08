@@ -40,6 +40,7 @@ enum GameOver
 } game_over_cursor;
 
 void init_game() {
+	game_start = true;
 	score = 0;
 	read_score = 0;
 	target_score = 5;
@@ -173,6 +174,7 @@ void is_game_over(ball_t &ball) {
 			xprintf("read score after: %d\n", read_score);
 		}
 		game_over = true;
+		game_start = false;
 		view_render.drawBitmap(ball.x - 10, ball.y - 10, image_boom_bits, 20, 20, WHITE);
 		timer_set(TASK_GAME_OVER, GAME_OVER, 2000, TIMER_ONE_SHOT);
 	}
@@ -202,11 +204,11 @@ void draw_game() {
 		if (game_over == false) {
 			balls[i].x += balls[i].x_speed;
 			balls[i].y += balls[i].y_speed;
+			is_game_over(balls[i]);
 		}
 		is_touching_side_wall(balls[i]);
 		is_touching_ceiling(balls[i]);
 		is_touching_bar(balls[i]);
-		is_game_over(balls[i]);
 	}
 	// view_render.drawCircle(x, y, BALL_RADIUS, WHITE);
 	// x += x_speed;

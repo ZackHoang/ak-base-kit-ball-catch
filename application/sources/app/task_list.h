@@ -40,6 +40,9 @@ enum {
 	TASK_CONFIRM_GAME_OVER_CURSOR,
 	TASK_BOOM,
 
+	TASK_CHANGE_OPTION_CURSOR,
+	TASK_CONFIRM_OPTION,
+
 #if defined(TASK_ZIGBEE_EN)
 	AC_TASK_ZIGBEE_ID,
 #endif
@@ -109,6 +112,8 @@ extern void task_increase_ball(ak_msg_t *);
 extern void task_change_game_over_cursor(ak_msg_t *);
 extern void task_confirm_game_over_choice(ak_msg_t *);
 extern void task_show_boom(ak_msg_t *);
+extern void task_options(ak_msg_t *);
+extern void task_confirm_option_choice(ak_msg_t *msg);
 
 /* LINK TASK */
 extern void task_link_phy(ak_msg_t*);

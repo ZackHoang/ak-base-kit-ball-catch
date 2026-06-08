@@ -23,11 +23,15 @@
 
 #include "bitmap.h"
 #include "game.h"
+#include "options.h"
 
 // screen
 extern view_screen_t scr_title;
 extern void handle_scr_title(ak_msg_t *msg);
 extern void change_screen(ak_msg_t *msg);
+extern bool game_start;
+extern int current_screen;
+extern int curr_opt;
 
 // task
 
