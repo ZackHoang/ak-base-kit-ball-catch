@@ -100,7 +100,7 @@ extern void task_rf24_phy(ak_msg_t*);
 extern void task_rf24_mac(ak_msg_t*);
 extern void task_rf24_nwk(ak_msg_t*);
 
-// Snake tasks
+// Ball game tasks
 extern void task_title(ak_msg_t *);
 extern void change_menu_cursor(ak_msg_t *);
 extern void change_screen(ak_msg_t *);

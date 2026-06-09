@@ -20,7 +20,7 @@ const task_t app_task_table[] = {
 	{AC_TASK_DBG_ID				,	TASK_PRI_LEVEL_4	,	task_dbg			},
 	{AC_TASK_DISPLAY_ID			,	TASK_PRI_LEVEL_4	,	task_display		},
 
-	//Snake tasks
+	//Ball game tasks
 	{TASK_PRINT_TITLE_ID, TASK_PRI_LEVEL_4, task_title},
 	{TASK_CHANGE_CURSOR, TASK_PRI_LEVEL_4, change_menu_cursor},
 	{TASK_CHANGE_SCREEN, TASK_PRI_LEVEL_4, change_screen},

@@ -109,7 +109,7 @@ enum {
 	AC_IF_DYNAMIC_MSG_OUT,
 };
 
-// Snake signals
+// Ball game signals
 enum
 {
 	TASK_PRINT_TITLE = AK_USER_DEFINE_SIG,
