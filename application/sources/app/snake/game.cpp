@@ -18,39 +18,27 @@ typedef struct {
 	uint8_t y;
 } bar_t;
 
-// static uint8_t x = 20;
-// static uint8_t y = 20;
-// static uint8_t x_speed = 3;
-// static uint8_t y_speed = 3;
-// static uint8_t x_bar = 54;
-// static uint8_t x2_bar = 74;
-// static uint8_t y_bar = 60;
 static uint8_t score;
 static uint8_t read_score;
 static uint8_t target_score;
 static uint8_t ball_counter;
 static bar_t bar;
 static char game_over_buffer[50];
+static char score_display_buffer[25];
 bool game_over;
 static ball_t balls[MAX_BALL];
 uint8_t max_speed = 1;
-// enum GameOver
-// {
-// 	RETRY = 40,
-// 	QUIT = 50,
-// } game_over_cursor;
 static uint8_t game_over_cursor[2] = {40, 50};
 static uint8_t game_over_cursor_opt = 0;
 
 void init_game() {
-	// game_start = true;
 	score = 0;
 	read_score = 0;
 	target_score = 5;
 	ball_counter = 0;
 	bar = bar_t{54, 50};
 	game_over = false;
-	balls[ball_counter] = {ball_t{64, 32, max_speed, max_speed}};
+	balls[ball_counter] = {ball_t{(uint8_t)((rand() % 12) + 92), (uint8_t)((rand() % 8) + 10), max_speed, max_speed}};
 	timer_set(TASK_UPDATE_POS, CHANGE_POS, 100, TIMER_PERIODIC);
 }
 
@@ -145,14 +133,6 @@ view_screen_t scr_game_over = {
 		.focus_item = 0,
 };
 
-// void touch_bar() {
-// 	if (y + BALL_RADIUS >= y_bar && y - BALL_RADIUS <= y_bar + BAR_HEIGHT && x >= x_bar && x <= x_bar + BAR_WIDTH) {
-// 		play_buzzer();
-// 		y_speed = -y_speed;
-// 		score++;
-// 	}
-// }
-
 void is_touching_side_wall(ball_t &ball) {
 	if (ball.x > WIDTH - BALL_RADIUS - 20 || ball.x < BALL_RADIUS + 20) {
 		BUZZER_PlayTones(tones_bang);
@@ -168,7 +148,7 @@ void is_touching_ceiling(ball_t &ball) {
 }
 
 void is_touching_bar(ball_t &ball) {
-	if (ball.y + BALL_RADIUS >= bar.y && ball.y - BALL_RADIUS <= bar.y + BAR_HEIGHT && ball.x >= bar.x && ball.x <= bar.x + BAR_WIDTH) {
+	if (ball.y + BALL_RADIUS >= bar.y - BAR_HEIGHT && ball.y - BALL_RADIUS <= bar.y + BAR_HEIGHT && ball.x >= bar.x && ball.x <= bar.x + BAR_WIDTH && game_over == false) {
 		BUZZER_PlayTones(tones_bang);
 		ball.y_speed = -ball.y_speed;
 		score++;
@@ -189,7 +169,6 @@ void is_game_over(ball_t &ball) {
 		}
 		game_over = true;
 		current_screen = SCREEN_GAME_OVER;
-		// game_start = false;
 		view_render.drawBitmap(ball.x - 10, ball.y - 10, image_boom_bits, 20, 20, WHITE);
 		timer_set(TASK_GAME_OVER, GAME_OVER, 2000, TIMER_ONE_SHOT);
 	}
@@ -199,22 +178,23 @@ void is_ball_spawning() {
 	if (score == target_score && ball_counter < MAX_BALL - 1 && game_over == false) {
 		ball_counter++;
 		target_score += 5;
-		balls[ball_counter] = {20, 20, max_speed, max_speed};
+		balls[ball_counter] = {(uint8_t)((rand() % 12) + 92), (uint8_t)((rand() % 8) + 10), max_speed, max_speed};
 	}
 }
 
-void draw_game() {
+void render_game() {
 	view_render.drawRect(bar.x, bar.y, BAR_WIDTH, BAR_HEIGHT, WHITE);
-	view_render.setCursor(100, 20);
+	view_render.setCursor(60, 15);
 	view_render.setTextSize(1);
 	view_render.drawRect(12, 8, 104, 55, WHITE);
-	view_render.print(score);
+	snprintf(score_display_buffer, sizeof(score_display_buffer), "Score: %d", score);
+	view_render.print(score_display_buffer);
 	for (int i = 14; i <= 115; i += 5) {
 		view_render.drawLine(i, 52, i, 62, WHITE);
 	}
 	for (int i = 0; i <= ball_counter; i++)
 	{
-		// xprintf("ball x: %d, ball y: %d", balls[i].x, balls[i].y);
+		xprintf("ball x: %d, ball y: %d", balls[i].x, balls[i].y);
 		view_render.drawCircle(balls[i].x, balls[i].y, BALL_RADIUS, WHITE);
 		if (game_over == false) {
 			balls[i].x += balls[i].x_speed;
@@ -225,24 +205,6 @@ void draw_game() {
 		is_touching_ceiling(balls[i]);
 		is_touching_bar(balls[i]);
 	}
-	// view_render.drawCircle(x, y, BALL_RADIUS, WHITE);
-	// x += x_speed;
-	// y += y_speed;
-	// if (x > WIDTH - BALL_RADIUS || x < BALL_RADIUS) {
-	// 	BUZZER_Enable(500, 10);
-	// 	BUZZER_PlayTones(tones_startup);
-	// 	x_speed = -x_speed;
-	// }
-	// if (y - BALL_RADIUS <= 0) {
-	// 	BUZZER_Enable(500, 10);
-	// 	BUZZER_PlayTones(tones_startup);
-	// 	y_speed = -y_speed;
-	// }
-	// touch_bar();
-	// if (y - BALL_RADIUS > HEIGHT) {
-	// 	timer_remove_attr(TASK_UPDATE_POS, CHANGE_POS);
-	// 	SCREEN_TRAN(task_game_over, &scr_game_over);
-	// }
 }
 
 void task_increase_ball(ak_msg_t* msg) {
@@ -255,7 +217,6 @@ void task_increase_ball(ak_msg_t* msg) {
 		}
 	}
 }
-
 
 void move_bar_right() {
 	if (bar.x <= 80 && game_over == false) {
@@ -298,16 +259,16 @@ void task_move_bar_left(ak_msg_t* msg) {
 	}
 }
 
-void render_game_screen()
-{
-	draw_game();
-}
+// void render_game_screen()
+// {
+// 	draw_game();
+// }
 
 view_dynamic_t dyn_view_scr_game = {
 	{
 		.item_type = ITEM_TYPE_DYNAMIC,
 	},
-	render_game_screen,
+	render_game,
 };
 
 view_screen_t scr_game = {
@@ -325,7 +286,6 @@ void task_game_over(ak_msg_t* msg) {
 	switch (msg->sig)
 	{
 	case GAME_OVER:
-		// view_render_screen(&scr_game_over);
 		view_render.clear();
 		SCREEN_TRAN(task_show_game_over, &scr_game_over);
 		break;

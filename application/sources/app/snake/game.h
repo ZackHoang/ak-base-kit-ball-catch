@@ -28,10 +28,6 @@
 
 #define WIDTH 128
 #define HEIGHT 64
-#define IS_COLLIDE(x1,y1,w1,h1,x2,y2,w2,h2) (((x1) < ((x2) + (w2))) && \
-                                             (((x1) + (w1)) > (x2)) && \
-                                             ((y1) < ((y2) + (h2))) && \
-                                             (((y1) + (h1)) > (y2)))
 #define X_SPEED 2
 #define Y_SPEED 5
 #define BALL_RADIUS 2
@@ -44,6 +40,5 @@ extern view_screen_t scr_game;
 extern view_dynamic_t dyn_view_scr_game;
 extern void task_game(ak_msg_t *msg);
 extern void task_draw_snake(ak_msg_t *msg);
-// extern void init_snake_coords();
 extern void init_game();
 extern uint8_t max_speed;
