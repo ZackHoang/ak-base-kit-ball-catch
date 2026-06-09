@@ -10,6 +10,8 @@
 #include "task_list.h"
 #include "task_list_if.h"
 
+#include "title.h"
+
 button_t btn_mode;
 button_t btn_up;
 button_t btn_down;
@@ -19,9 +21,13 @@ void btn_mode_callback(void* b) {
 	switch (me_b->state) {
 	case BUTTON_SW_STATE_PRESSED: {
 		APP_DBG("[btn_mode_callback] BUTTON_SW_STATE_PRESSED\n");
-		task_post_pure_msg(TASK_CHANGE_SCREEN, CHANGE_SCREEN);
-		task_post_pure_msg(TASK_CONFIRM_GAME_OVER_CURSOR, CONFIRM_GAME_OVER);
-		task_post_pure_msg(TASK_CONFIRM_OPTION, CONFIRM_OPTION_CHOICE);
+		if (current_screen == SCREEN_TITLE) {
+			task_post_pure_msg(TASK_CHANGE_SCREEN, CHANGE_SCREEN);
+		} else if (current_screen == SCREEN_GAME_OVER) {
+			task_post_pure_msg(TASK_CONFIRM_GAME_OVER_CURSOR, CONFIRM_GAME_OVER);
+		} else if (current_screen == SCREEN_OPTIONS) {
+			task_post_pure_msg(TASK_CONFIRM_OPTION, CONFIRM_OPTION_CHOICE);
+		}
 	}
 		break;
 
@@ -46,10 +52,15 @@ void btn_up_callback(void* b) {
 	switch (me_b->state) {
 	case BUTTON_SW_STATE_PRESSED: {
 		APP_DBG("[btn_up_callback] BUTTON_SW_STATE_PRESSED\n");
-		task_post_pure_msg(TASK_CHANGE_CURSOR, CURSOR_UP);
-		task_post_pure_msg(TASK_MOVE_BAR_RIGHT, MOVE_RIGHT);
-		task_post_pure_msg(TASK_CHANGE_GAME_OVER_CURSOR, GAME_OVER_CURSOR_UP);
-		task_post_pure_msg(TASK_CHANGE_OPTION_CURSOR, CHANGE_OPTIONS_UP);
+		if (current_screen == SCREEN_TITLE) {
+			task_post_pure_msg(TASK_CHANGE_CURSOR, CURSOR_UP);
+		} else if (current_screen == SCREEN_GAME_ACTIVE) {
+			task_post_pure_msg(TASK_MOVE_BAR_RIGHT, MOVE_RIGHT);
+		} else if (current_screen == SCREEN_GAME_OVER) {
+			task_post_pure_msg(TASK_CHANGE_GAME_OVER_CURSOR, GAME_OVER_CURSOR_UP);
+		} else if (current_screen == SCREEN_OPTIONS) {
+			task_post_pure_msg(TASK_CHANGE_OPTION_CURSOR, CHANGE_OPTIONS_UP);
+		}
 	}
 		break;
 
@@ -74,10 +85,15 @@ void btn_down_callback(void* b) {
 	switch (me_b->state) {
 	case BUTTON_SW_STATE_PRESSED: {
 		APP_DBG("[btn_down_callback] BUTTON_SW_STATE_PRESSED\n");
-		task_post_pure_msg(TASK_CHANGE_CURSOR, CURSOR_DOWN);
-		task_post_pure_msg(TASK_MOVE_BAR_LEFT, MOVE_LEFT);
-		task_post_pure_msg(TASK_CHANGE_GAME_OVER_CURSOR, GAME_OVER_CURSOR_DOWN);
-		task_post_pure_msg(TASK_CHANGE_OPTION_CURSOR, CHANGE_OPTIONS_DOWN);
+		if (current_screen == SCREEN_TITLE) {
+			task_post_pure_msg(TASK_CHANGE_CURSOR, CURSOR_DOWN);
+		} else if (current_screen == SCREEN_GAME_ACTIVE) {
+			task_post_pure_msg(TASK_MOVE_BAR_LEFT, MOVE_LEFT);
+		} else if (current_screen == SCREEN_GAME_OVER) {
+			task_post_pure_msg(TASK_CHANGE_GAME_OVER_CURSOR, GAME_OVER_CURSOR_DOWN);
+		} else if (current_screen == SCREEN_OPTIONS) {
+			task_post_pure_msg(TASK_CHANGE_OPTION_CURSOR, CHANGE_OPTIONS_DOWN);
+		}
 	}
 		break;
 

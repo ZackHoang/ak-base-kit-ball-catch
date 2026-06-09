@@ -2,6 +2,7 @@
 
 int options_cursor[3] = {37, 47, 57};
 int current_cursor = 0;
+int sound_on = 1;
 
 void render_options() {
   view_render.drawBitmap(15, options_cursor[current_cursor], image_arrow_right_bits, 7, 5, WHITE);
@@ -11,6 +12,8 @@ void render_options() {
   view_render.setTextSize(1);
   view_render.setCursor(30, 35);
   view_render.print("Sound");
+  view_render.setCursor(65, 35);
+  view_render.print(sound_on == 1 ? "On" : "Off");
   view_render.setCursor(30, 45);
   view_render.print("Ball speed");
   view_render.setCursor(30, 55);
@@ -53,10 +56,13 @@ void task_confirm_option_choice(ak_msg_t* msg) {
   {
   case CONFIRM_OPTION_CHOICE:
     /* code */
+    if (current_cursor == 0) {
+      sound_on == 1 ? sound_on = 0 : sound_on = 1;
+      BUZZER_Sleep(sound_on);
+    }
     if (current_cursor == 2) {
-      current_cursor = 0;
-      current_screen = 0;
-      curr_opt = 1;
+      current_cursor = 2;
+      current_screen = SCREEN_TITLE;
       SCREEN_TRAN(task_title, &scr_title);
     }
     break;

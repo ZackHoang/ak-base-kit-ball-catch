@@ -1,22 +1,20 @@
 #include "title.h"
 
 int options[2] = {50, 57};
-bool game_start = false;
-int current_screen = 0;
-
+int current_screen = SCREEN_TITLE;
 int curr_opt = 0;
 
 void change_menu_cursor(ak_msg_t* msg) {
 	switch (msg->sig) {
 		case CURSOR_UP: {
-			if (curr_opt > 0 && current_screen == 0) {
+			if (curr_opt > 0) {
 				curr_opt--;
 				xprintf("\ncurr_opt value: %d\n", curr_opt);
 			}
 		}
 		break;
 		case CURSOR_DOWN: {
-			if (curr_opt < 1 && current_screen == 0) {
+			if (curr_opt < 1) {
 				curr_opt++;
 				xprintf("\ncurr_opt value: %d\n", curr_opt);
 			}
@@ -59,14 +57,16 @@ void change_screen(ak_msg_t* msg) {
 		case CHANGE_SCREEN: {
 			switch (curr_opt) {
 				case 0: {
-					current_screen = 1;
+					current_screen = SCREEN_GAME_ACTIVE;
 					timer_set(TASK_UPDATE_POS, CHANGE_POS, 100, TIMER_PERIODIC);
 					init_game();
+					xprintf("\ncurr_opt: %d\n", curr_opt);
 					SCREEN_TRAN(task_game, &scr_game);
 					break;
 				}
 				case 1: {
-					current_screen = 2;
+					current_screen = SCREEN_OPTIONS;
+					xprintf("\ncurr_opt: %d\n", curr_opt);
 					SCREEN_TRAN(task_options, &scr_options);
 					break;
 				}
@@ -75,6 +75,5 @@ void change_screen(ak_msg_t* msg) {
 	}
 }
 
-void handle_scr_title(ak_msg_t* msg) {}
-
-void task_title(ak_msg_t *msg) {}
+void handle_scr_title(ak_msg_t * msg){};
+void task_title(ak_msg_t * msg){};

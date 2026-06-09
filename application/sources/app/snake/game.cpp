@@ -33,14 +33,16 @@ static bar_t bar;
 static char game_over_buffer[50];
 bool game_over;
 static ball_t balls[MAX_BALL];
-enum GameOver
-{
-	RETRY = 40,
-	QUIT = 50,
-} game_over_cursor;
+// enum GameOver
+// {
+// 	RETRY = 40,
+// 	QUIT = 50,
+// } game_over_cursor;
+static uint8_t game_over_cursor[2] = {40, 50};
+static uint8_t game_over_cursor_opt = 0;
 
 void init_game() {
-	game_start = true;
+	// game_start = true;
 	score = 0;
 	read_score = 0;
 	target_score = 5;
@@ -48,6 +50,7 @@ void init_game() {
 	bar = bar_t{54, 50};
 	game_over = false;
 	balls[ball_counter] = {ball_t{64, 32, 2, 2}};
+	timer_set(TASK_UPDATE_POS, CHANGE_POS, 100, TIMER_PERIODIC);
 }
 
 void show_boom() {
@@ -75,7 +78,14 @@ void task_confirm_game_over_choice(ak_msg_t* msg) {
 	switch (msg->sig)
 	{
 	case CONFIRM_GAME_OVER:
-		if (game_over_cursor == 50) {
+		if (game_over_cursor_opt == 0) {
+			game_over = false;
+			current_screen = SCREEN_GAME_ACTIVE;
+			init_game();
+			SCREEN_TRAN(task_game, &scr_game);
+		} else if (game_over_cursor_opt == 1) {
+			game_over = false;
+			current_screen = SCREEN_TITLE;
 			SCREEN_TRAN(handle_scr_title, &scr_title);
 		}
 		break;
@@ -89,14 +99,14 @@ void task_change_game_over_cursor(ak_msg_t* msg) {
 	switch (msg->sig)
 	{
 	case GAME_OVER_CURSOR_UP:
-		if (game_over == true) {
-			game_over_cursor = static_cast<GameOver>(40);
+		if (game_over == true && game_over_cursor_opt > 0) {
+			game_over_cursor_opt--;
 		}
 		break;
 
 	case GAME_OVER_CURSOR_DOWN:
-		if (game_over == true) {
-			game_over_cursor = static_cast<GameOver>(50);
+		if (game_over == true && game_over_cursor_opt < 1) {
+			game_over_cursor_opt++;
 		}
 		break;
 	}
@@ -113,7 +123,7 @@ void render_game_over()
 	eeprom_read(0, (uint8_t *)&read_score, sizeof(read_score));
 	snprintf(game_over_buffer, sizeof(game_over_buffer), "Best Score: %d", read_score);
 	view_render.print(game_over_buffer);
-	view_render.drawBitmap(80, game_over_cursor, image_arrow_right_bits, 7, 5, WHITE);
+	view_render.drawBitmap(80, game_over_cursor[game_over_cursor_opt], image_arrow_right_bits, 7, 5, WHITE);
 	view_render.setCursor(92, 40);
 	view_render.print("Retry");
 	view_render.setCursor(92, 50);
@@ -144,18 +154,21 @@ view_screen_t scr_game_over = {
 
 void is_touching_side_wall(ball_t &ball) {
 	if (ball.x > WIDTH - BALL_RADIUS - 20 || ball.x < BALL_RADIUS + 20) {
+		BUZZER_PlayTones(tones_bang);
 		ball.x_speed = -ball.x_speed;
 	}
 }
 
 void is_touching_ceiling(ball_t &ball) {
 	if (ball.y - BALL_RADIUS <= 10) {
+		BUZZER_PlayTones(tones_bang);
 		ball.y_speed = -ball.y_speed;
 	}
 }
 
 void is_touching_bar(ball_t &ball) {
 	if (ball.y + BALL_RADIUS >= bar.y && ball.y - BALL_RADIUS <= bar.y + BAR_HEIGHT && ball.x >= bar.x && ball.x <= bar.x + BAR_WIDTH) {
+		BUZZER_PlayTones(tones_bang);
 		ball.y_speed = -ball.y_speed;
 		score++;
 	}
@@ -174,7 +187,8 @@ void is_game_over(ball_t &ball) {
 			xprintf("read score after: %d\n", read_score);
 		}
 		game_over = true;
-		game_start = false;
+		current_screen = SCREEN_GAME_OVER;
+		// game_start = false;
 		view_render.drawBitmap(ball.x - 10, ball.y - 10, image_boom_bits, 20, 20, WHITE);
 		timer_set(TASK_GAME_OVER, GAME_OVER, 2000, TIMER_ONE_SHOT);
 	}

@@ -28,6 +28,12 @@ static const Tone_TypeDef tones_startup[] = {
 	{   0,0}     // <-- tones end
 };
 
+static const Tone_TypeDef tones_bang[] = {
+	{3000, 3},
+	{4500, 6},
+	{   0, 0}
+};
+
 static const Tone_TypeDef tones_3beep[] = {
 	{4000, 3},
 	{   0,10},
@@ -174,7 +180,8 @@ static const Tone_TypeDef tones_merryChrismast[] = {
 void BUZZER_Init(void);
 void BUZZER_Enable(uint16_t freq, uint32_t duration);
 void BUZZER_Disable(void);
-void BUZZER_PlayTones(const Tone_TypeDef * melody);
+void BUZZER_PlayTones(const Tone_TypeDef *tones);
+void BUZZER_Sleep(bool sleep);
 
 extern void buzzer_irq( void );
 
