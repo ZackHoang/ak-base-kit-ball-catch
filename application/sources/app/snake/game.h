@@ -46,3 +46,4 @@ extern void task_game(ak_msg_t *msg);
 extern void task_draw_snake(ak_msg_t *msg);
 // extern void init_snake_coords();
 extern void init_game();
+extern uint8_t max_speed;

@@ -58,7 +58,6 @@ void change_screen(ak_msg_t* msg) {
 			switch (curr_opt) {
 				case 0: {
 					current_screen = SCREEN_GAME_ACTIVE;
-					timer_set(TASK_UPDATE_POS, CHANGE_POS, 100, TIMER_PERIODIC);
 					init_game();
 					xprintf("\ncurr_opt: %d\n", curr_opt);
 					SCREEN_TRAN(task_game, &scr_game);

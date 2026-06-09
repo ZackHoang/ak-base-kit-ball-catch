@@ -16,6 +16,8 @@ void render_options() {
   view_render.print(sound_on == 1 ? "On" : "Off");
   view_render.setCursor(30, 45);
   view_render.print("Ball speed");
+  view_render.setCursor(110, 45);
+  view_render.print(max_speed);
   view_render.setCursor(30, 55);
   view_render.print("Back");
 }
@@ -59,6 +61,12 @@ void task_confirm_option_choice(ak_msg_t* msg) {
     if (current_cursor == 0) {
       sound_on == 1 ? sound_on = 0 : sound_on = 1;
       BUZZER_Sleep(sound_on);
+    }
+    if (current_cursor == 1) {
+      max_speed++;
+      if (max_speed > 5) {
+        max_speed = 1;
+      }
     }
     if (current_cursor == 2) {
       current_cursor = 2;

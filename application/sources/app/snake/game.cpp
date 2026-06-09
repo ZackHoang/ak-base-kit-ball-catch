@@ -33,6 +33,7 @@ static bar_t bar;
 static char game_over_buffer[50];
 bool game_over;
 static ball_t balls[MAX_BALL];
+uint8_t max_speed = 1;
 // enum GameOver
 // {
 // 	RETRY = 40,
@@ -49,7 +50,7 @@ void init_game() {
 	ball_counter = 0;
 	bar = bar_t{54, 50};
 	game_over = false;
-	balls[ball_counter] = {ball_t{64, 32, 2, 2}};
+	balls[ball_counter] = {ball_t{64, 32, max_speed, max_speed}};
 	timer_set(TASK_UPDATE_POS, CHANGE_POS, 100, TIMER_PERIODIC);
 }
 
@@ -198,7 +199,7 @@ void is_ball_spawning() {
 	if (score == target_score && ball_counter < MAX_BALL - 1 && game_over == false) {
 		ball_counter++;
 		target_score += 5;
-		balls[ball_counter] = {20, 20, 2, 2};
+		balls[ball_counter] = {20, 20, max_speed, max_speed};
 	}
 }
 
