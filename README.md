@@ -1,3 +1,3 @@
-# STM32L151 Snake Game
+# STM32L151 Ball Game
 
 Work In Progress
