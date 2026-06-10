@@ -25,7 +25,7 @@
 
 #include "buzzer.h"
 
-#include "title.h"
+#include "scr_title.h"
 
 #define RETRY (40)
 #define QUIT (50)

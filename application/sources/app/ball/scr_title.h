@@ -22,8 +22,8 @@
 #include "app_dbg.h"
 
 #include "bitmap.h"
-#include "game.h"
-#include "options.h"
+#include "scr_game.h"
+#include "scr_options.h"
 
 #define SCREEN_TITLE (0)
 #define SCREEN_GAME_ACTIVE (1)
