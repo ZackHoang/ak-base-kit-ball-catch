@@ -1,24 +1,29 @@
 #include "scr_game_over.h"
 
-struct game_over_data_t {
-  uint8_t read_score;
-  char game_over_buffer[50];
-  uint8_t game_over_options[2] = {RETRY, QUIT};
-  uint8_t game_over_cursor = 0;
+struct game_over_data_t
+{
+	uint8_t read_score;
+	char game_over_buffer[50];
+	uint8_t game_over_options[2] = {RETRY, QUIT};
+	uint8_t game_over_cursor = 0;
 } game_over_data;
 
-void task_confirm_game_over_choice(ak_msg_t* msg) {
+void task_confirm_game_over_choice(ak_msg_t *msg)
+{
 	switch (msg->sig)
 	{
 	case CONFIRM_GAME_OVER:
-		if (game_over_data.game_over_cursor == 0) {
-			game_over = false;
+		if (game_over_data.game_over_cursor == 0)
+		{
+			// game_over = false;
 			current_screen = SCREEN_GAME_ACTIVE;
 			init_game();
-      current_screen = SCREEN_GAME_ACTIVE;
-      SCREEN_TRAN(task_game, &scr_game);
-    } else if (game_over_data.game_over_cursor == 1) {
-			game_over = false;
+			current_screen = SCREEN_GAME_ACTIVE;
+			SCREEN_TRAN(task_game, &scr_game);
+		}
+		else if (game_over_data.game_over_cursor == 1)
+		{
+			// game_over = false;
 			current_screen = SCREEN_TITLE;
 			SCREEN_TRAN(handle_scr_title, &scr_title);
 		}
@@ -29,17 +34,20 @@ void task_confirm_game_over_choice(ak_msg_t* msg) {
 	}
 }
 
-void task_change_game_over_cursor(ak_msg_t* msg) {
+void task_change_game_over_cursor(ak_msg_t *msg)
+{
 	switch (msg->sig)
 	{
 	case GAME_OVER_CURSOR_UP:
-		if (current_screen == SCREEN_GAME_OVER && game_over_data.game_over_cursor > 0) {
+		if (current_screen == SCREEN_GAME_OVER && game_over_data.game_over_cursor > 0)
+		{
 			game_over_data.game_over_cursor--;
 		}
 		break;
 
 	case GAME_OVER_CURSOR_DOWN:
-		if (current_screen == SCREEN_GAME_OVER && game_over_data.game_over_cursor < 1) {
+		if (current_screen == SCREEN_GAME_OVER && game_over_data.game_over_cursor < 1)
+		{
 			game_over_data.game_over_cursor++;
 		}
 		break;
@@ -48,7 +56,7 @@ void task_change_game_over_cursor(ak_msg_t* msg) {
 
 void render_game_over()
 {
-  view_render.clear();
+	view_render.clear();
 	view_render.drawBitmap(10, 20, image_cry_dolph_bits, 55, 52, WHITE);
 	view_render.setCursor(65, 30);
 	view_render.setTextSize(1);
@@ -65,10 +73,10 @@ void render_game_over()
 }
 
 view_dynamic_t dyn_view_scr_game_over = {
-  {
-      .item_type = ITEM_TYPE_DYNAMIC,
-  },
-  render_game_over,
+		{
+				.item_type = ITEM_TYPE_DYNAMIC,
+		},
+		render_game_over,
 };
 
 view_screen_t scr_game_over = {

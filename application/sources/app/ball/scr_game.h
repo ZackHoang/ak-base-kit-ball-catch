@@ -1,6 +1,5 @@
 #ifndef __SCR_GAME_H__
 #define __SCR_GAME_H__
-#endif
 
 #include "fsm.h"
 #include "port.h"
@@ -36,11 +35,38 @@
 #define BAR_WIDTH 30
 #define MAX_BALL 5
 
-extern void render_game_screen();
+typedef struct
+{
+  uint8_t x;
+  uint8_t y;
+  uint8_t x_speed;
+  uint8_t y_speed;
+} ball_t;
+
+typedef struct
+{
+  uint8_t x;
+  uint8_t y;
+} bar_t;
+
+typedef struct
+{
+  uint8_t score;
+  uint8_t read_score;
+  uint8_t target_score;
+  uint8_t ball_counter;
+  bar_t bar;
+  char score_display_buffer[25];
+  ball_t balls[MAX_BALL];
+  uint8_t max_speed = 2;
+} game_data_t;
+
+// extern void render_game_screen();
 extern view_screen_t scr_game;
 extern view_dynamic_t dyn_view_scr_game;
 extern void task_game(ak_msg_t *msg);
 extern void task_draw_snake(ak_msg_t *msg);
 extern void init_game();
-extern uint8_t max_speed;
-extern bool game_over;
+extern game_data_t game_data;
+
+#endif

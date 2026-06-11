@@ -18,7 +18,7 @@ void render_options()
   view_render.setCursor(30, 45);
   view_render.print("Ball speed");
   view_render.setCursor(110, 45);
-  view_render.print(max_speed);
+  view_render.print(game_data.max_speed);
   view_render.setCursor(30, 55);
   view_render.print("Back");
 }
@@ -63,7 +63,6 @@ void task_confirm_option_choice(ak_msg_t *msg)
   switch (msg->sig)
   {
   case CONFIRM_OPTION_CHOICE:
-    /* code */
     if (current_cursor == 0)
     {
       sound_on == SOUND_ON ? sound_on = SOUND_OFF : sound_on = SOUND_ON;
@@ -71,10 +70,10 @@ void task_confirm_option_choice(ak_msg_t *msg)
     }
     if (current_cursor == 1)
     {
-      max_speed++;
-      if (max_speed > 5)
+      game_data.max_speed++;
+      if (game_data.max_speed > 5)
       {
-        max_speed = 1;
+        game_data.max_speed = 1;
       }
     }
     if (current_cursor == 2)

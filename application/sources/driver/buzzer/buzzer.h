@@ -176,6 +176,13 @@ static const Tone_TypeDef tones_merryChrismast[] = {
 	{   0, 0}  // <-- tones end
 };
 
+static const Tone_TypeDef tone_game_over[] = {
+	{500, 10},
+	{250, 10},
+	{100, 10},
+	{0, 0}
+};
+
 // Function prototypes
 void BUZZER_Init(void);
 void BUZZER_Enable(uint16_t freq, uint32_t duration);
