@@ -28,10 +28,8 @@ const task_t app_task_table[] = {
 	{TASK_GAME_OVER, TASK_PRI_LEVEL_4, task_game_over},
 	{TASK_MOVE_BAR_RIGHT, TASK_PRI_LEVEL_4, task_move_bar_right},
 	{TASK_MOVE_BAR_LEFT, TASK_PRI_LEVEL_4, task_move_bar_left},
-	{TASK_INCREASE_BALL, TASK_PRI_LEVEL_4, task_increase_ball},
 	{TASK_CHANGE_GAME_OVER_CURSOR, TASK_PRI_LEVEL_4, task_change_game_over_cursor},
 	{TASK_CONFIRM_GAME_OVER_CURSOR, TASK_PRI_LEVEL_4, task_confirm_game_over_choice},
-	{TASK_BOOM, TASK_PRI_LEVEL_4, task_show_boom},
 	{TASK_CHANGE_OPTION_CURSOR, TASK_PRI_LEVEL_4, task_options},
 	{TASK_CONFIRM_OPTION, TASK_PRI_LEVEL_4, task_confirm_option_choice},
 

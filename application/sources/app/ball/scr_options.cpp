@@ -75,6 +75,7 @@ void task_confirm_option_choice(ak_msg_t *msg)
       {
         game_data.max_speed = 1;
       }
+      xprintf("\ngame_data.max_speed: %d\n", game_data.max_speed);
     }
     if (current_cursor == 2)
     {

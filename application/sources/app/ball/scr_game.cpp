@@ -9,28 +9,10 @@ void init_game()
 	game_data.target_score = 5;
 	game_data.ball_counter = 0;
 	game_data.bar = bar_t{54, 50};
-	game_data.max_speed = 2;
 	game_data.balls[game_data.ball_counter] = {ball_t{(uint8_t)((rand() % 12) + 92), (uint8_t)((rand() % 15) + 20), game_data.max_speed, game_data.max_speed}};
+	xprintf("\ngame_data.max_speed in game: %d\n", game_data.max_speed);
 	timer_set(TASK_UPDATE_POS, CHANGE_POS, 100, TIMER_PERIODIC);
 }
-
-void show_boom()
-{
-	view_render.drawBitmap(0, 0, image_boom_bits, 128, 64, WHITE);
-}
-
-view_dynamic_t dyn_view_scr_boom = {
-		{.item_type = ITEM_TYPE_DYNAMIC},
-		show_boom};
-
-view_screen_t scr_boom = {
-		&dyn_view_scr_boom,
-		ITEM_NULL,
-		ITEM_NULL,
-		.focus_item = 0,
-};
-
-void task_show_boom(ak_msg_t *msg) {}
 
 void is_touching_side_wall(ball_t &ball)
 {
@@ -75,7 +57,6 @@ void is_game_over(ball_t &ball)
 			}
 			xprintf("read score after: %d\n", game_data.read_score);
 		}
-		// game_over = true;
 		current_screen = SCREEN_GAME_OVER;
 		view_render.drawBitmap(ball.x - 10, ball.y - 10, image_boom_bits, 20, 20, WHITE);
 		timer_set(TASK_GAME_OVER, GAME_OVER, 2000, TIMER_ONE_SHOT);
@@ -117,16 +98,6 @@ void render_game()
 		is_touching_side_wall(game_data.balls[i]);
 		is_touching_ceiling(game_data.balls[i]);
 		is_touching_bar(game_data.balls[i]);
-	}
-}
-
-void task_increase_ball(ak_msg_t *msg)
-{
-	switch (msg->sig)
-	{
-	case (INCREASE_BALL):
-	{
-	}
 	}
 }
 
