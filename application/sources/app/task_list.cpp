@@ -21,12 +21,8 @@ const task_t app_task_table[] = {
 	{AC_TASK_DISPLAY_ID			,	TASK_PRI_LEVEL_4	,	task_display		},
 
 	//Ball game tasks
-	{TASK_TITLE_SCREEN, TASK_PRI_LEVEL_4, task_title_screen},
-	{TASK_UPDATE_POS, TASK_PRI_LEVEL_4, task_draw_game},
+	{TASK_UPDATE_POS, TASK_PRI_LEVEL_5, task_draw_game},
 	{TASK_GAME_OVER, TASK_PRI_LEVEL_4, task_game_over},
-	{TASK_CONFIRM_GAME_OVER, TASK_PRI_LEVEL_4, task_game_over_screen},
-	{TASK_MOVE_BAR, TASK_PRI_LEVEL_4, task_game_screen_move_bar},
-	{TASK_OPTIONS, TASK_PRI_LEVEL_4, task_options_screen},
 
 	#if defined(TASK_ZIGBEE_EN)
 	{AC_TASK_ZIGBEE_ID			,	TASK_PRI_LEVEL_4	,	task_zigbee			},

@@ -5,22 +5,15 @@
 #include "port.h"
 #include "message.h"
 #include "timer.h"
-
 #include "sys_ctrl.h"
 #include "sys_dbg.h"
-
 #include "app.h"
 #include "app_dbg.h"
 #include "task_list.h"
 #include "task_display.h"
 #include "view_render.h"
-
 #include "buzzer.h"
-
-#include <math.h>
-#include <vector>
 #include "app_dbg.h"
-
 #include "bitmap.h"
 #include "scr_game.h"
 #include "scr_options.h"
@@ -30,8 +23,8 @@
 #define SCREEN_GAME_OVER (2)
 #define SCREEN_OPTIONS (3)
 
+void item_render();
 extern view_screen_t scr_title;
 extern void task_title_screen(ak_msg_t *msg);
-extern int current_screen;
 
 #endif

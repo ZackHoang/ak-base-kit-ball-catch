@@ -4,6 +4,18 @@ int options_cursor[3] = {SOUND, BALL_SPEED, BACK};
 int current_cursor = 0;
 int sound_on = SOUND_ON;
 
+view_dynamic_t dyn_view_scr_options{
+    {.item_type = ITEM_TYPE_DYNAMIC},
+    render_options,
+};
+
+view_screen_t scr_options{
+    &dyn_view_scr_options,
+    ITEM_NULL,
+    ITEM_NULL,
+    .focus_item = 0,
+};
+
 void render_options()
 {
   view_render.drawBitmap(15, options_cursor[current_cursor], image_arrow_right_bits, 7, 5, WHITE);
@@ -23,37 +35,25 @@ void render_options()
   view_render.print("Back");
 }
 
-view_dynamic_t dyn_view_scr_options{
-    {.item_type = ITEM_TYPE_DYNAMIC},
-    render_options,
-};
-
-view_screen_t scr_options{
-    &dyn_view_scr_options,
-    ITEM_NULL,
-    ITEM_NULL,
-    .focus_item = 0,
-};
-
 void task_options_screen(ak_msg_t *msg)
 {
   switch (msg->sig)
   {
-  case CHANGE_OPTIONS_UP:
+  case AC_DISPLAY_BUTTON_UP_PRESSED:
     if (current_cursor > 0)
     {
       current_cursor--;
     }
     break;
 
-  case CHANGE_OPTIONS_DOWN:
+  case AC_DISPLAY_BUTTON_DOWN_PRESSED:
     if (current_cursor < 2)
     {
       current_cursor++;
     }
     break;
 
-  case CONFIRM_OPTION_CHOICE:
+  case AC_DISPLAY_BUTTON_MODE_PRESSED:
     if (current_cursor == 0)
     {
       sound_on == SOUND_ON ? sound_on = SOUND_OFF : sound_on = SOUND_ON;
@@ -66,12 +66,10 @@ void task_options_screen(ak_msg_t *msg)
       {
         game_data.max_speed = 1;
       }
-      xprintf("\ngame_data.max_speed: %d\n", game_data.max_speed);
     }
     if (current_cursor == 2)
     {
       current_cursor = 2;
-      current_screen = SCREEN_TITLE;
       SCREEN_TRAN(task_title_screen, &scr_title);
     }
     break;

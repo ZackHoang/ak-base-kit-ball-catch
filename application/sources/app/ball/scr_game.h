@@ -5,24 +5,17 @@
 #include "port.h"
 #include "message.h"
 #include "timer.h"
-
 #include "sys_ctrl.h"
 #include "sys_dbg.h"
-
 #include "app.h"
 #include "app_dbg.h"
 #include "task_list.h"
 #include "task_display.h"
 #include "view_render.h"
-
 #include "app_dbg.h"
-
 #include "bitmap.h"
-
 #include "eeprom.h"
-
 #include "buzzer.h"
-
 #include "scr_game_over.h"
 
 #define WIDTH 128
@@ -58,8 +51,10 @@ typedef struct
   char score_display_buffer[25];
   ball_t balls[MAX_BALL];
   uint8_t max_speed = 2;
+  bool game_over = false;
 } game_data_t;
 
+void render_game();
 extern view_screen_t scr_game;
 extern view_dynamic_t dyn_view_scr_game;
 extern void task_draw_game(ak_msg_t *msg);

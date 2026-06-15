@@ -29,12 +29,8 @@ enum
 	AC_TASK_DISPLAY_ID,
 
 	/* BALL GAME TASKS */
-	TASK_TITLE_SCREEN,
 	TASK_UPDATE_POS,
 	TASK_GAME_OVER,
-	TASK_CONFIRM_GAME_OVER,
-	TASK_MOVE_BAR,
-	TASK_OPTIONS,
 
 #if defined(TASK_ZIGBEE_EN)
 	AC_TASK_ZIGBEE_ID,
@@ -95,12 +91,8 @@ extern void task_rf24_mac(ak_msg_t *);
 extern void task_rf24_nwk(ak_msg_t *);
 
 /* BALL GAME TASKS */
-extern void task_title_screen(ak_msg_t *msg);
 extern void task_draw_game(ak_msg_t *);
-extern void task_game_screen_move_bar(ak_msg_t *msg);
 extern void task_game_over(ak_msg_t *);
-extern void task_game_over_screen(ak_msg_t *msg);
-extern void task_options_screen(ak_msg_t *msg);
 
 /* LINK TASK */
 extern void task_link_phy(ak_msg_t *);

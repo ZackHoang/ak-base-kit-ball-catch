@@ -1,15 +1,11 @@
 #include "button.h"
-
 #include "sys_dbg.h"
-
 #include "app.h"
 #include "app_bsp.h"
 #include "app_dbg.h"
 #include "app_if.h"
-
 #include "task_list.h"
 #include "task_list_if.h"
-
 #include "scr_title.h"
 
 button_t btn_mode;
@@ -23,32 +19,21 @@ void btn_mode_callback(void *b)
 	{
 	case BUTTON_SW_STATE_PRESSED:
 	{
-		APP_DBG("[btn_mode_callback] BUTTON_SW_STATE_PRESSED\n");
-		if (current_screen == SCREEN_TITLE)
-		{
-			task_post_pure_msg(TASK_TITLE_SCREEN, TITLE_CONFIRM_CHOICE);
-		}
-		else if (current_screen == SCREEN_GAME_OVER)
-		{
-			task_post_pure_msg(TASK_CONFIRM_GAME_OVER, CONFIRM_GAME_OVER);
-		}
-		else if (current_screen == SCREEN_OPTIONS)
-		{
-			task_post_pure_msg(TASK_OPTIONS, CONFIRM_OPTION_CHOICE);
-		}
-		task_post_pure_msg(AC_TASK_DISPLAY_ID, AC_DISPLAY_BUTON_MODE_RELEASED);
+		// APP_DBG("[btn_mode_callback] BUTTON_SW_STATE_PRESSED\n");
+		task_post_pure_msg(AC_TASK_DISPLAY_ID, AC_DISPLAY_BUTTON_MODE_PRESSED);
 	}
 	break;
 
 	case BUTTON_SW_STATE_LONG_PRESSED:
 	{
-		APP_DBG("[btn_mode_callback] BUTTON_SW_STATE_LONG_PRESSED\n");
+		// APP_DBG("[btn_mode_callback] BUTTON_SW_STATE_LONG_PRESSED\n");
 	}
 	break;
 
 	case BUTTON_SW_STATE_RELEASED:
 	{
-		APP_DBG("[btn_mode_callback] BUTTON_SW_STATE_RELEASED\n");
+		// APP_DBG("[btn_mode_callback] BUTTON_SW_STATE_RELEASED\n");
+		task_post_pure_msg(AC_TASK_DISPLAY_ID, AC_DISPLAY_BUTON_MODE_RELEASED);
 	}
 	break;
 
@@ -64,36 +49,21 @@ void btn_up_callback(void *b)
 	{
 	case BUTTON_SW_STATE_PRESSED:
 	{
-		APP_DBG("[btn_up_callback] BUTTON_SW_STATE_PRESSED\n");
-		if (current_screen == SCREEN_TITLE)
-		{
-			task_post_pure_msg(TASK_TITLE_SCREEN, TITLE_CURSOR_UP);
-		}
-		else if (current_screen == SCREEN_GAME_ACTIVE)
-		{
-			task_post_pure_msg(TASK_MOVE_BAR, MOVE_RIGHT);
-		}
-		else if (current_screen == SCREEN_GAME_OVER)
-		{
-			task_post_pure_msg(TASK_CONFIRM_GAME_OVER, GAME_OVER_CURSOR_UP);
-		}
-		else if (current_screen == SCREEN_OPTIONS)
-		{
-			task_post_pure_msg(TASK_OPTIONS, CHANGE_OPTIONS_UP);
-		}
-		task_post_pure_msg(AC_TASK_DISPLAY_ID, AC_DISPLAY_BUTON_UP_RELEASED);
+		// APP_DBG("[btn_up_callback] BUTTON_SW_STATE_PRESSED\n");
+		task_post_pure_msg(AC_TASK_DISPLAY_ID, AC_DISPLAY_BUTTON_UP_PRESSED);
 	}
 	break;
 
 	case BUTTON_SW_STATE_LONG_PRESSED:
 	{
-		APP_DBG("[btn_up_callback] BUTTON_SW_STATE_LONG_PRESSED\n");
+		// APP_DBG("[btn_up_callback] BUTTON_SW_STATE_LONG_PRESSED\n");
 	}
 	break;
 
 	case BUTTON_SW_STATE_RELEASED:
 	{
-		APP_DBG("[btn_up_callback] BUTTON_SW_STATE_RELEASED\n");
+		// APP_DBG("[btn_up_callback] BUTTON_SW_STATE_RELEASED\n");
+		task_post_pure_msg(AC_TASK_DISPLAY_ID, AC_DISPLAY_BUTON_UP_RELEASED);
 	}
 	break;
 
@@ -109,36 +79,21 @@ void btn_down_callback(void *b)
 	{
 	case BUTTON_SW_STATE_PRESSED:
 	{
-		APP_DBG("[btn_down_callback] BUTTON_SW_STATE_PRESSED\n");
-		if (current_screen == SCREEN_TITLE)
-		{
-			task_post_pure_msg(TASK_TITLE_SCREEN, TITLE_CURSOR_DOWN);
-		}
-		else if (current_screen == SCREEN_GAME_ACTIVE)
-		{
-			task_post_pure_msg(TASK_MOVE_BAR, MOVE_LEFT);
-		}
-		else if (current_screen == SCREEN_GAME_OVER)
-		{
-			task_post_pure_msg(TASK_CONFIRM_GAME_OVER, GAME_OVER_CURSOR_DOWN);
-		}
-		else if (current_screen == SCREEN_OPTIONS)
-		{
-			task_post_pure_msg(TASK_OPTIONS, CHANGE_OPTIONS_DOWN);
-		}
-		task_post_pure_msg(AC_TASK_DISPLAY_ID, AC_DISPLAY_BUTON_DOWN_RELEASED);
+		// APP_DBG("[btn_down_callback] BUTTON_SW_STATE_PRESSED\n");
+		task_post_pure_msg(AC_TASK_DISPLAY_ID, AC_DISPLAY_BUTTON_DOWN_PRESSED);
 	}
 	break;
 
 	case BUTTON_SW_STATE_LONG_PRESSED:
 	{
-		APP_DBG("[btn_down_callback] BUTTON_SW_STATE_LONG_PRESSED\n");
+		// APP_DBG("[btn_down_callback] BUTTON_SW_STATE_LONG_PRESSED\n");
 	}
 	break;
 
 	case BUTTON_SW_STATE_RELEASED:
 	{
-		APP_DBG("[btn_down_callback] BUTTON_SW_STATE_RELEASED\n");
+		// APP_DBG("[btn_down_callback] BUTTON_SW_STATE_RELEASED\n");
+		task_post_pure_msg(AC_TASK_DISPLAY_ID, AC_DISPLAY_BUTON_DOWN_RELEASED);
 	}
 	break;
 

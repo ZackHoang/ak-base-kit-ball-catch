@@ -8,40 +8,49 @@ struct game_over_data_t
 	uint8_t game_over_cursor = 0;
 } game_over_data;
 
+view_dynamic_t dyn_view_scr_game_over = {
+		{
+				.item_type = ITEM_TYPE_DYNAMIC,
+		},
+		render_game_over,
+};
+
+view_screen_t scr_game_over = {
+		&dyn_view_scr_game_over,
+		ITEM_NULL,
+		ITEM_NULL,
+		.focus_item = 0,
+};
+
 void task_game_over_screen(ak_msg_t *msg) {
 	switch (msg->sig)
 	{
 	case SCREEN_ENTRY:
 		break;
 
-	case GAME_OVER_CURSOR_UP:
-		if (current_screen == SCREEN_GAME_OVER 
-			&& game_over_data.game_over_cursor > 0
+	case AC_DISPLAY_BUTTON_UP_PRESSED:
+		if (game_over_data.game_over_cursor > 0
 		)
 		{
 			game_over_data.game_over_cursor--;
 		}
 		break;
 
-	case GAME_OVER_CURSOR_DOWN:
-		if (current_screen == SCREEN_GAME_OVER 
-			&& game_over_data.game_over_cursor < 1)
+	case AC_DISPLAY_BUTTON_DOWN_PRESSED:
+		if (game_over_data.game_over_cursor < 1)
 		{
 			game_over_data.game_over_cursor++;
 		}
 		break;
 
-	case CONFIRM_GAME_OVER:
+	case AC_DISPLAY_BUTTON_MODE_PRESSED:
 		if (game_over_data.game_over_cursor == 0)
 		{
-			current_screen = SCREEN_GAME_ACTIVE;
 			init_game();
-			current_screen = SCREEN_GAME_ACTIVE;
 			SCREEN_TRAN(task_game_screen_move_bar, &scr_game);
 		}
 		else if (game_over_data.game_over_cursor == 1)
 		{
-			current_screen = SCREEN_TITLE;
 			SCREEN_TRAN(task_title_screen, &scr_title);
 		}
 		break;
@@ -68,17 +77,3 @@ void render_game_over()
 	view_render.setCursor(92, 50);
 	view_render.print("Quit");
 }
-
-view_dynamic_t dyn_view_scr_game_over = {
-		{
-				.item_type = ITEM_TYPE_DYNAMIC,
-		},
-		render_game_over,
-};
-
-view_screen_t scr_game_over = {
-		&dyn_view_scr_game_over,
-		ITEM_NULL,
-		ITEM_NULL,
-		.focus_item = 0,
-};
