@@ -61,9 +61,8 @@ void scr_startup_handle(ak_msg_t* msg) {
 
 	case AC_DISPLAY_SHOW_IDLE: {
 		APP_DBG_SIG("AC_DISPLAY_SHOW_IDLE\n");
-		SCREEN_TRAN(handle_scr_title, &scr_title);
-	}
-		break;
+		SCREEN_TRAN(task_title_screen, &scr_title);
+	} break;
 
 	default:
 		break;

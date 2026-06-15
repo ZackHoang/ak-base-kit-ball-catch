@@ -15,7 +15,6 @@ void task_confirm_game_over_choice(ak_msg_t *msg)
 	case CONFIRM_GAME_OVER:
 		if (game_over_data.game_over_cursor == 0)
 		{
-			// game_over = false;
 			current_screen = SCREEN_GAME_ACTIVE;
 			init_game();
 			current_screen = SCREEN_GAME_ACTIVE;
@@ -23,9 +22,8 @@ void task_confirm_game_over_choice(ak_msg_t *msg)
 		}
 		else if (game_over_data.game_over_cursor == 1)
 		{
-			// game_over = false;
 			current_screen = SCREEN_TITLE;
-			SCREEN_TRAN(handle_scr_title, &scr_title);
+			SCREEN_TRAN(task_title_screen, &scr_title);
 		}
 		break;
 

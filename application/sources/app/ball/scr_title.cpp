@@ -4,33 +4,6 @@ int options[2] = {50, 57};
 int current_screen = SCREEN_TITLE;
 int curr_opt = 0;
 
-void change_menu_cursor(ak_msg_t *msg)
-{
-	switch (msg->sig)
-	{
-	case CURSOR_UP:
-	{
-		if (curr_opt > 0)
-		{
-			curr_opt--;
-			xprintf("\ncurr_opt value: %d\n", curr_opt);
-		}
-	}
-	break;
-	case CURSOR_DOWN:
-	{
-		if (curr_opt < 1)
-		{
-			curr_opt++;
-			xprintf("\ncurr_opt value: %d\n", curr_opt);
-		}
-	}
-	break;
-	default:
-		break;
-	}
-}
-
 void item_render()
 {
 	view_render.setCursor(5, 24);
@@ -59,11 +32,36 @@ view_screen_t scr_title = {
 		.focus_item = 0,
 };
 
-void change_screen(ak_msg_t *msg)
+void task_title_screen(ak_msg_t *msg)
 {
+	xprintf("\ncurrent signal in title: %d\n", msg->sig);
 	switch (msg->sig)
 	{
-	case CHANGE_SCREEN:
+	case SCREEN_ENTRY:
+	{
+		break;
+	}
+	case TITLE_CURSOR_UP:
+	{
+		if (curr_opt > 0)
+		{
+			curr_opt--;
+			xprintf("\ncurr_opt value: %d\n", curr_opt);
+		}
+		break;
+	}
+
+	case TITLE_CURSOR_DOWN:
+	{
+		if (curr_opt < 1)
+		{
+			curr_opt++;
+			xprintf("\ncurr_opt value: %d\n", curr_opt);
+		}
+		break;
+	}
+
+	case TITLE_CONFIRM_CHOICE:
 	{
 		switch (curr_opt)
 		{
@@ -85,7 +83,4 @@ void change_screen(ak_msg_t *msg)
 		}
 	}
 	}
-}
-
-void handle_scr_title(ak_msg_t *msg) {};
-void task_title(ak_msg_t *msg) {};
+};

@@ -32,10 +32,8 @@
 
 // screen
 extern view_screen_t scr_title;
-extern void handle_scr_title(ak_msg_t *msg);
+extern void task_title_screen(ak_msg_t *msg);
 extern int current_screen;
-extern int curr_opt;
-extern bool game_state;
 
 // task
 

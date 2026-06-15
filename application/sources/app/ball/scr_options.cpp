@@ -81,7 +81,7 @@ void task_confirm_option_choice(ak_msg_t *msg)
     {
       current_cursor = 2;
       current_screen = SCREEN_TITLE;
-      SCREEN_TRAN(task_title, &scr_title);
+      SCREEN_TRAN(task_title_screen, &scr_title);
     }
     break;
 

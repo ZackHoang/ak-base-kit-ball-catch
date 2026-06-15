@@ -21,9 +21,8 @@ const task_t app_task_table[] = {
 	{AC_TASK_DISPLAY_ID			,	TASK_PRI_LEVEL_4	,	task_display		},
 
 	//Ball game tasks
-	{TASK_PRINT_TITLE_ID, TASK_PRI_LEVEL_4, task_title},
-	{TASK_CHANGE_CURSOR, TASK_PRI_LEVEL_4, change_menu_cursor},
-	{TASK_CHANGE_SCREEN, TASK_PRI_LEVEL_4, change_screen},
+	// {TASK_PRINT_TITLE_ID, TASK_PRI_LEVEL_4, task_title_screen},
+	{TASK_TITLE_SCREEN, TASK_PRI_LEVEL_4, task_title_screen},
 	{TASK_UPDATE_POS, TASK_PRI_LEVEL_4, task_draw_snake},
 	{TASK_GAME_OVER, TASK_PRI_LEVEL_4, task_game_over},
 	{TASK_MOVE_BAR_RIGHT, TASK_PRI_LEVEL_4, task_move_bar_right},

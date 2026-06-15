@@ -26,7 +26,7 @@ void btn_mode_callback(void *b)
 		APP_DBG("[btn_mode_callback] BUTTON_SW_STATE_PRESSED\n");
 		if (current_screen == SCREEN_TITLE)
 		{
-			task_post_pure_msg(TASK_CHANGE_SCREEN, CHANGE_SCREEN);
+			task_post_pure_msg(TASK_TITLE_SCREEN, TITLE_CONFIRM_CHOICE);
 		}
 		else if (current_screen == SCREEN_GAME_OVER)
 		{
@@ -36,6 +36,7 @@ void btn_mode_callback(void *b)
 		{
 			task_post_pure_msg(TASK_CONFIRM_OPTION, CONFIRM_OPTION_CHOICE);
 		}
+		task_post_pure_msg(AC_TASK_DISPLAY_ID, AC_DISPLAY_BUTON_MODE_RELEASED);
 	}
 	break;
 
@@ -48,7 +49,6 @@ void btn_mode_callback(void *b)
 	case BUTTON_SW_STATE_RELEASED:
 	{
 		APP_DBG("[btn_mode_callback] BUTTON_SW_STATE_RELEASED\n");
-		task_post_pure_msg(AC_TASK_DISPLAY_ID, AC_DISPLAY_BUTON_MODE_RELEASED);
 	}
 	break;
 
@@ -67,7 +67,7 @@ void btn_up_callback(void *b)
 		APP_DBG("[btn_up_callback] BUTTON_SW_STATE_PRESSED\n");
 		if (current_screen == SCREEN_TITLE)
 		{
-			task_post_pure_msg(TASK_CHANGE_CURSOR, CURSOR_UP);
+			task_post_pure_msg(TASK_TITLE_SCREEN, TITLE_CURSOR_UP);
 		}
 		else if (current_screen == SCREEN_GAME_ACTIVE)
 		{
@@ -81,6 +81,7 @@ void btn_up_callback(void *b)
 		{
 			task_post_pure_msg(TASK_CHANGE_OPTION_CURSOR, CHANGE_OPTIONS_UP);
 		}
+		task_post_pure_msg(AC_TASK_DISPLAY_ID, AC_DISPLAY_BUTON_UP_RELEASED);
 	}
 	break;
 
@@ -93,7 +94,6 @@ void btn_up_callback(void *b)
 	case BUTTON_SW_STATE_RELEASED:
 	{
 		APP_DBG("[btn_up_callback] BUTTON_SW_STATE_RELEASED\n");
-		task_post_pure_msg(AC_TASK_DISPLAY_ID, AC_DISPLAY_BUTON_UP_RELEASED);
 	}
 	break;
 
@@ -112,7 +112,7 @@ void btn_down_callback(void *b)
 		APP_DBG("[btn_down_callback] BUTTON_SW_STATE_PRESSED\n");
 		if (current_screen == SCREEN_TITLE)
 		{
-			task_post_pure_msg(TASK_CHANGE_CURSOR, CURSOR_DOWN);
+			task_post_pure_msg(TASK_TITLE_SCREEN, TITLE_CURSOR_DOWN);
 		}
 		else if (current_screen == SCREEN_GAME_ACTIVE)
 		{
@@ -126,6 +126,7 @@ void btn_down_callback(void *b)
 		{
 			task_post_pure_msg(TASK_CHANGE_OPTION_CURSOR, CHANGE_OPTIONS_DOWN);
 		}
+		task_post_pure_msg(AC_TASK_DISPLAY_ID, AC_DISPLAY_BUTON_DOWN_RELEASED);
 	}
 	break;
 
@@ -138,7 +139,6 @@ void btn_down_callback(void *b)
 	case BUTTON_SW_STATE_RELEASED:
 	{
 		APP_DBG("[btn_down_callback] BUTTON_SW_STATE_RELEASED\n");
-		task_post_pure_msg(AC_TASK_DISPLAY_ID, AC_DISPLAY_BUTON_DOWN_RELEASED);
 	}
 	break;
 

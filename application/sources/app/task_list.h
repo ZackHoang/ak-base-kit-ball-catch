@@ -28,9 +28,8 @@ enum
 	AC_TASK_DBG_ID,
 	AC_TASK_DISPLAY_ID,
 
-	TASK_PRINT_TITLE_ID,
-	TASK_CHANGE_CURSOR,
-	TASK_CHANGE_SCREEN,
+	// TASK_PRINT_TITLE_ID,
+	TASK_TITLE_SCREEN,
 	TASK_UPDATE_POS,
 	TASK_GAME_OVER,
 
@@ -101,9 +100,7 @@ extern void task_rf24_mac(ak_msg_t *);
 extern void task_rf24_nwk(ak_msg_t *);
 
 // Ball game tasks
-extern void task_title(ak_msg_t *);
-extern void change_menu_cursor(ak_msg_t *);
-extern void change_screen(ak_msg_t *);
+extern void task_title_screen(ak_msg_t *msg);
 extern void task_draw_snake(ak_msg_t *);
 extern void task_game_over(ak_msg_t *);
 extern void task_move_bar_right(ak_msg_t *);
