@@ -30,11 +30,8 @@
 #define SCREEN_GAME_OVER (2)
 #define SCREEN_OPTIONS (3)
 
-// screen
 extern view_screen_t scr_title;
 extern void task_title_screen(ak_msg_t *msg);
 extern int current_screen;
 
-// task
-
-#endif //__SCR_TITLE_H__
+#endif

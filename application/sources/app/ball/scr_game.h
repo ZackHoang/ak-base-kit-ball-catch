@@ -15,7 +15,6 @@
 #include "task_display.h"
 #include "view_render.h"
 
-// #include <math.h>
 #include "app_dbg.h"
 
 #include "bitmap.h"
