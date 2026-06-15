@@ -1,3 +1,3 @@
-# STM32L151 Ball Game
+# Ball Catch
 
 Work In Progress
