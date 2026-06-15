@@ -34,8 +34,7 @@ enum
 	TASK_GAME_OVER,
 	TASK_CONFIRM_GAME_OVER,
 	TASK_MOVE_BAR,
-	TASK_CHANGE_OPTION_CURSOR,
-	TASK_CONFIRM_OPTION,
+	TASK_OPTIONS,
 
 #if defined(TASK_ZIGBEE_EN)
 	AC_TASK_ZIGBEE_ID,
@@ -101,8 +100,7 @@ extern void task_draw_game(ak_msg_t *);
 extern void task_game_screen_move_bar(ak_msg_t *msg);
 extern void task_game_over(ak_msg_t *);
 extern void task_game_over_screen(ak_msg_t *msg);
-extern void task_options(ak_msg_t *);
-extern void task_confirm_option_choice(ak_msg_t *msg);
+extern void task_options_screen(ak_msg_t *msg);
 
 /* LINK TASK */
 extern void task_link_phy(ak_msg_t *);

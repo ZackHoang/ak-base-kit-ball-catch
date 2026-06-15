@@ -31,9 +31,8 @@
 #define SOUND_ON (1)
 #define SOUND_OFF (0)
 
-extern void task_options(ak_msg_t *msg);
 extern view_dynamic_t dyn_view_scr_options;
 extern view_screen_t scr_options;
-extern void render_options();
+extern void task_options_screen(ak_msg_t *msg);
 
 #endif

@@ -34,7 +34,7 @@ void btn_mode_callback(void *b)
 		}
 		else if (current_screen == SCREEN_OPTIONS)
 		{
-			task_post_pure_msg(TASK_CONFIRM_OPTION, CONFIRM_OPTION_CHOICE);
+			task_post_pure_msg(TASK_OPTIONS, CONFIRM_OPTION_CHOICE);
 		}
 		task_post_pure_msg(AC_TASK_DISPLAY_ID, AC_DISPLAY_BUTON_MODE_RELEASED);
 	}
@@ -79,7 +79,7 @@ void btn_up_callback(void *b)
 		}
 		else if (current_screen == SCREEN_OPTIONS)
 		{
-			task_post_pure_msg(TASK_CHANGE_OPTION_CURSOR, CHANGE_OPTIONS_UP);
+			task_post_pure_msg(TASK_OPTIONS, CHANGE_OPTIONS_UP);
 		}
 		task_post_pure_msg(AC_TASK_DISPLAY_ID, AC_DISPLAY_BUTON_UP_RELEASED);
 	}
@@ -124,7 +124,7 @@ void btn_down_callback(void *b)
 		}
 		else if (current_screen == SCREEN_OPTIONS)
 		{
-			task_post_pure_msg(TASK_CHANGE_OPTION_CURSOR, CHANGE_OPTIONS_DOWN);
+			task_post_pure_msg(TASK_OPTIONS, CHANGE_OPTIONS_DOWN);
 		}
 		task_post_pure_msg(AC_TASK_DISPLAY_ID, AC_DISPLAY_BUTON_DOWN_RELEASED);
 	}

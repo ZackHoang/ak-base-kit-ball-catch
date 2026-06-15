@@ -35,7 +35,7 @@ view_screen_t scr_options{
     .focus_item = 0,
 };
 
-void task_options(ak_msg_t *msg)
+void task_options_screen(ak_msg_t *msg)
 {
   switch (msg->sig)
   {
@@ -53,15 +53,6 @@ void task_options(ak_msg_t *msg)
     }
     break;
 
-  default:
-    break;
-  }
-}
-
-void task_confirm_option_choice(ak_msg_t *msg)
-{
-  switch (msg->sig)
-  {
   case CONFIRM_OPTION_CHOICE:
     if (current_cursor == 0)
     {

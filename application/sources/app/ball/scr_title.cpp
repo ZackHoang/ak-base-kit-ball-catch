@@ -77,7 +77,7 @@ void task_title_screen(ak_msg_t *msg)
 		{
 			current_screen = SCREEN_OPTIONS;
 			xprintf("\ncurr_opt: %d\n", curr_opt);
-			SCREEN_TRAN(task_options, &scr_options);
+			SCREEN_TRAN(task_options_screen, &scr_options);
 			break;
 		}
 		}

@@ -26,8 +26,7 @@ const task_t app_task_table[] = {
 	{TASK_GAME_OVER, TASK_PRI_LEVEL_4, task_game_over},
 	{TASK_CONFIRM_GAME_OVER, TASK_PRI_LEVEL_4, task_game_over_screen},
 	{TASK_MOVE_BAR, TASK_PRI_LEVEL_4, task_game_screen_move_bar},
-	{TASK_CHANGE_OPTION_CURSOR, TASK_PRI_LEVEL_4, task_options},
-	{TASK_CONFIRM_OPTION, TASK_PRI_LEVEL_4, task_confirm_option_choice},
+	{TASK_OPTIONS, TASK_PRI_LEVEL_4, task_options_screen},
 
 	#if defined(TASK_ZIGBEE_EN)
 	{AC_TASK_ZIGBEE_ID			,	TASK_PRI_LEVEL_4	,	task_zigbee			},
