@@ -17,11 +17,11 @@
 #include "eeprom.h"
 #include "scr_game.h"
 
-#define SOUND (37)
-#define BALL_SPEED (47)
-#define BACK (57)
-#define SOUND_ON (1)
-#define SOUND_OFF (0)
+#define SOUND      37
+#define BALL_SPEED 47
+#define BACK       57
+#define SOUND_ON   1
+#define SOUND_OFF  0
 
 void render_options();
 extern view_dynamic_t dyn_view_scr_options;

@@ -18,14 +18,14 @@
 #include "buzzer.h"
 #include "scr_game_over.h"
 
-#define WIDTH 128
-#define HEIGHT 64
-#define X_SPEED 2
-#define Y_SPEED 5
+#define WIDTH       128
+#define HEIGHT      64
+#define X_SPEED     2
+#define Y_SPEED     5
 #define BALL_RADIUS 2
-#define BAR_HEIGHT 3
-#define BAR_WIDTH 30
-#define MAX_BALL 5
+#define BAR_HEIGHT  3
+#define BAR_WIDTH   30
+#define MAX_BALL    5
 
 typedef struct
 {

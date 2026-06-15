@@ -3,10 +3,10 @@
 game_data_t game_data;
 
 view_dynamic_t dyn_view_scr_game = {
-	{
-			.item_type = ITEM_TYPE_DYNAMIC,
-	},
-	render_game,
+		{
+				.item_type = ITEM_TYPE_DYNAMIC,
+		},
+		render_game,
 };
 
 view_screen_t scr_game = {
@@ -23,7 +23,10 @@ void init_game()
 	game_data.target_score = 5;
 	game_data.ball_counter = 0;
 	game_data.bar = bar_t{54, 50};
-	game_data.balls[game_data.ball_counter] = {ball_t{(uint8_t)((rand() % 12) + 92), (uint8_t)((rand() % 15) + 20), game_data.max_speed, game_data.max_speed}};
+	game_data.balls[game_data.ball_counter] = {
+			ball_t{(uint8_t)((rand() % 12) + 92),
+						 (uint8_t)((rand() % 15) + 20), game_data.max_speed, game_data.max_speed}
+	};
 	game_data.game_over = false;
 	timer_set(TASK_UPDATE_POS, CHANGE_POS, 100, TIMER_PERIODIC);
 }
@@ -48,7 +51,11 @@ void is_touching_ceiling(ball_t &ball)
 
 void is_touching_bar(ball_t &ball)
 {
-	if (ball.y + BALL_RADIUS >= game_data.bar.y - BAR_HEIGHT && ball.y - BALL_RADIUS <= game_data.bar.y + BAR_HEIGHT && ball.x >= game_data.bar.x && ball.x <= game_data.bar.x + BAR_WIDTH && game_data.game_over == false)
+	if (ball.y + BALL_RADIUS >= game_data.bar.y - BAR_HEIGHT 
+		&& ball.y - BALL_RADIUS <= game_data.bar.y + BAR_HEIGHT 
+		&& ball.x >= game_data.bar.x 
+		&& ball.x <= game_data.bar.x + BAR_WIDTH 
+		&& game_data.game_over == false)
 	{
 		BUZZER_PlayTones(tones_bang);
 		ball.y_speed = -ball.y_speed;
@@ -81,9 +88,12 @@ void is_ball_spawning()
 	{
 		game_data.ball_counter++;
 		game_data.target_score += 5;
-		game_data.balls[game_data.ball_counter] = {(uint8_t)((rand() % 12) + 92), (uint8_t)((rand() % 10) + 20), game_data.max_speed, game_data.max_speed};
+		game_data.balls[game_data.ball_counter] = {
+			(uint8_t)((rand() % 12) + 92), 
+			(uint8_t)((rand() % 10) + 20), game_data.max_speed, game_data.max_speed
+		};
 	}
-}
+} 
 
 void render_game()
 {
