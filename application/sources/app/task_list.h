@@ -28,16 +28,12 @@ enum
 	AC_TASK_DBG_ID,
 	AC_TASK_DISPLAY_ID,
 
-	// TASK_PRINT_TITLE_ID,
+	/* BALL GAME TASKS */
 	TASK_TITLE_SCREEN,
 	TASK_UPDATE_POS,
 	TASK_GAME_OVER,
-
-	TASK_MOVE_BAR_RIGHT,
-	TASK_MOVE_BAR_LEFT,
-	TASK_CHANGE_GAME_OVER_CURSOR,
-	TASK_CONFIRM_GAME_OVER_CURSOR,
-
+	TASK_CONFIRM_GAME_OVER,
+	TASK_MOVE_BAR,
 	TASK_CHANGE_OPTION_CURSOR,
 	TASK_CONFIRM_OPTION,
 
@@ -99,16 +95,12 @@ extern void task_rf24_phy(ak_msg_t *);
 extern void task_rf24_mac(ak_msg_t *);
 extern void task_rf24_nwk(ak_msg_t *);
 
-// Ball game tasks
+/* BALL GAME TASKS */
 extern void task_title_screen(ak_msg_t *msg);
-extern void task_draw_snake(ak_msg_t *);
+extern void task_draw_game(ak_msg_t *);
+extern void task_game_screen_move_bar(ak_msg_t *msg);
 extern void task_game_over(ak_msg_t *);
-extern void task_move_bar_right(ak_msg_t *);
-extern void task_move_bar_left(ak_msg_t *);
-// extern void task_increase_ball(ak_msg_t *);
-extern void task_change_game_over_cursor(ak_msg_t *);
-extern void task_confirm_game_over_choice(ak_msg_t *);
-// extern void task_show_boom(ak_msg_t *);
+extern void task_game_over_screen(ak_msg_t *msg);
 extern void task_options(ak_msg_t *);
 extern void task_confirm_option_choice(ak_msg_t *msg);
 

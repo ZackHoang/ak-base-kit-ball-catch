@@ -8,17 +8,36 @@ struct game_over_data_t
 	uint8_t game_over_cursor = 0;
 } game_over_data;
 
-void task_confirm_game_over_choice(ak_msg_t *msg)
-{
+void task_game_over_screen(ak_msg_t *msg) {
 	switch (msg->sig)
 	{
+	case SCREEN_ENTRY:
+		break;
+
+	case GAME_OVER_CURSOR_UP:
+		if (current_screen == SCREEN_GAME_OVER 
+			&& game_over_data.game_over_cursor > 0
+		)
+		{
+			game_over_data.game_over_cursor--;
+		}
+		break;
+
+	case GAME_OVER_CURSOR_DOWN:
+		if (current_screen == SCREEN_GAME_OVER 
+			&& game_over_data.game_over_cursor < 1)
+		{
+			game_over_data.game_over_cursor++;
+		}
+		break;
+
 	case CONFIRM_GAME_OVER:
 		if (game_over_data.game_over_cursor == 0)
 		{
 			current_screen = SCREEN_GAME_ACTIVE;
 			init_game();
 			current_screen = SCREEN_GAME_ACTIVE;
-			SCREEN_TRAN(task_game, &scr_game);
+			SCREEN_TRAN(task_game_screen_move_bar, &scr_game);
 		}
 		else if (game_over_data.game_over_cursor == 1)
 		{
@@ -28,26 +47,6 @@ void task_confirm_game_over_choice(ak_msg_t *msg)
 		break;
 
 	default:
-		break;
-	}
-}
-
-void task_change_game_over_cursor(ak_msg_t *msg)
-{
-	switch (msg->sig)
-	{
-	case GAME_OVER_CURSOR_UP:
-		if (current_screen == SCREEN_GAME_OVER && game_over_data.game_over_cursor > 0)
-		{
-			game_over_data.game_over_cursor--;
-		}
-		break;
-
-	case GAME_OVER_CURSOR_DOWN:
-		if (current_screen == SCREEN_GAME_OVER && game_over_data.game_over_cursor < 1)
-		{
-			game_over_data.game_over_cursor++;
-		}
 		break;
 	}
 }

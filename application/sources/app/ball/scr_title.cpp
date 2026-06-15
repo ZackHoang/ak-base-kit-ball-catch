@@ -70,7 +70,7 @@ void task_title_screen(ak_msg_t *msg)
 			current_screen = SCREEN_GAME_ACTIVE;
 			init_game();
 			xprintf("\ncurr_opt: %d\n", curr_opt);
-			SCREEN_TRAN(task_game, &scr_game);
+			SCREEN_TRAN(task_game_screen_move_bar, &scr_game);
 			break;
 		}
 		case 1:

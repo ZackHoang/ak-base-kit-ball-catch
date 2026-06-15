@@ -61,12 +61,11 @@ typedef struct
   uint8_t max_speed = 2;
 } game_data_t;
 
-// extern void render_game_screen();
 extern view_screen_t scr_game;
 extern view_dynamic_t dyn_view_scr_game;
-extern void task_game(ak_msg_t *msg);
-extern void task_draw_snake(ak_msg_t *msg);
+extern void task_draw_game(ak_msg_t *msg);
 extern void init_game();
 extern game_data_t game_data;
+extern void task_game_screen_move_bar(ak_msg_t *msg);
 
 #endif

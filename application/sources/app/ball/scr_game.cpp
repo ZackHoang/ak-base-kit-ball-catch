@@ -101,25 +101,7 @@ void render_game()
 	}
 }
 
-void move_bar_right()
-{
-	if (game_data.bar.x <= 80 && current_screen == SCREEN_GAME_ACTIVE)
-	{
-		game_data.bar.x += 10;
-		xprintf("\nbar.x: %d\n", game_data.bar.x);
-	}
-}
-
-void move_bar_left()
-{
-	if (game_data.bar.x >= 20 && current_screen == SCREEN_GAME_ACTIVE)
-	{
-		game_data.bar.x -= 10;
-		xprintf("\nbar.x: %d\n", game_data.bar.x);
-	}
-}
-
-void task_draw_snake(ak_msg_t *msg)
+void task_draw_game(ak_msg_t *msg)
 {
 	switch (msg->sig)
 	{
@@ -130,47 +112,47 @@ void task_draw_snake(ak_msg_t *msg)
 	}
 }
 
-void task_move_bar_right(ak_msg_t *msg)
-{
-	switch (msg->sig)
-	{
-	case (MOVE_RIGHT):
-	{
-		is_ball_spawning();
-		move_bar_right();
-	}
-	}
-}
-
-void task_move_bar_left(ak_msg_t *msg)
-{
-	switch (msg->sig)
-	{
-	case (MOVE_LEFT):
-	{
-		is_ball_spawning();
-		move_bar_left();
-	}
-	}
-}
-
 view_dynamic_t dyn_view_scr_game = {
-		{
-				.item_type = ITEM_TYPE_DYNAMIC,
-		},
-		render_game,
+	{
+		.item_type = ITEM_TYPE_DYNAMIC,
+	},
+	render_game,
 };
 
 view_screen_t scr_game = {
-		&dyn_view_scr_game,
-		ITEM_NULL,
-		ITEM_NULL,
-		.focus_item = 0,
+	&dyn_view_scr_game,
+	ITEM_NULL,
+	ITEM_NULL,
+	.focus_item = 0,
 };
 
-void task_game(ak_msg_t *msg) {}
-
 void task_show_game_over(ak_msg_t *msg) {}
+
+void task_game_screen_move_bar(ak_msg_t *msg) {
+	is_ball_spawning();
+	switch (msg->sig)
+	{
+	case SCREEN_ENTRY:
+		break;
+	case MOVE_RIGHT:
+		if (game_data.bar.x <= 80 && current_screen == SCREEN_GAME_ACTIVE)
+		{
+			game_data.bar.x += 10;
+			xprintf("\nbar.x: %d\n", game_data.bar.x);
+		}
+		break;
+
+	case MOVE_LEFT:
+		if (game_data.bar.x >= 20 && current_screen == SCREEN_GAME_ACTIVE)
+		{
+			game_data.bar.x -= 10;
+			xprintf("\nbar.x: %d\n", game_data.bar.x);
+		}
+		break;
+	default:
+		break;
+	}
+}
 
 void task_game_over(ak_msg_t *msg)
 {

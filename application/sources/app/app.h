@@ -112,11 +112,12 @@ enum {
 // Ball game signals
 enum
 {
-	// TASK_PRINT_TITLE = AK_USER_DEFINE_SIG,
-	TITLE_CURSOR_UP = 100,
+	TITLE_CURSOR_UP = BALL_GAME_DEFINE_SIG,
 	TITLE_CURSOR_DOWN,
 	TITLE_CONFIRM_CHOICE,
 	CHANGE_POS,
+	MOVE_RIGHT,
+	MOVE_LEFT,
 	GAME_OVER,
 	GAME_OVER_CURSOR_UP,
 	GAME_OVER_CURSOR_DOWN,
@@ -124,12 +125,6 @@ enum
 	CHANGE_OPTIONS_UP,
 	CHANGE_OPTIONS_DOWN,
 	CONFIRM_OPTION_CHOICE,
-};
-
-enum
-{
-	MOVE_RIGHT,
-	MOVE_LEFT,
 };
 
 /*****************************************************************************/

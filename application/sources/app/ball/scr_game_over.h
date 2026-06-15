@@ -29,10 +29,9 @@
 #define RETRY (40)
 #define QUIT (50)
 
-void render_game_over();
 extern view_screen_t scr_game_over;
 extern view_dynamic_t dyn_view_scr_game;
-extern void task_change_game_over_cursor(ak_msg_t *msg);
+extern void task_game_over_screen(ak_msg_t *msg);
 extern struct game_over_data_t game_over_data;
 
 #endif

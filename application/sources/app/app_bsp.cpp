@@ -30,7 +30,7 @@ void btn_mode_callback(void *b)
 		}
 		else if (current_screen == SCREEN_GAME_OVER)
 		{
-			task_post_pure_msg(TASK_CONFIRM_GAME_OVER_CURSOR, CONFIRM_GAME_OVER);
+			task_post_pure_msg(TASK_CONFIRM_GAME_OVER, CONFIRM_GAME_OVER);
 		}
 		else if (current_screen == SCREEN_OPTIONS)
 		{
@@ -71,11 +71,11 @@ void btn_up_callback(void *b)
 		}
 		else if (current_screen == SCREEN_GAME_ACTIVE)
 		{
-			task_post_pure_msg(TASK_MOVE_BAR_RIGHT, MOVE_RIGHT);
+			task_post_pure_msg(TASK_MOVE_BAR, MOVE_RIGHT);
 		}
 		else if (current_screen == SCREEN_GAME_OVER)
 		{
-			task_post_pure_msg(TASK_CHANGE_GAME_OVER_CURSOR, GAME_OVER_CURSOR_UP);
+			task_post_pure_msg(TASK_CONFIRM_GAME_OVER, GAME_OVER_CURSOR_UP);
 		}
 		else if (current_screen == SCREEN_OPTIONS)
 		{
@@ -116,11 +116,11 @@ void btn_down_callback(void *b)
 		}
 		else if (current_screen == SCREEN_GAME_ACTIVE)
 		{
-			task_post_pure_msg(TASK_MOVE_BAR_LEFT, MOVE_LEFT);
+			task_post_pure_msg(TASK_MOVE_BAR, MOVE_LEFT);
 		}
 		else if (current_screen == SCREEN_GAME_OVER)
 		{
-			task_post_pure_msg(TASK_CHANGE_GAME_OVER_CURSOR, GAME_OVER_CURSOR_DOWN);
+			task_post_pure_msg(TASK_CONFIRM_GAME_OVER, GAME_OVER_CURSOR_DOWN);
 		}
 		else if (current_screen == SCREEN_OPTIONS)
 		{
