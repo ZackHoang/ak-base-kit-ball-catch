@@ -29,40 +29,41 @@ void item_render() {
 	view_render.print("Start");
 	view_render.setCursor(45, 56);
 	view_render.print("Options");
-	view_render.drawBitmap(31, options[curr_opt], image_arrow_right_bits, 7, 5, WHITE);
+	view_render.drawBitmap(31, options[curr_opt], image_arrow_right_bits, 7, 5,
+						   WHITE);
 }
 
 void task_title_screen(ak_msg_t *msg) {
 	switch (msg->sig) {
-		case SCREEN_ENTRY: {
-			break;
+	case SCREEN_ENTRY: {
+		break;
+	}
+	case AC_DISPLAY_BUTTON_UP_PRESSED: {
+		if (curr_opt > 0) {
+			curr_opt--;
 		}
-		case AC_DISPLAY_BUTTON_UP_PRESSED: {
-			if (curr_opt > 0) {
-				curr_opt--;
-			}
-			break;
-		}
+		break;
+	}
 
-		case AC_DISPLAY_BUTTON_DOWN_PRESSED: {
-			if (curr_opt < 1) {
-				curr_opt++;
-			}
+	case AC_DISPLAY_BUTTON_DOWN_PRESSED: {
+		if (curr_opt < 1) {
+			curr_opt++;
+		}
+		break;
+	}
+
+	case AC_DISPLAY_BUTTON_MODE_PRESSED: {
+		switch (curr_opt) {
+		case 0: {
+			init_game();
+			SCREEN_TRAN(task_game_screen_move_bar, &scr_game);
 			break;
 		}
-
-		case AC_DISPLAY_BUTTON_MODE_PRESSED: {
-			switch (curr_opt) {
-				case 0: {
-					init_game();
-					SCREEN_TRAN(task_game_screen_move_bar, &scr_game);
-					break;
-				}
-				case 1: {
-					SCREEN_TRAN(task_options_screen, &scr_options);
-					break;
-				}
-			}
+		case 1: {
+			SCREEN_TRAN(task_options_screen, &scr_options);
+			break;
 		}
+		}
+	}
 	}
 };

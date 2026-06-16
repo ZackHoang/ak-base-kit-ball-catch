@@ -26,4 +26,4 @@ extern view_dynamic_t dyn_view_scr_game;
 extern void task_game_over_screen(ak_msg_t *msg);
 extern struct game_over_data_t game_over_data;
 
-#endif // __SCR_GAME_OVER_H__
+#endif	  // __SCR_GAME_OVER_H__

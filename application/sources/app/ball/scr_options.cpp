@@ -19,7 +19,8 @@ view_screen_t scr_options{
 };
 
 void render_options() {
-	view_render.drawBitmap(15, options_cursor[current_cursor], image_arrow_right_bits, 7, 5, WHITE);
+	view_render.drawBitmap(15, options_cursor[current_cursor],
+						   image_arrow_right_bits, 7, 5, WHITE);
 	view_render.setCursor(20, 15);
 	view_render.setTextSize(2);
 	view_render.print("OPTIONS");
@@ -38,36 +39,37 @@ void render_options() {
 
 void task_options_screen(ak_msg_t *msg) {
 	switch (msg->sig) {
-	case AC_DISPLAY_BUTTON_UP_PRESSED:
-		if (current_cursor > 0) {
-			current_cursor--;
-		}
-		break;
-
-	case AC_DISPLAY_BUTTON_DOWN_PRESSED:
-		if (current_cursor < 2) {
-			current_cursor++;
-		}
-		break;
-
-	case AC_DISPLAY_BUTTON_MODE_PRESSED:
-		if (current_cursor == 0) {
-			sound_on == SOUND_ON ? sound_on = SOUND_OFF : sound_on = SOUND_ON;
-			BUZZER_Sleep(sound_on);
-		}
-		if (current_cursor == 1) {
-			game_data.max_speed++;
-			if (game_data.max_speed > 5) {
-				game_data.max_speed = 1;
+		case AC_DISPLAY_BUTTON_UP_PRESSED:
+			if (current_cursor > 0) {
+				current_cursor--;
 			}
-		}
-		if (current_cursor == 2) {
-			current_cursor = 2;
-			SCREEN_TRAN(task_title_screen, &scr_title);
-		}
-		break;
+			break;
 
-	default:
-		break;
+		case AC_DISPLAY_BUTTON_DOWN_PRESSED:
+			if (current_cursor < 2) {
+				current_cursor++;
+			}
+			break;
+
+		case AC_DISPLAY_BUTTON_MODE_PRESSED:
+			if (current_cursor == 0) {
+				sound_on == SOUND_ON ? sound_on = SOUND_OFF
+									 : sound_on = SOUND_ON;
+				BUZZER_Sleep(sound_on);
+			}
+			if (current_cursor == 1) {
+				game_data.max_speed++;
+				if (game_data.max_speed > 5) {
+					game_data.max_speed = 1;
+				}
+			}
+			if (current_cursor == 2) {
+				current_cursor = 2;
+				SCREEN_TRAN(task_title_screen, &scr_title);
+			}
+			break;
+
+		default:
+			break;
 	}
 }
