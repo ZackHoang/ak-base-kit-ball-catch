@@ -98,4 +98,4 @@ That's it! Have fun!
 
 ## Footage
 
-![Gameplay](./footage/gameplay.mp4)
+![Gameplay](/footages/gameplay.mp4)
