@@ -18,11 +18,11 @@ view_screen_t scr_game = {
 };
 
 void init_game() {
-	game_data.score				 = 0;
-	game_data.read_score	 = 0;
-	game_data.target_score = 5;
-	game_data.ball_counter = 0;
-	game_data.bar					 = bar_t{54, 50};
+	game_data.score							= 0;
+	game_data.read_score					= 0;
+	game_data.target_score					= 5;
+	game_data.ball_counter					= 0;
+	game_data.bar							= bar_t{54, 50};
 	game_data.balls[game_data.ball_counter] = {
 		ball_t{(uint8_t)((rand() % 12) + 92), (uint8_t)((rand() % 15) + 20), game_data.max_speed, game_data.max_speed}
 	  };
