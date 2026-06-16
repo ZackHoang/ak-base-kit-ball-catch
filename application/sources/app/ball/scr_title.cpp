@@ -34,35 +34,35 @@ void item_render() {
 
 void task_title_screen(ak_msg_t *msg) {
 	switch (msg->sig) {
-	case SCREEN_ENTRY: {
-		break;
-	}
-	case AC_DISPLAY_BUTTON_UP_PRESSED: {
-		if (curr_opt > 0) {
-			curr_opt--;
-		}
-		break;
-	}
-
-	case AC_DISPLAY_BUTTON_DOWN_PRESSED: {
-		if (curr_opt < 1) {
-			curr_opt++;
-		}
-		break;
-	}
-
-	case AC_DISPLAY_BUTTON_MODE_PRESSED: {
-		switch (curr_opt) {
-		case 0: {
-			init_game();
-			SCREEN_TRAN(task_game_screen_move_bar, &scr_game);
+		case SCREEN_ENTRY: {
 			break;
 		}
-		case 1: {
-			SCREEN_TRAN(task_options_screen, &scr_options);
+		case AC_DISPLAY_BUTTON_UP_PRESSED: {
+			if (curr_opt > 0) {
+				curr_opt--;
+			}
 			break;
 		}
+
+		case AC_DISPLAY_BUTTON_DOWN_PRESSED: {
+			if (curr_opt < 1) {
+				curr_opt++;
+			}
+			break;
 		}
-	}
+
+		case AC_DISPLAY_BUTTON_MODE_PRESSED: {
+			switch (curr_opt) {
+				case 0: {
+					init_game();
+					SCREEN_TRAN(task_game_screen_move_bar, &scr_game);
+					break;
+				}
+				case 1: {
+					SCREEN_TRAN(task_options_screen, &scr_options);
+					break;
+				}
+			}
+		}
 	}
 };
