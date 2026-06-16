@@ -1,7 +1,7 @@
 #include "scr_title.h"
 
-int options[2] = {START, OPTIONS};
-int curr_opt   = 0;
+uint8_t options[2] = {START, OPTIONS};
+uint8_t curr_opt   = 0;
 
 void item_render();
 

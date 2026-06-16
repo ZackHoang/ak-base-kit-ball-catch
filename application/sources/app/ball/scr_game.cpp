@@ -25,8 +25,9 @@ void init_game() {
 	game_data.bar							= bar_t{54, 50};
 	game_data.balls[game_data.ball_counter] = {
 		ball_t{(uint8_t)((rand() % 12) + 92), (uint8_t)((rand() % 15) + 20),
-			   game_data.max_speed, game_data.max_speed}
-	};
+			   (uint8_t)(rand() % 1 + game_data.max_speed),
+			   (uint8_t)(rand() % 1 + game_data.max_speed)}
+	   };
 	game_data.game_over = false;
 	timer_set(TASK_UPDATE_POS, CHANGE_POS, 100, TIMER_PERIODIC);
 }
@@ -81,7 +82,8 @@ void is_ball_spawning() {
 		game_data.target_score += 5;
 		game_data.balls[game_data.ball_counter] = {
 			(uint8_t)((rand() % 12) + 92), (uint8_t)((rand() % 10) + 20),
-			game_data.max_speed, game_data.max_speed};
+			(uint8_t)(rand() % 1 + game_data.max_speed),
+			(uint8_t)(rand() % 1 + game_data.max_speed)};
 	}
 }
 
