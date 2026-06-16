@@ -98,4 +98,6 @@ That's it! Have fun!
 
 ## Footage
 
-![Gameplay](/footages/gameplay.mp4)
+<video width="320" height="240" controls>
+  <source src="/footages/gameplay.mp4" type="video/mp4">
+</video>
