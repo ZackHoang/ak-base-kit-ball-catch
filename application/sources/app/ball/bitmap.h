@@ -9,4 +9,4 @@ extern const unsigned char PROGMEM image_cry_dolph_bits[];
 extern const unsigned char PROGMEM image_boom_bits[];
 extern const unsigned char PROGMEM image_volleyball_bits[];
 
-#endif
+#endif // __BITMAP_H__

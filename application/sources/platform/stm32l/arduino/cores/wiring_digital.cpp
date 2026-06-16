@@ -104,18 +104,15 @@ int digitalRead(uint8_t pin) {
 	switch (pin) {
 	case OLED_CLK_PIN: {
 		val = oled_clk_digital_read();
-	}
-		break;
+	} break;
 
 	case OLED_DATA_PIN: {
 		val = oled_data_digital_read();
-	}
-		break;
+	} break;
 
 	case OLED_RES_PIN: {
 		val = oled_res_digital_read();
-	}
-		break;
+	} break;
 	default:
 		FATAL("AR", 0xF3);
 		break;

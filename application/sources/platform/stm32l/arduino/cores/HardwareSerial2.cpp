@@ -15,7 +15,7 @@
   You should have received a copy of the GNU Lesser General Public
   License along with this library; if not, write to the Free Software
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-  
+
   Modified 23 November 2006 by David A. Mellis
   Modified 28 September 2010 by Mark Sproul
   Modified 14 August 2012 by Alarus
@@ -37,7 +37,6 @@ static void serial2_trigger_putc();
 HardwareSerial Serial2(&io_uart2_cfg, &serial2_trigger_putc);
 
 void sys_irq_uart2() {
-
 	if (USART_GetITStatus(USART2, USART_IT_RXNE) == SET) {
 		USART_ClearITPendingBit(USART2, USART_IT_RXNE);
 

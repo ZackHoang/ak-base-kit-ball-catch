@@ -4,12 +4,12 @@
  * @date:   12/02/2017
  * @brief:  table state machine.
  ******************************************************************************
-**/
+ **/
 
 #include "tsm.h"
 #include "sys_dbg.h"
 
-void tsm_init(tsm_tbl_t* tsm_tbl, tsm_t** tbl, tsm_state_t state) {
+void tsm_init(tsm_tbl_t *tsm_tbl, tsm_t **tbl, tsm_state_t state) {
 	if (tsm_tbl == TSM_NULL_TABLE) {
 		FATAL("TSM", 0x01);
 	}
@@ -21,18 +21,16 @@ void tsm_init(tsm_tbl_t* tsm_tbl, tsm_t** tbl, tsm_state_t state) {
 	tsm_tran(tsm_tbl, state);
 }
 
-void tsm_dispatch(tsm_tbl_t* tsm_tbl, ak_msg_t* msg) {
-	tsm_t* respective_table = tsm_tbl->table[tsm_tbl->state];
+void tsm_dispatch(tsm_tbl_t *tsm_tbl, ak_msg_t *msg) {
+	tsm_t *respective_table = tsm_tbl->table[tsm_tbl->state];
 
 	/* find tsm state respective */
-	while (respective_table->sig != msg->sig &&
-		   respective_table->sig !=  TSM_NULL_MSG) {
+	while (respective_table->sig != msg->sig && respective_table->sig != TSM_NULL_MSG) {
 		respective_table++;
 	}
 
 	/* checking and updating the next state */
-	if (respective_table->next_state != tsm_tbl->state &&
-			respective_table->next_state != TSM_NULL_STATE) {
+	if (respective_table->next_state != tsm_tbl->state && respective_table->next_state != TSM_NULL_STATE) {
 		tsm_tran(tsm_tbl, respective_table->next_state);
 	}
 

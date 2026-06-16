@@ -26,16 +26,15 @@
 #include <stdint.h>
 #include "Stream.h"
 
-
 #define SERIAL_RX_BUFFER_SIZE 256
 #define SERIAL_TX_BUFFER_SIZE 256
 
-#if (SERIAL_TX_BUFFER_SIZE>256)
+#if (SERIAL_TX_BUFFER_SIZE > 256)
 typedef uint16_t tx_buffer_index_t;
 #else
 typedef uint8_t tx_buffer_index_t;
 #endif
-#if  (SERIAL_RX_BUFFER_SIZE>256)
+#if (SERIAL_RX_BUFFER_SIZE > 256)
 typedef uint16_t rx_buffer_index_t;
 #else
 typedef uint8_t rx_buffer_index_t;
@@ -50,7 +49,7 @@ private:
 	pf_tringger_putc _pf_tringger_putc;
 
 	// Has any byte been written to the UART since begin()
-	//bool _written;
+	// bool _written;
 
 	volatile rx_buffer_index_t _rx_buffer_head;
 	volatile rx_buffer_index_t _rx_buffer_tail;
@@ -72,7 +71,7 @@ public:
 	}
 
 	HardwareSerial(pf_init __pf_init, pf_tringger_putc __pf_tringger_putc) {
-		_pf_init = __pf_init;
+		_pf_init		  = __pf_init;
 		_pf_tringger_putc = __pf_tringger_putc;
 
 		_rx_buffer_head = 0;
@@ -88,16 +87,26 @@ public:
 	virtual int availableForWrite(void);
 	virtual void flush(void);
 	virtual size_t write(uint8_t);
-	inline size_t write(unsigned long n) { return write((uint8_t)n); }
-	inline size_t write(long n) { return write((uint8_t)n); }
-	inline size_t write(unsigned int n) { return write((uint8_t)n); }
-	inline size_t write(int n) { return write((uint8_t)n); }
-	using Print::write; // pull in write(str) and write(buf, size) from Print
-	operator bool() { return true; }
+	inline size_t write(unsigned long n) {
+		return write((uint8_t)n);
+	}
+	inline size_t write(long n) {
+		return write((uint8_t)n);
+	}
+	inline size_t write(unsigned int n) {
+		return write((uint8_t)n);
+	}
+	inline size_t write(int n) {
+		return write((uint8_t)n);
+	}
+	using Print::write;	   // pull in write(str) and write(buf, size) from Print
+	operator bool() {
+		return true;
+	}
 
 	// Interrupt handlers - Not intended to be called externally
 	void _rx_complete_irq(char c);
-	int _tx_empty_irq(char* c);
+	int _tx_empty_irq(char *c);
 };
 
 extern HardwareSerial Serial2;

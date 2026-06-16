@@ -15,7 +15,7 @@
   You should have received a copy of the GNU Lesser General Public
   License along with this library; if not, write to the Free Software
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-  
+
   Modified 23 November 2006 by David A. Mellis
   Modified 28 September 2010 by Mark Sproul
   Modified 14 August 2012 by Alarus
@@ -42,14 +42,14 @@ void HardwareSerial::_rx_complete_irq(char c) {
 	// and so we don't write the character or advance the head.
 	if (i != _rx_buffer_tail) {
 		_rx_buffer[_rx_buffer_head] = c;
-		_rx_buffer_head = i;
+		_rx_buffer_head				= i;
 	}
 }
 
-int HardwareSerial::_tx_empty_irq(char* c) {
+int HardwareSerial::_tx_empty_irq(char *c) {
 	// If interrupts are enabled, there must be more data in the output
 	// buffer. Send the next byte
-	*c = _tx_buffer[_tx_buffer_tail];
+	*c				= _tx_buffer[_tx_buffer_tail];
 	_tx_buffer_tail = (_tx_buffer_tail + 1) % SERIAL_TX_BUFFER_SIZE;
 
 	if (_tx_buffer_head == _tx_buffer_tail) {
@@ -71,7 +71,8 @@ int HardwareSerial::available(void) {
 int HardwareSerial::peek(void) {
 	if (_rx_buffer_head == _rx_buffer_tail) {
 		return -1;
-	} else {
+	}
+	else {
 		return _rx_buffer[_rx_buffer_tail];
 	}
 }
@@ -80,7 +81,8 @@ int HardwareSerial::read(void) {
 	// if the head isn't ahead of the tail, we don't have any characters
 	if (_rx_buffer_head == _rx_buffer_tail) {
 		return -1;
-	} else {
+	}
+	else {
 		unsigned char c = _rx_buffer[_rx_buffer_tail];
 		_rx_buffer_tail = (rx_buffer_index_t)(_rx_buffer_tail + 1) % SERIAL_RX_BUFFER_SIZE;
 		return c;
@@ -96,13 +98,12 @@ int HardwareSerial::availableForWrite(void) {
 	tail = _tx_buffer_tail;
 	EXIT_CRITICAL();
 
-	if (head >= tail) return SERIAL_TX_BUFFER_SIZE - 1 - head + tail;
+	if (head >= tail)
+		return SERIAL_TX_BUFFER_SIZE - 1 - head + tail;
 	return tail - head - 1;
 }
 
-void HardwareSerial::flush() {
-
-}
+void HardwareSerial::flush() {}
 
 size_t HardwareSerial::write(uint8_t c) {
 	bool _flag_trigger_putc = false;
@@ -111,7 +112,7 @@ size_t HardwareSerial::write(uint8_t c) {
 		_flag_trigger_putc = true;
 	}
 
-	tx_buffer_index_t i = (_tx_buffer_head + 1) % SERIAL_TX_BUFFER_SIZE;
+	tx_buffer_index_t i			= (_tx_buffer_head + 1) % SERIAL_TX_BUFFER_SIZE;
 	_tx_buffer[_tx_buffer_head] = c;
 
 	// make atomic to prevent execution of ISR between setting the

@@ -3,20 +3,20 @@
 #include "stm32l1xx_rcc.h"
 
 SPIClass::SPIClass(void) {
-	spi_clock = 1000000;
+	spi_clock	 = 1000000;
 	spi_bitorder = MSBFIRST;
 	spi_datamode = SPI_MODE0;
 }
 
 SPIClass::SPIClass(uint8_t module) {
 	(void)module;
-	spi_clock = 1000000;
+	spi_clock	 = 1000000;
 	spi_bitorder = MSBFIRST;
 	spi_datamode = SPI_MODE0;
 }
 
 void SPIClass::io_config() {
-	GPIO_InitTypeDef  GPIO_InitStructure;
+	GPIO_InitTypeDef GPIO_InitStructure;
 
 	/*!< SPI GPIO Periph clock enable */
 	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);
@@ -24,8 +24,8 @@ void SPIClass::io_config() {
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_SPI1, ENABLE);
 
 	/*!< Configure SPI pins: SCK */
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_5;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
+	GPIO_InitStructure.GPIO_Pin	  = GPIO_Pin_5;
+	GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_AF;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_40MHz;
 	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
 	GPIO_InitStructure.GPIO_PuPd  = GPIO_PuPd_UP;
@@ -50,15 +50,14 @@ void SPIClass::io_config() {
 }
 
 void SPIClass::begin() {
-
 	io_config();
 
 	/*!< SPI Config */
 	SPI_DeInit(SPI1);
-	spi_init.SPI_Direction = SPI_Direction_2Lines_FullDuplex;
-	spi_init.SPI_Mode = SPI_Mode_Master;
-	spi_init.SPI_DataSize = SPI_DataSize_8b;
-	spi_init.SPI_NSS = SPI_NSS_Soft;
+	spi_init.SPI_Direction	   = SPI_Direction_2Lines_FullDuplex;
+	spi_init.SPI_Mode		   = SPI_Mode_Master;
+	spi_init.SPI_DataSize	   = SPI_DataSize_8b;
+	spi_init.SPI_NSS		   = SPI_NSS_Soft;
 	spi_init.SPI_CRCPolynomial = 7;
 
 	switch (spi_datamode) {
@@ -125,7 +124,6 @@ void SPIClass::begin() {
 		break;
 	}
 
-
 	SPI_Init(SPI1, &spi_init);
 	SPI_Cmd(SPI1, ENABLE); /*!< SPI enable */
 }
@@ -136,7 +134,7 @@ void SPIClass::end() {
 }
 
 void SPIClass::beginTransaction(SPISettings settings) {
-	spi_clock = settings.setting_clock;
+	spi_clock	 = settings.setting_clock;
 	spi_bitorder = settings.setting_bitorder;
 	spi_datamode = settings.setting_datamode;
 
@@ -207,9 +205,7 @@ void SPIClass::beginTransaction(SPISettings settings) {
 	SPI_Init(SPI1, &spi_init);
 }
 
-void SPIClass::endTransaction(void) {
-
-}
+void SPIClass::endTransaction(void) {}
 
 void SPIClass::setBitOrder(uint8_t ssPin, uint8_t bitOrder) {
 	(void)ssPin;
@@ -267,7 +263,7 @@ void SPIClass::setDataMode(uint8_t mode) {
 	SPI_Init(SPI1, &spi_init);
 }
 
-void SPIClass::setClockDivider(uint8_t divider){
+void SPIClass::setClockDivider(uint8_t divider) {
 	spi_init.SPI_BaudRatePrescaler = (uint16_t)divider;
 	SPI_Init(SPI1, &spi_init);
 }
@@ -276,21 +272,23 @@ uint8_t SPIClass::transfer(uint8_t data) {
 	unsigned long rxtxData = data;
 
 	if (spi_bitorder == LSBFIRST) {
-		asm("rbit %0, %1" : "=r" (rxtxData) : "r" (rxtxData));	// reverse order of 32 bits
-		asm("rev %0, %1" : "=r" (rxtxData) : "r" (rxtxData));	// reverse order of bytes to get original bits into lowest byte
+		asm("rbit %0, %1" : "=r"(rxtxData) : "r"(rxtxData));	// reverse order of 32 bits
+		asm("rev %0, %1" : "=r"(rxtxData) : "r"(rxtxData));		// reverse order of bytes to get original bits into lowest byte
 	}
 
 	/* waiting send idle then send data */
-	while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_TXE) == RESET);
+	while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_TXE) == RESET)
+		;
 	SPI_I2S_SendData(SPI1, (uint8_t)rxtxData);
 
 	/* waiting conplete rev data */
-	while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_RXNE) == RESET);
+	while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_RXNE) == RESET)
+		;
 	rxtxData = (uint8_t)SPI_I2S_ReceiveData(SPI1);
 
 	if (spi_bitorder == LSBFIRST) {
-		asm("rbit %0, %1" : "=r" (rxtxData) : "r" (rxtxData));	// reverse order of 32 bits
-		asm("rev %0, %1" : "=r" (rxtxData) : "r" (rxtxData));	// reverse order of bytes to get original bits into lowest byte
+		asm("rbit %0, %1" : "=r"(rxtxData) : "r"(rxtxData));	// reverse order of 32 bits
+		asm("rev %0, %1" : "=r"(rxtxData) : "r"(rxtxData));		// reverse order of bytes to get original bits into lowest byte
 	}
 
 	return (uint8_t)rxtxData;
@@ -299,19 +297,19 @@ uint8_t SPIClass::transfer(uint8_t data) {
 uint16_t SPIClass::transfer16(uint16_t data) {
 	uint16_t ret = 0;
 	if (spi_bitorder == LSBFIRST) {
-		ret = transfer((uint8_t)(data&0xFF)) & 0xFF;
-		ret = (transfer((uint8_t)(data>>8)) << 8) | ret;
+		ret = transfer((uint8_t)(data & 0xFF)) & 0xFF;
+		ret = (transfer((uint8_t)(data >> 8)) << 8) | ret;
 	}
 	else {
-		ret = (transfer((uint8_t)(data>>8)) << 8);
-		ret = (transfer((uint8_t)(data&0xFF)) & 0xFF) | ret;
+		ret = (transfer((uint8_t)(data >> 8)) << 8);
+		ret = (transfer((uint8_t)(data & 0xFF)) & 0xFF) | ret;
 	}
 	return ret;
 }
 
 void SPIClass::transfer(void *buf, uint32_t count) {
-	for (uint32_t i = 0; i<count; i++) {
-		transfer(*((uint8_t*)buf+i));
+	for (uint32_t i = 0; i < count; i++) {
+		transfer(*((uint8_t *)buf + i));
 	}
 }
 

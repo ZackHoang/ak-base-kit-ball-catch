@@ -3,7 +3,7 @@
  * @author: GaoKong
  * @date:   05/09/2016
  ******************************************************************************
-**/
+ **/
 #include <stdint.h>
 
 #include "platform.h"
@@ -36,7 +36,7 @@ void entry_critical() {
 void exit_critical() {
 	nest_entry_critical_counter--;
 	if (nest_entry_critical_counter == 0) {
-		nest_entry_critical_counter = 0;	/* prevent call exit_critical many times */
+		nest_entry_critical_counter = 0; /* prevent call exit_critical many times */
 		__enable_irq();
 	}
 	else if (nest_entry_critical_counter < 0) {

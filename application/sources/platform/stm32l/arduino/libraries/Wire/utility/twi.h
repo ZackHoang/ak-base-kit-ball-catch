@@ -22,7 +22,7 @@
 
 #include <inttypes.h>
 
-//#define ATMEGA8
+// #define ATMEGA8
 
 #ifndef TWI_FREQ
 #define TWI_FREQ 100000L
@@ -33,23 +33,22 @@
 #endif
 
 #define TWI_READY 0
-#define TWI_MRX   1
-#define TWI_MTX   2
-#define TWI_SRX   3
-#define TWI_STX   4
+#define TWI_MRX	  1
+#define TWI_MTX	  2
+#define TWI_SRX	  3
+#define TWI_STX	  4
 
 extern void twi_init(void);
 extern void twi_disable(void);
 extern void twi_setAddress(uint8_t);
 extern void twi_setFrequency(uint32_t);
-extern uint8_t twi_readFrom(uint8_t, uint8_t*, uint8_t, uint8_t);
-extern uint8_t twi_writeTo(uint8_t, uint8_t*, uint8_t, uint8_t, uint8_t);
-extern uint8_t twi_transmit(const uint8_t*, uint8_t);
-extern void twi_attachSlaveRxEvent( void (*)(uint8_t*, int) );
-extern void twi_attachSlaveTxEvent( void (*)(void) );
+extern uint8_t twi_readFrom(uint8_t, uint8_t *, uint8_t, uint8_t);
+extern uint8_t twi_writeTo(uint8_t, uint8_t *, uint8_t, uint8_t, uint8_t);
+extern uint8_t twi_transmit(const uint8_t *, uint8_t);
+extern void twi_attachSlaveRxEvent(void (*)(uint8_t *, int));
+extern void twi_attachSlaveTxEvent(void (*)(void));
 extern void twi_reply(uint8_t);
 extern void twi_stop(void);
 extern void twi_releaseBus(void);
 
 #endif
-

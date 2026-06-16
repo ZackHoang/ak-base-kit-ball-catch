@@ -4,7 +4,7 @@
   Part of the Wiring project - http://wiring.org.co
   Copyright (c) 2004-06 Hernando Barragan
   Modified 13 August 2006, David A. Mellis for Arduino - http://www.arduino.cc/
-  
+
   This library is free software; you can redistribute it and/or
   modify it under the terms of the GNU Lesser General Public
   License as published by the Free Software Foundation; either
@@ -25,34 +25,34 @@
 #include <stdint.h>
 #include "Arduino.h"
 
-void randomSeed(unsigned long seed)
-{
-  if (seed != 0) {
-	srand(seed);
-  }
+void randomSeed(unsigned long seed) {
+	if (seed != 0) {
+		srand(seed);
+	}
 }
 
-long random(long howbig)
-{
-  if (howbig == 0) {
-    return 0;
-  }
-  return rand() % howbig;
+long random(long howbig) {
+	if (howbig == 0) {
+		return 0;
+	}
+	return rand() % howbig;
 }
 
-long random(long howsmall, long howbig)
-{
-  if (howsmall >= howbig) {
-    return howsmall;
-  }
-  long diff = howbig - howsmall;
-  return random(diff) + howsmall;
+long random(long howsmall, long howbig) {
+	if (howsmall >= howbig) {
+		return howsmall;
+	}
+	long diff = howbig - howsmall;
+	return random(diff) + howsmall;
 }
 
-long map(long x, long in_min, long in_max, long out_min, long out_max)
-{
-  return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+long map(long x, long in_min, long in_max, long out_min, long out_max) {
+	return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }
 
-uint16_t makeWord(uint16_t w) { return w; }
-uint16_t makeWord(byte h, byte l) { return (h << 8) | l; }
+uint16_t makeWord(uint16_t w) {
+	return w;
+}
+uint16_t makeWord(byte h, byte l) {
+	return (h << 8) | l;
+}

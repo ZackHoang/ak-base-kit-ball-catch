@@ -20,8 +20,8 @@
 #ifndef Printable_h
 #define Printable_h
 
-#include <stdio.h> // for size_t
-#include <string.h> // for size_t
+#include <stdio.h>	   // for size_t
+#include <string.h>	   // for size_t
 #include "Print.h"
 
 class Print;
@@ -32,11 +32,9 @@ class Print;
 	Print::print and Print::println methods.
 */
 
-class Printable
-{
-  public:
-	virtual size_t printTo(Print& p) const = 0;
+class Printable {
+public:
+	virtual size_t printTo(Print &p) const = 0;
 };
 
 #endif
-

@@ -8,7 +8,7 @@
 
   This library is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
   See the GNU Lesser General Public License for more details.
 
   You should have received a copy of the GNU Lesser General Public
@@ -20,8 +20,8 @@
 #include <string.h>
 
 #ifdef __cplusplus
-extern "C"{
-#endif // __cplusplus
+extern "C" {
+#endif	  // __cplusplus
 
 #if 0
 /* reverse:  reverse string s in place */
@@ -66,109 +66,96 @@ extern void itoa( int n, char s[] )
 
 #else
 
-extern char* itoa( int value, char *string, int radix )
-{
-  return ltoa( value, string, radix ) ;
+extern char *itoa(int value, char *string, int radix) {
+	return ltoa(value, string, radix);
 }
 
-extern char* ltoa( long value, char *string, int radix )
-{
-  char tmp[33];
-  char *tp = tmp;
-  long i;
-  unsigned long v;
-  int sign;
-  char *sp;
+extern char *ltoa(long value, char *string, int radix) {
+	char tmp[33];
+	char *tp = tmp;
+	long i;
+	unsigned long v;
+	int sign;
+	char *sp;
 
-  if ( string == NULL )
-  {
-    return 0 ;
-  }
+	if (string == NULL) {
+		return 0;
+	}
 
-  if (radix > 36 || radix <= 1)
-  {
-    return 0 ;
-  }
+	if (radix > 36 || radix <= 1) {
+		return 0;
+	}
 
-  sign = (radix == 10 && value < 0);
-  if (sign)
-  {
-    v = -value;
-  }
-  else
-  {
-    v = (unsigned long)value;
-  }
+	sign = (radix == 10 && value < 0);
+	if (sign) {
+		v = -value;
+	}
+	else {
+		v = (unsigned long)value;
+	}
 
-  while (v || tp == tmp)
-  {
-    i = v % radix;
-    v = v / radix;
-    if (i < 10)
-      *tp++ = i+'0';
-    else
-      *tp++ = i + 'a' - 10;
-  }
+	while (v || tp == tmp) {
+		i = v % radix;
+		v = v / radix;
+		if (i < 10)
+			*tp++ = i + '0';
+		else
+			*tp++ = i + 'a' - 10;
+	}
 
-  sp = string;
+	sp = string;
 
-  if (sign)
-    *sp++ = '-';
-  while (tp > tmp)
-    *sp++ = *--tp;
-  *sp = 0;
+	if (sign)
+		*sp++ = '-';
+	while (tp > tmp)
+		*sp++ = *--tp;
+	*sp = 0;
 
-  return string;
+	return string;
 }
-#if __GNUC__ > 4 || (__GNUC__ == 4 && (__GNUC_MINOR__ > 9 || \
-   (__GNUC_MINOR__ == 9 && __GNUC_PATCHLEVEL__ > 2)))
-extern char* utoa( unsigned value, char *string, int radix )
+#if __GNUC__ > 4 || (__GNUC__ == 4 && (__GNUC_MINOR__ > 9 || (__GNUC_MINOR__ == 9 && __GNUC_PATCHLEVEL__ > 2)))
+extern char *utoa(unsigned value, char *string, int radix)
 #else
-extern char* utoa( unsigned long value, char *string, int radix )
+extern char *utoa(unsigned long value, char *string, int radix)
 #endif
 {
-  return ultoa( value, string, radix ) ;
+	return ultoa(value, string, radix);
 }
 
-extern char* ultoa( unsigned long value, char *string, int radix )
-{
-  char tmp[33];
-  char *tp = tmp;
-  long i;
-  unsigned long v = value;
-  char *sp;
+extern char *ultoa(unsigned long value, char *string, int radix) {
+	char tmp[33];
+	char *tp = tmp;
+	long i;
+	unsigned long v = value;
+	char *sp;
 
-  if ( string == NULL )
-  {
-    return 0;
-  }
+	if (string == NULL) {
+		return 0;
+	}
 
-  if (radix > 36 || radix <= 1)
-  {
-    return 0;
-  }
- 
-  while (v || tp == tmp)
-  {
-    i = v % radix;
-    v = v / radix;
-    if (i < 10)
-      *tp++ = i+'0';
-    else
-      *tp++ = i + 'a' - 10;
-  }
+	if (radix > 36 || radix <= 1) {
+		return 0;
+	}
 
-  sp = string;
+	while (v || tp == tmp) {
+		i = v % radix;
+		v = v / radix;
+		if (i < 10)
+			*tp++ = i + '0';
+		else
+			*tp++ = i + 'a' - 10;
+	}
 
- 
-  while (tp > tmp)
-    *sp++ = *--tp;
-  *sp = 0;
+	sp = string;
 
-  return string;
+	while (tp > tmp)
+		*sp++ = *--tp;
+	*sp = 0;
+
+	return string;
 }
 #endif /* 0 */
 
 #ifdef __cplusplus
-} // extern "C"
-#endif // __cplusplus
+}	 // extern "C"
+#endif	  // __cplusplus

@@ -10,13 +10,14 @@
  */
 namespace __gnu_cxx {
 
-void __verbose_terminate_handler() {
-	for (;;);
-}
+	void __verbose_terminate_handler() {
+		for (;;)
+			;
+	}
 
-}
+}	 // namespace __gnu_cxx
 
-void*   __dso_handle = (void*) &__dso_handle;
+void *__dso_handle = (void *)&__dso_handle;
 
 /*
  * The default pulls in about 12K of garbage
@@ -66,18 +67,18 @@ void operator delete[](void *p) {
 extern uint32_t __heap_start__;
 
 extern "C" {
-caddr_t _sbrk (uint32_t incr) {
-	static uint8_t* heap = NULL;
-	uint8_t* prev_heap;
+caddr_t _sbrk(uint32_t incr) {
+	static uint8_t *heap = NULL;
+	uint8_t *prev_heap;
 
 	if (heap == NULL) {
-		heap = (uint8_t*)((uint32_t)&__heap_start__);
+		heap = (uint8_t *)((uint32_t)&__heap_start__);
 	}
 
 	prev_heap = heap;
 	heap += incr;
 
-	return (caddr_t) prev_heap;
+	return (caddr_t)prev_heap;
 }
 } /* extern "C" */
 

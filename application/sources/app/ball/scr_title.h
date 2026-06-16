@@ -18,13 +18,10 @@
 #include "scr_game.h"
 #include "scr_options.h"
 
-#define SCREEN_TITLE        0
-#define SCREEN_GAME_ACTIVE  1
-#define SCREEN_GAME_OVER    2
-#define SCREEN_OPTIONS      3
+#define START	  50
+#define OPTIONS 57
 
-void item_render();
 extern view_screen_t scr_title;
 extern void task_title_screen(ak_msg_t *msg);
 
-#endif
+#endif	  // __SCR_TITLE_H__
