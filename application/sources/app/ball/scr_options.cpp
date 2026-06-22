@@ -23,7 +23,7 @@ void render_options() {
 						   image_arrow_right_bits, 7, 5, WHITE);
 	view_render.setCursor(20, 15);
 	view_render.setTextSize(2);
-	view_render.print("OPTIONS");
+	view_render.print("SETTINGS");
 	view_render.setTextSize(1);
 	view_render.setCursor(30, 35);
 	view_render.print("Sound");
@@ -37,7 +37,7 @@ void render_options() {
 	view_render.print("Back");
 }
 
-void task_options_screen(ak_msg_t *msg) {
+void task_settings_screen(ak_msg_t *msg) {
 	switch (msg->sig) {
 		case AC_DISPLAY_BUTTON_UP_PRESSED:
 			if (current_cursor > 0) {

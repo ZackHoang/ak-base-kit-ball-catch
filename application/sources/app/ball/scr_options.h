@@ -13,6 +13,6 @@
 
 extern view_dynamic_t dyn_view_scr_options;
 extern view_screen_t scr_options;
-extern void task_options_screen(ak_msg_t *msg);
+extern void task_settings_screen(ak_msg_t *msg);
 
 #endif	  // __SCR_OPTIONS_H__

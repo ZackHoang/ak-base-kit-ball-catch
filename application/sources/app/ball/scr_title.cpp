@@ -28,7 +28,7 @@ void item_render() {
 	view_render.setTextSize(1);
 	view_render.print("Start");
 	view_render.setCursor(45, 56);
-	view_render.print("Options");
+	view_render.print("Settings");
 	view_render.drawBitmap(31, options[curr_opt], image_arrow_right_bits, 7, 5,
 						   WHITE);
 }
@@ -59,7 +59,7 @@ void task_title_screen(ak_msg_t *msg) {
 					break;
 				}
 				case SETTINGS_CURSOR: {
-					SCREEN_TRAN(task_options_screen, &scr_options);
+					SCREEN_TRAN(task_settings_screen, &scr_options);
 					break;
 				}
 			}
