@@ -4,7 +4,7 @@
 #include "view_render.h"
 #include "bitmap.h"
 #include "scr_game.h"
-#include "scr_options.h"
+#include "scr_settings.h"
 
 #define START			50
 #define SETTINGS		57

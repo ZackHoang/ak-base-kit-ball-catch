@@ -1,7 +1,7 @@
-#include "scr_options.h"
+#include "scr_settings.h"
 
 int options_cursor[3] = {SOUND, BALL_SPEED, BACK};
-int current_cursor	  = 0;
+int current_cursor	  = SOUND_CURSOR;
 int sound_on		  = SOUND_ON;
 
 void render_options();
@@ -52,18 +52,18 @@ void task_settings_screen(ak_msg_t *msg) {
 			break;
 
 		case AC_DISPLAY_BUTTON_MODE_PRESSED:
-			if (current_cursor == 0) {
+			if (current_cursor == SOUND_CURSOR) {
 				sound_on == SOUND_ON ? sound_on = SOUND_OFF
 									 : sound_on = SOUND_ON;
 				BUZZER_Sleep(sound_on);
 			}
-			if (current_cursor == 1) {
+			if (current_cursor == BALL_SPEED_CURSOR) {
 				game_data.max_speed++;
 				if (game_data.max_speed > 5) {
 					game_data.max_speed = 1;
 				}
 			}
-			if (current_cursor == 2) {
+			if (current_cursor == BACK_CURSOR) {
 				current_cursor = 2;
 				SCREEN_TRAN(task_title_screen, &scr_title);
 			}

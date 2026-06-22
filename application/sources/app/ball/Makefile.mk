@@ -7,5 +7,5 @@ VPATH += sources/app/ball
 SOURCES_CPP += sources/app/ball/scr_title.cpp
 SOURCES_CPP += sources/app/ball/bitmap.cpp
 SOURCES_CPP += sources/app/ball/scr_game.cpp
-SOURCES_CPP += sources/app/ball/scr_options.cpp
+SOURCES_CPP += sources/app/ball/scr_settings.cpp
 SOURCES_CPP += sources/app/ball/scr_game_over.cpp
