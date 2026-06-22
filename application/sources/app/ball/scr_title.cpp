@@ -1,7 +1,7 @@
 #include "scr_title.h"
 
-uint8_t options[2] = {START, OPTIONS};
-uint8_t curr_opt   = 0;
+uint8_t options[2] = {START, SETTINGS};
+uint8_t curr_opt   = START_CURSOR;
 
 void item_render();
 
@@ -54,12 +54,11 @@ void task_title_screen(ak_msg_t *msg) {
 
 		case AC_DISPLAY_BUTTON_MODE_PRESSED: {
 			switch (curr_opt) {
-				case 0: {
-					init_game();
+				case START_CURSOR: {
 					SCREEN_TRAN(task_game_screen_move_bar, &scr_game);
 					break;
 				}
-				case 1: {
+				case SETTINGS_CURSOR: {
 					SCREEN_TRAN(task_options_screen, &scr_options);
 					break;
 				}

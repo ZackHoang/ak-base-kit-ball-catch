@@ -42,7 +42,6 @@ void task_game_over_screen(ak_msg_t *msg) {
 
 		case AC_DISPLAY_BUTTON_MODE_PRESSED:
 			if (game_over_data.game_over_cursor == 0) {
-				init_game();
 				SCREEN_TRAN(task_game_screen_move_bar, &scr_game);
 			}
 			else if (game_over_data.game_over_cursor == 1) {

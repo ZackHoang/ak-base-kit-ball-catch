@@ -126,6 +126,7 @@ void task_game_screen_move_bar(ak_msg_t *msg) {
 	is_ball_spawning();
 	switch (msg->sig) {
 		case SCREEN_ENTRY:
+			init_game();
 			break;
 		case AC_DISPLAY_BUTTON_UP_PRESSED:
 			if (game_data.bar.x <= 80 && game_data.game_over == false) {
