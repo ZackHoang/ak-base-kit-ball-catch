@@ -2,6 +2,10 @@
 
 A classic ball bouncing game that runs on the AK Base Kit. Rather than breaking bricks, just keep the ball bouncing with your paddle and try to survive for as long as you can. Watch out though, more balls will keep coming the higher you score!
 
+## Footage
+
+<video src="./footages/gameplay.mp4" controls type="video/mp4"></video>
+
 ## Materials
 
 - AK Base Kit
@@ -95,9 +99,3 @@ To exit minicom, use the following commands in order:
 3. Press `q`
 
 That's it! Have fun!
-
-## Footage
-
-<video width="320" height="240" controls>
-  <source src="/footages/gameplay.mp4" type="video/mp4">
-</video>
