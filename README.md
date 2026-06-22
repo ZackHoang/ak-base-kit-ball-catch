@@ -128,7 +128,7 @@ Wellcome to Active Kernel 1.3
 
 To exit minicom, use the following commands in order:
 
-1. Press `ctr+A`
+1. Press `ctrl+A`
 2. Press `z`
 3. Press `q`
 
