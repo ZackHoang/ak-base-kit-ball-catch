@@ -2,9 +2,34 @@
 
 A classic ball bouncing game that runs on the AK Base Kit. Rather than breaking bricks, just keep the ball bouncing with your paddle and try to survive for as long as you can. Watch out though, more balls will keep coming the higher you score!
 
-## Footage
+## Images & Video
 
 <video src="https://github.com/user-attachments/assets/2ee973a8-629d-49c2-ab0d-aa061a60c8be" controls type="video/mp4"></video>
+
+<figure style="display: flex; flex-direction: column; align-items: center; gap: 10px">
+  <img src="./resources/images/title.png" alt="Ball catch title screen"/>
+  <figcaption>Title</ficaption>
+</figure>
+
+<figure style="display: flex; flex-direction: column; align-items: center; gap: 10px">
+  <img src="./resources/images/game.png" alt="Ball catch title screen"/>
+  <figcaption>Game</ficaption>
+</figure>
+
+<figure style="display: flex; flex-direction: column; align-items: center; gap: 10px">
+  <img src="./resources/images/title.png" alt="Ball catch title screen"/>
+  <figcaption>Title</ficaption>
+</figure>
+
+<figure style="display: flex; flex-direction: column; align-items: center; gap: 10px">
+  <img src="./resources/images/game_over.png" alt="Ball catch gameplay screen"/>
+  <figcaption>Game over</ficaption>
+</figure>
+
+<figure style="display: flex; flex-direction: column; align-items: center; gap: 10px">
+  <img src="./resources/images/options.png" alt="Ball catch title screen"/>
+  <figcaption>Options</ficaption>
+</figure>
 
 ## Materials
 

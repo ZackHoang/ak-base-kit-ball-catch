@@ -17,9 +17,9 @@ bool Adafruit_oled_drv::initialize() {
 	pinMode(m_res, OUTPUT);
 
 	digitalWrite(m_res, LOW);
-	delay(100); // 100ms delay for the screen to power on.
+	delay(100);	   // 100ms delay for the screen to power on.
 	digitalWrite(m_res, HIGH);
-	
+
 	// malloc the framebuffer.
 	m_pFramebuffer = frame_buffer;
 	if (m_pFramebuffer == 0) {
@@ -29,61 +29,68 @@ bool Adafruit_oled_drv::initialize() {
 
 	// write command to the screen registers.
 #if defined(SH1106_DRIVER_EN)
-	writeCommand(SH1106_DISPLAY_OFF);			// 0xAE
-	writeCommand(SH1106_SET_DISPLAY_CLOCK_DIV);	// 0xD5
-	writeCommand(0x80);							// the suggested ratio 0x80
-	writeCommand(SH1106_SET_MULTIPLEX);			// 0xA8
+	writeCommand(SH1106_DISPLAY_OFF);			   // 0xAE
+	writeCommand(SH1106_SET_DISPLAY_CLOCK_DIV);	   // 0xD5
+	writeCommand(0x80);							   // the suggested ratio 0x80
+	writeCommand(SH1106_SET_MULTIPLEX);			   // 0xA8
 	writeCommand(0x3F);
-	writeCommand(SH1106_SET_DISPLAY_OFFSET);	  // 0xD3
-	writeCommand(0x00);						  // no offset
+	writeCommand(SH1106_SET_DISPLAY_OFFSET);	// 0xD3
+	writeCommand(0x00);							// no offset
 
-	writeCommand(SH1106_SET_START_LINE | 0x0);	// line #0 0x40
-	writeCommand(SH1106_CHARGE_PUMP);			// 0x8D
+	writeCommand(SH1106_SET_START_LINE | 0x0);	  // line #0 0x40
+	writeCommand(SH1106_CHARGE_PUMP);			  // 0x8D
 	writeCommand(0x14);
-	writeCommand(SH1106_MEMORY_MODE);	// 0x20
-	writeCommand(0x00);					// 0x0 act like ks0108
+	writeCommand(SH1106_MEMORY_MODE);	 // 0x20
+	writeCommand(0x00);					 // 0x0 act like ks0108
 	writeCommand(SH1106_SEGREMAP | 0x1);
 	writeCommand(SH1106_COM_SCAN_DEC);
-	writeCommand(SH1106_SET_COM_PINS);	// 0xDA
+	writeCommand(SH1106_SET_COM_PINS);	  // 0xDA
 	writeCommand(0x12);
-	writeCommand(SH1106_SET_CONTRAST);	 // 0x81
+	writeCommand(SH1106_SET_CONTRAST);	  // 0x81
 	writeCommand(0xCF);
-	writeCommand(SH1106_SET_PRECHARGE);	  // 0xd9
+	writeCommand(SH1106_SET_PRECHARGE);	   // 0xd9
 	writeCommand(0xF1);
-	writeCommand(SH1106_SET_VCOM_DETECT);	   // 0xDB
+	writeCommand(SH1106_SET_VCOM_DETECT);	 // 0xDB
 	writeCommand(0x40);
-	writeCommand(SH1106_DISPLAY_ALL_ON_RESUME);	 // 0xA4
-	writeCommand(SH1106_NORMAL_DISPLAY);			 // 0xA6
-	writeCommand(SH1106_DISPLAY_ON);				 //--turn on oled panel
+	writeCommand(SH1106_DISPLAY_ALL_ON_RESUME);	   // 0xA4
+	writeCommand(SH1106_NORMAL_DISPLAY);		   // 0xA6
+	writeCommand(SH1106_DISPLAY_ON);			   //--turn on oled panel
 
 	delay(10);	  // wait for the screen loaded.
 
 #elif defined(SSD1306_DRIVER_EN)
-	writeCommand(SSD1306_DISPLAY_OFF);		 // display off
-	writeCommand(SSD1306_MEMORY_MODE);		 // Set Memory Addressing Mode
-	writeCommand(0x10);						 // 00,Horizontal Addressing Mode;01,Vertical Addressing Mode;10,Page Addressing Mode (RESET);11,Invalid
-	writeCommand(SSD1306_SET_START_LINE);		 // Set Page Start Address for Page Addressing Mode,0-7
+	writeCommand(SSD1306_DISPLAY_OFF);	  // display off
+	writeCommand(SSD1306_MEMORY_MODE);	  // Set Memory Addressing Mode
+	writeCommand(
+		0x10);	  // 00,Horizontal Addressing Mode;01,Vertical Addressing
+				  // Mode;10,Page Addressing Mode (RESET);11,Invalid
+	writeCommand(SSD1306_SET_START_LINE);	 // Set Page Start Address for Page
+											 // Addressing Mode,0-7
 	writeCommand(0xB0);						 // Set COM Output Scan Direction
 	writeCommand(SSD1306_SET_CONTRAST);		 //---set low column address
 	writeCommand(0xCF);						 //---set high column address
 	writeCommand(SSD1306_SEGREMAP | 0x1);	 //--set start line address
 	writeCommand(SSD1306_NORMAL_DISPLAY);	 //--set contrast control register
 	writeCommand(SSD1306_SET_MULTIPLEX);
-	writeCommand(0x3F);							 //--set segment re-map 0 to 127
-	writeCommand(SSD1306_COM_SCAN_DEC);			 //--set normal display
-	writeCommand(SSD1306_SET_DISPLAY_OFFSET);		 //--set multiplex ratio(1 to 64)
-	writeCommand(0x00);							 //
-	writeCommand(SSD1306_SET_DISPLAY_CLOCK_DIV);	 // 0xa4,Output follows RAM content;0xa5,Output ignores RAM content
-	writeCommand(0x80);							 //-set display offset
-	writeCommand(SSD1306_SET_PRECHARGE);			 //-not offset
-	writeCommand(0xF1);							 //--set display clock divide ratio/oscillator frequency
-	writeCommand(SSD1306_SET_COM_PINS);			 //--set divide ratio
-	writeCommand(0x12);							 //--set pre-charge period
-	writeCommand(SSD1306_SET_VCOM_DETECT);		 //
-	writeCommand(0x40);							 //--set com pins hardware configuration
-	writeCommand(SSD1306_CHARGE_PUMP);			 //--set vcomh
-	writeCommand(0x14);							 // 0x20,0.77xVcc
-	writeCommand(SSD1306_DISPLAY_ON);	//--turn on oled panel
+	writeCommand(0x3F);					   //--set segment re-map 0 to 127
+	writeCommand(SSD1306_COM_SCAN_DEC);	   //--set normal display
+	writeCommand(
+		SSD1306_SET_DISPLAY_OFFSET);	//--set multiplex ratio(1 to 64)
+	writeCommand(0x00);					//
+	writeCommand(SSD1306_SET_DISPLAY_CLOCK_DIV);	// 0xa4,Output follows RAM
+													// content;0xa5,Output
+													// ignores RAM content
+	writeCommand(0x80);								//-set display offset
+	writeCommand(SSD1306_SET_PRECHARGE);			//-not offset
+	writeCommand(
+		0xF1);	  //--set display clock divide ratio/oscillator frequency
+	writeCommand(SSD1306_SET_COM_PINS);		  //--set divide ratio
+	writeCommand(0x12);						  //--set pre-charge period
+	writeCommand(SSD1306_SET_VCOM_DETECT);	  //
+	writeCommand(0x40);	   //--set com pins hardware configuration
+	writeCommand(SSD1306_CHARGE_PUMP);	  //--set vcomh
+	writeCommand(0x14);					  // 0x20,0.77xVcc
+	writeCommand(SSD1306_DISPLAY_ON);	  //--turn on oled panel
 
 	delay(10);	  // wait for the screen loaded.
 
@@ -120,6 +127,14 @@ bool Adafruit_oled_drv::initialize() {
 #endif
 
 	return true;
+}
+
+const unsigned char *Adafruit_oled_drv::getFrameBuffer() const {
+	return m_pFramebuffer;
+}
+
+unsigned int Adafruit_oled_drv::getFrameBufferSize() const {
+	return FBSIZE;
 }
 
 void Adafruit_oled_drv::clear(bool isUpdateHW) {
@@ -205,7 +220,8 @@ void Adafruit_oled_drv::drawPixel(int16_t x, int16_t y, uint16_t color) {
 	unsigned char val;
 	int16_t index;
 
-	if ((x < 0) || (x >= width()) || (y < 0) || (y >= height()) || (m_pFramebuffer == 0))
+	if ((x < 0) || (x >= width()) || (y < 0) || (y >= height()) ||
+		(m_pFramebuffer == 0))
 		return;
 
 	// get the previous data;
@@ -232,12 +248,12 @@ void Adafruit_oled_drv::startDataSequence() {
 
 void Adafruit_oled_drv::update() {
 #if defined(SH1106_DRIVER_EN)
-	const byte pageCount = HEIGHT >> 3;
+	const byte pageCount  = HEIGHT >> 3;
 	const byte chunkCount = 8;
 	const byte chunkWidth = 132 >> 3;
-	const byte rowOffset = 0;
-	const byte colOffset = OLED_COL_OFFSET;
-	int p = 0;
+	const byte rowOffset  = 0;
+	const byte colOffset  = OLED_COL_OFFSET;
+	int p				  = 0;
 
 	writeCommand(SH1106_SET_LOW_COLUMN | (colOffset & 0x0F));
 	writeCommand(SH1106_SET_HIGH_COLUMN | (colOffset >> 4));
@@ -290,19 +306,20 @@ void Adafruit_oled_drv::update() {
 }
 
 void Adafruit_oled_drv::updateRow(int rowID) {
-	if (rowID >= 0 && rowID < MAXROW && m_pFramebuffer) {	 // this part is faster than else.
+	if (rowID >= 0 && rowID < MAXROW &&
+		m_pFramebuffer) {	 // this part is faster than else.
 		unsigned int index = 0;
-		unsigned char x = 0;
+		unsigned char x	   = 0;
 
 #if defined(SH1106_DRIVER_EN)
 		const unsigned char colOffset = OLED_COL_OFFSET;
-		const unsigned char lowerCol = colOffset & 0x0F;
+		const unsigned char lowerCol  = colOffset & 0x0F;
 		const unsigned char higherCol = 0x10 | (colOffset >> 4);
 #elif defined(SSD1306_DRIVER_EN)
-		const unsigned char lowerCol = SSD1306_SET_LOW_COLUMN;
+		const unsigned char lowerCol  = SSD1306_SET_LOW_COLUMN;
 		const unsigned char higherCol = SSD1306_SET_HIGH_COLUMN;
 #elif defined(SSD1309_DRIVER_EN)
-		const unsigned char lowerCol = 0x00;
+		const unsigned char lowerCol  = 0x00;
 		const unsigned char higherCol = 0x10;
 #else
 #error "Don't know oled driver type."

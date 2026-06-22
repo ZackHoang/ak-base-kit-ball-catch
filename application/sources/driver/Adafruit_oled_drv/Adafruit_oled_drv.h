@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include "Adafruit_GFX.h"
 
-#if defined (SH1106_DRIVER_EN)
+#if defined(SH1106_DRIVER_EN)
 #define OLED_COL_OFFSET 2
 #else
 #define OLED_COL_OFFSET 0
@@ -115,64 +115,67 @@ enum SSD1309_CMD_SET {
 	SSD1309_SET_VCOM_DETECT						 = 0xDB,
 };
 
-#if defined (STM32L_PLATFORM)
+#if defined(STM32L_PLATFORM)
 #include "Arduino.h"
 #include "io_cfg.h"
 #endif
 
-#define OLED_I2C_CLK    OLED_CLK_PIN	
-#define OLED_I2C_DATA   OLED_DATA_PIN
-#define OLED_I2C_RES    OLED_RES_PIN
+#define OLED_I2C_CLK  OLED_CLK_PIN
+#define OLED_I2C_DATA OLED_DATA_PIN
+#define OLED_I2C_RES  OLED_RES_PIN
 
 #define BLACK 0
 #define WHITE 1
 
-//common parameters
-#define WIDTH 128
+// common parameters
+#define WIDTH  128
 #define HEIGHT 64
-#define FBSIZE 1024 //128x8
+#define FBSIZE 1024	   // 128x8
 #define MAXROW 8
 
-class Adafruit_oled_drv : public Adafruit_GFX{
+class Adafruit_oled_drv : public Adafruit_GFX {
 public:
 	Adafruit_oled_drv();
 	~Adafruit_oled_drv();
-	//initialized the ssd1306 in the setup function
+	// initialized the ssd1306 in the setup function
 	virtual bool initialize();
 
-	//update the framebuffer to the screen.
+	// update the framebuffer to the screen.
 	virtual void update();
-	//totoally 8 rows on this screen in vertical direction.
+	// totoally 8 rows on this screen in vertical direction.
 	virtual void updateRow(int rowIndex);
 	virtual void updateRow(int startRow, int endRow);
-	
-	//draw one pixel on the screen.
+
+	// draw one pixel on the screen.
 	virtual void drawPixel(int16_t x, int16_t y, uint16_t color);
 
-	//clear the screen
-	void clear(bool isUpdateHW=false);
+	// clear the screen
+	void clear(bool isUpdateHW = false);
 
-	//on screen
+	// on screen
 	void display_on();
 
-	//off screen
+	// off screen
 	void display_off();
 
-protected:
-	//write one byte to the screen.
-	void writeByte(unsigned char  b);
-	void writeCommand(unsigned char  cmd);
+	const unsigned char *getFrameBuffer() const;
+	unsigned int getFrameBufferSize() const;
 
-	//atomic control function
-	void startIIC();//turn on the IIC
-	void stopIIC();//turn off the IIC.
+protected:
+	// write one byte to the screen.
+	void writeByte(unsigned char b);
+	void writeCommand(unsigned char cmd);
+
+	// atomic control function
+	void startIIC();	// turn on the IIC
+	void stopIIC();		// turn off the IIC.
 	void startDataSequence();
 
 protected:
 	int m_sda;
 	int m_scl;
 	int m_res;
-	unsigned char* m_pFramebuffer;
+	unsigned char *m_pFramebuffer;
 };
 
-#endif //__ADAFRUIT_OLED_DRV_H
+#endif	  //__ADAFRUIT_OLED_DRV_H
