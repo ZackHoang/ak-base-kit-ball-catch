@@ -13,6 +13,8 @@ A classic ball bouncing game that runs on the AK Base Kit. Rather than breaking 
     </figure>
 </div>
 
+<br></br>
+
 <div align="center">
     <figure>
         <img src="./resources/images/game.png" alt="Ball catch game screen"/>
@@ -20,12 +22,16 @@ A classic ball bouncing game that runs on the AK Base Kit. Rather than breaking 
     </figure>
 </div>
 
+<br></br>
+
 <div align="center">
     <figure>
         <img src="./resources/images/game_over.png" alt="Ball catch game over screen"/>
         <figcaption>Game over</ficaption>
     </figure>
 </div>
+
+<br></br>
 
 <div align="center">
     <figure>
