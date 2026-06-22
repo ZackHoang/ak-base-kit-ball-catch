@@ -4,7 +4,7 @@ A classic ball bouncing game that runs on the AK Base Kit. Rather than breaking 
 
 ## Footage
 
-<video src="./footages/gameplay.mp4" controls type="video/mp4"></video>
+<video src="https://github.com/user-attachments/assets/2ee973a8-629d-49c2-ab0d-aa061a60c8be" controls type="video/mp4"></video>
 
 ## Materials
 
