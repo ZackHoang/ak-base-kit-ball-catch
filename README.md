@@ -6,29 +6,24 @@ A classic ball bouncing game that runs on the AK Base Kit. Rather than breaking 
 
 <video src="https://github.com/user-attachments/assets/2ee973a8-629d-49c2-ab0d-aa061a60c8be" controls type="video/mp4"></video>
 
-<figure style="display: flex; flex-direction: column; align-items: center; gap: 10px">
+<figure>
   <img src="./resources/images/title.png" alt="Ball catch title screen"/>
-  <figcaption>Title</ficaption>
+  <figcaption align="center">Title</ficaption>
+</figure>
+
+<figure>
+  <img src="./resources/images/game.png" alt="Ball catch game screen"/>
+  <figcaption align="center">Game</ficaption>
 </figure>
 
 <figure style="display: flex; flex-direction: column; align-items: center; gap: 10px">
-  <img src="./resources/images/game.png" alt="Ball catch title screen"/>
-  <figcaption>Game</ficaption>
-</figure>
-
-<figure style="display: flex; flex-direction: column; align-items: center; gap: 10px">
-  <img src="./resources/images/title.png" alt="Ball catch title screen"/>
-  <figcaption>Title</ficaption>
-</figure>
-
-<figure style="display: flex; flex-direction: column; align-items: center; gap: 10px">
-  <img src="./resources/images/game_over.png" alt="Ball catch gameplay screen"/>
+  <img src="./resources/images/game_over.png" alt="Ball catch game over screen"/>
   <figcaption>Game over</ficaption>
 </figure>
 
-<figure style="display: flex; flex-direction: column; align-items: center; gap: 10px">
-  <img src="./resources/images/options.png" alt="Ball catch title screen"/>
-  <figcaption>Options</ficaption>
+<figure>
+  <img src="./resources/images/options.png" alt="Ball catch options screen"/>
+  <figcaption align="center">Options</ficaption>
 </figure>
 
 ## Materials
