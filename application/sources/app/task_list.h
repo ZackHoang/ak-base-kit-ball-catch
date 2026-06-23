@@ -12,8 +12,7 @@ extern const task_polling_t app_task_polling_table[];
  *  Note: Task id MUST be increasing order.
  */
 /*****************************************************************************/
-enum
-{
+enum {
 	/* SYSTEM TASKS */
 	TASK_TIMER_TICK_ID,
 
@@ -59,8 +58,7 @@ enum
  *  Note: Task id MUST be increasing order.
  */
 /*****************************************************************************/
-enum
-{
+enum {
 	/* APP TASKS */
 	AC_TASK_POLLING_ZIGBEE_ID,
 	AC_TASK_POLLING_CONSOLE_ID,
@@ -93,6 +91,7 @@ extern void task_rf24_nwk(ak_msg_t *);
 /* BALL GAME TASKS */
 extern void task_draw_game(ak_msg_t *);
 extern void task_game_over(ak_msg_t *);
+extern void task_game_screen_move_bar(ak_msg_t *msg);
 
 /* LINK TASK */
 extern void task_link_phy(ak_msg_t *);
@@ -109,4 +108,4 @@ extern void task_rf24_demo(ak_msg_t *);
 extern void task_polling_zigbee();
 extern void task_polling_console();
 
-#endif //__TASK_LIST_H__
+#endif	  //__TASK_LIST_H__

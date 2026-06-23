@@ -29,7 +29,8 @@ void init_game() {
 			   (uint8_t)(rand() % 1 + game_data.max_speed)}
 	   };
 	game_data.game_over = false;
-	timer_set(TASK_UPDATE_POS, CHANGE_POS, 100, TIMER_PERIODIC);
+	timer_set(TASK_UPDATE_POS, CHANGE_POS, 50, TIMER_PERIODIC);
+	timer_set(AC_TASK_DISPLAY_ID, RENDER_GAME, 50, TIMER_PERIODIC);
 }
 
 void is_touching_side_wall(ball_t &ball) {
@@ -62,6 +63,7 @@ void is_game_over(ball_t &ball) {
 		game_data.game_over = true;
 		BUZZER_PlayTones(tone_game_over);
 		timer_remove_attr(TASK_UPDATE_POS, CHANGE_POS);
+		timer_remove_attr(TASK_UPDATE_POS, RENDER_GAME);
 		if (eeprom_read(0, (uint8_t *)&game_data.read_score,
 						sizeof(game_data.read_score) == 0)) {
 			if (game_data.read_score < game_data.score) {
@@ -103,14 +105,6 @@ void render_game() {
 	for (int i = 0; i <= game_data.ball_counter; i++) {
 		view_render.drawCircle(game_data.balls[i].x, game_data.balls[i].y,
 							   BALL_RADIUS, WHITE);
-		if (game_data.game_over == false) {
-			game_data.balls[i].x += game_data.balls[i].x_speed;
-			game_data.balls[i].y += game_data.balls[i].y_speed;
-			is_game_over(game_data.balls[i]);
-		}
-		is_touching_side_wall(game_data.balls[i]);
-		is_touching_ceiling(game_data.balls[i]);
-		is_touching_bar(game_data.balls[i]);
 	}
 }
 
@@ -138,6 +132,24 @@ void task_game_screen_move_bar(ak_msg_t *msg) {
 			if (game_data.bar.x >= 20 && game_data.game_over == false) {
 				game_data.bar.x -= 10;
 			}
+			break;
+		case CHANGE_POS:
+			for (int i = 0; i <= game_data.ball_counter; i++) {
+				if (game_data.game_over == false) {
+					game_data.balls[i].x += game_data.balls[i].x_speed;
+					game_data.balls[i].y += game_data.balls[i].y_speed;
+					is_game_over(game_data.balls[i]);
+				}
+				is_touching_side_wall(game_data.balls[i]);
+				is_touching_ceiling(game_data.balls[i]);
+				is_touching_bar(game_data.balls[i]);
+			}
+			break;
+		case RENDER_GAME:
+			// view_render_screen(&scr_game);
+			break;
+		case GAME_OVER:
+			SCREEN_TRAN(task_game_over_screen, &scr_game_over);
 			break;
 		default:
 			break;

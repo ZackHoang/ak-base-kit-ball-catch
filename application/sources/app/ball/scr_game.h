@@ -45,7 +45,6 @@ typedef struct {
 extern view_screen_t scr_game;
 extern view_dynamic_t dyn_view_scr_game;
 extern void task_draw_game(ak_msg_t *msg);
-extern void init_game();
 extern game_data_t game_data;
 extern void task_game_screen_move_bar(ak_msg_t *msg);
 

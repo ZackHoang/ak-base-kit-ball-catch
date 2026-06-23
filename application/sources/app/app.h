@@ -3,18 +3,17 @@
  * @author: GaoKong
  * @date:   13/08/2016
  ******************************************************************************
-**/
+ **/
 
 #ifndef __APP_H__
 #define __APP_H__
 
 #ifdef __cplusplus
-extern "C"
-{
+extern "C" {
 #endif
 
 #include "ak.h"
-#if defined (IF_NETWORK_NRF24_EN)
+#if defined(IF_NETWORK_NRF24_EN)
 #include "nrf_nwk_sig.h"
 #endif
 
@@ -37,8 +36,8 @@ enum {
  */
 /*****************************************************************************/
 /* define timer */
-#define FW_PACKED_TIMEOUT_INTERVAL			(5000)
-#define FW_UPDATE_REQ_INTERVAL				(5000)
+#define FW_PACKED_TIMEOUT_INTERVAL (5000)
+#define FW_UPDATE_REQ_INTERVAL	   (5000)
 
 /* define signal */
 enum {
@@ -60,7 +59,7 @@ enum {
  */
 /*****************************************************************************/
 /* define timer */
-#define AC_LIFE_TASK_TIMER_LED_LIFE_INTERVAL		(1000)
+#define AC_LIFE_TASK_TIMER_LED_LIFE_INTERVAL (1000)
 
 /* define signal */
 enum {
@@ -110,10 +109,10 @@ enum {
 };
 
 // Ball game signals
-enum
-{
+enum {
 	CHANGE_POS = BALL_GAME_DEFINE_SIG,
 	GAME_OVER,
+	RENDER_GAME,
 };
 
 /*****************************************************************************/
@@ -138,29 +137,45 @@ enum {
  */
 /*****************************************************************************/
 /* define timer */
-#define AC_DISPLAY_INITIAL_INTERVAL									(100)
-#define AC_DISPLAY_STARTUP_INTERVAL									(2000)
-#define AC_DISPLAY_LOGO_INTERVAL									(10000)
-#define AC_DISPLAY_SHOW_IDLE_BALL_MOVING_UPDATE_INTERAL				(150)
-#define AC_DISPLAY_SHOW_MERRY_CHRISTMAS_SNOW_MOVING_UPDATE_INTERAL	(150)
-#define AC_DISPLAY_SHOW_MERRY_CHRISTMAS_SLEEP_INTERVAL				(15000)
-#define AC_DISPLAY_SHOW_MODBUS_PULL_INTERVAL						(1500)
-#define AC_DISPLAY_SHOW_MODBUS_PULL_SLEEP_INTERVAL					(30000)
+#define AC_DISPLAY_INITIAL_INTERVAL								   (100)
+#define AC_DISPLAY_STARTUP_INTERVAL								   (2000)
+#define AC_DISPLAY_LOGO_INTERVAL								   (10000)
+#define AC_DISPLAY_SHOW_IDLE_BALL_MOVING_UPDATE_INTERAL			   (150)
+#define AC_DISPLAY_SHOW_MERRY_CHRISTMAS_SNOW_MOVING_UPDATE_INTERAL (150)
+#define AC_DISPLAY_SHOW_MERRY_CHRISTMAS_SLEEP_INTERVAL			   (15000)
+#define AC_DISPLAY_SHOW_MODBUS_PULL_INTERVAL					   (1500)
+#define AC_DISPLAY_SHOW_MODBUS_PULL_SLEEP_INTERVAL				   (30000)
 
 /* define signal */
 enum {
-	AC_DISPLAY_INITIAL = AK_USER_DEFINE_SIG,
+	/* Render screen signals */
+	AC_DISPLAY_RENDER_SCREEN = AK_SYS_DEFINE_SIG,
+
+	/* Button signals */
 	AC_DISPLAY_BUTTON_MODE_PRESSED,
+	AC_DISPLAY_BUTTON_MODE_LONG_PRESSED,
+	AC_DISPLAY_BUTTON_MODE_RELEASED,
 	AC_DISPLAY_BUTTON_UP_PRESSED,
+	AC_DISPLAY_BUTTON_UP_LONG_PRESSED,
+	AC_DISPLAY_BUTTON_UP_RELEASED,
 	AC_DISPLAY_BUTTON_DOWN_PRESSED,
-	AC_DISPLAY_BUTON_MODE_RELEASED,
-	AC_DISPLAY_BUTON_UP_RELEASED,
-	AC_DISPLAY_BUTON_DOWN_RELEASED,
-	AC_DISPLAY_SHOW_LOGO,
+	AC_DISPLAY_BUTTON_DOWN_LONG_PRESSED,
+	AC_DISPLAY_BUTTON_DOWN_RELEASED,
+
+	/* Screen signal */
+	AC_DISPLAY_INITIAL = AK_USER_DEFINE_SIG,
+
+	/* Screen Startup signals */
+	AC_DISPLAY_SHOW_STARTUP_LOGO,
+
+	/* Idle screen signals */
 	AC_DISPLAY_SHOW_IDLE,
 	AC_DISPLAY_SHOW_IDLE_BALL_MOVING_UPDATE,
+
+	/* Firmware update signals */
 	AC_DISPLAY_SHOW_FW_UPDATE,
 	AC_DISPLAY_SHOW_FW_UPDATE_ERR,
+
 	AC_DISPLAY_SHOW_MERRY_CHRISTMAS_SNOW_MOVING_UPDATE,
 	AC_DISPLAY_SHOW_MERRY_CHRISTMAS_SLEEP,
 	AC_DISPLAY_SHOW_MODBUS_PULL_UPDATE,
@@ -195,8 +210,9 @@ enum {
 /*  app function declare
  */
 /*****************************************************************************/
-#define APP_MAGIC_NUMBER	0xAABBCCDD
-#define APP_VER				{0, 0, 0, 3}
+#define APP_MAGIC_NUMBER 0xAABBCCDD
+#define APP_VER \
+	{ 0, 0, 0, 3 }
 
 typedef struct {
 	uint32_t magic_number;
@@ -205,11 +221,11 @@ typedef struct {
 
 extern const app_info_t app_info;
 
-extern void* app_get_boot_share_data();
-extern int  main_app();
+extern void *app_get_boot_share_data();
+extern int main_app();
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif //__APP_H__
+#endif	  //__APP_H__
