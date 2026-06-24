@@ -108,7 +108,12 @@ enum {
 	AC_IF_DYNAMIC_MSG_OUT,
 };
 
-// Ball game signals
+/*****************************************************************************/
+/* BALL CATCH task define
+ */
+/*****************************************************************************/
+/* define timer */
+/* define signal */
 enum {
 	CHANGE_POS = BALL_GAME_DEFINE_SIG,
 	GAME_OVER,

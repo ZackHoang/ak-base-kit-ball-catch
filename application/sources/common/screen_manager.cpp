@@ -27,7 +27,8 @@ static void scr_mng_render_screen() {
 	uint32_t current_ms = sys_ctrl_millis();
 	uint32_t time_diff	= current_ms - screen_last_render_ms;
 
-	if (screen_render_started || (time_diff >= 70)) {
+	if (screen_render_started ||
+		(time_diff >= BALL_CATCH_RENDER_AND_PROCESS_TICK)) {
 		screen_render_started = false;
 		screen_last_render_ms = current_ms;
 		view_render_screen(view_screen);
@@ -35,7 +36,8 @@ static void scr_mng_render_screen() {
 	else {
 		// Timer set to trigger next rendering when render interval is
 		// reached
-		timer_set(AC_TASK_DISPLAY_ID, AC_DISPLAY_RENDER_SCREEN, 70 - time_diff,
+		timer_set(AC_TASK_DISPLAY_ID, AC_DISPLAY_RENDER_SCREEN,
+				  BALL_CATCH_RENDER_AND_PROCESS_TICK - time_diff,
 				  TIMER_ONE_SHOT);
 	}
 }

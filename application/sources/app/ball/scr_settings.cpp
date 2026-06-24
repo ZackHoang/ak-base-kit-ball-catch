@@ -4,20 +4,6 @@ int options_cursor[3] = {SOUND, BALL_SPEED, BACK};
 int current_cursor	  = SOUND_CURSOR;
 int sound_on		  = SOUND_ON;
 
-void render_options();
-
-view_dynamic_t dyn_view_scr_options{
-	{.item_type = ITEM_TYPE_DYNAMIC},
-	render_options,
-};
-
-view_screen_t scr_options{
-	&dyn_view_scr_options,
-	ITEM_NULL,
-	ITEM_NULL,
-	.focus_item = 0,
-};
-
 void render_options() {
 	view_render.drawBitmap(15, options_cursor[current_cursor],
 						   image_arrow_right_bits, 7, 5, WHITE);
@@ -37,21 +23,33 @@ void render_options() {
 	view_render.print("Back");
 }
 
+view_dynamic_t dyn_view_scr_options{
+	{.item_type = ITEM_TYPE_DYNAMIC},
+	render_options,
+};
+
+view_screen_t scr_options{
+	&dyn_view_scr_options,
+	ITEM_NULL,
+	ITEM_NULL,
+	.focus_item = 0,
+};
+
 void task_settings_screen(ak_msg_t *msg) {
 	switch (msg->sig) {
-		case AC_DISPLAY_BUTTON_UP_PRESSED:
+		case AC_DISPLAY_BUTTON_UP_PRESSED: {
 			if (current_cursor > 0) {
 				current_cursor--;
 			}
-			break;
+		} break;
 
-		case AC_DISPLAY_BUTTON_DOWN_PRESSED:
+		case AC_DISPLAY_BUTTON_DOWN_PRESSED: {
 			if (current_cursor < 2) {
 				current_cursor++;
 			}
-			break;
+		} break;
 
-		case AC_DISPLAY_BUTTON_MODE_PRESSED:
+		case AC_DISPLAY_BUTTON_MODE_PRESSED: {
 			if (current_cursor == SOUND_CURSOR) {
 				sound_on == SOUND_ON ? sound_on = SOUND_OFF
 									 : sound_on = SOUND_ON;
@@ -67,9 +65,9 @@ void task_settings_screen(ak_msg_t *msg) {
 				current_cursor = 2;
 				SCREEN_TRAN(task_title_screen, &scr_title);
 			}
-			break;
+		} break;
 
-		default:
-			break;
+		default: {
+		} break;
 	}
 }
