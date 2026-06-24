@@ -5,7 +5,7 @@ static void view_scr_startup();
 view_dynamic_t dyn_view_startup = {
 	{
 		.item_type = ITEM_TYPE_DYNAMIC,
-	},
+	 },
 	view_scr_startup
 };
 
@@ -18,8 +18,8 @@ view_screen_t scr_startup = {
 };
 
 void view_scr_startup() {
-#define AK_LOGO_AXIS_X		(23)
-#define AK_LOGO_TEXT		(AK_LOGO_AXIS_X + 4)
+#define AK_LOGO_AXIS_X (23)
+#define AK_LOGO_TEXT   (AK_LOGO_AXIS_X + 4)
 	/* ak logo */
 	view_render.clear();
 	view_render.setTextSize(1);
@@ -36,35 +36,22 @@ void view_scr_startup() {
 	view_render.print("Active Kernel");
 }
 
-void scr_startup_handle(ak_msg_t* msg) {
+void scr_startup_handle(ak_msg_t *msg) {
 	switch (msg->sig) {
-	case AC_DISPLAY_INITIAL: {
-		APP_DBG_SIG("AC_DISPLAY_INITIAL\n");
-		view_render.initialize();
-		view_render_display_on();
-		timer_set(AC_TASK_DISPLAY_ID, AC_DISPLAY_SHOW_IDLE, AC_DISPLAY_STARTUP_INTERVAL, TIMER_ONE_SHOT);
-	}
-		break;
+		case AC_DISPLAY_INITIAL: {
+			APP_DBG_SIG("AC_DISPLAY_INITIAL\n");
+			view_render.initialize();
+			view_render_display_on();
+			timer_set(AC_TASK_DISPLAY_ID, AC_DISPLAY_SHOW_IDLE,
+					  AC_DISPLAY_STARTUP_INTERVAL, TIMER_ONE_SHOT);
+		} break;
 
-	// case AC_DISPLAY_BUTON_MODE_RELEASED: {
-	// 	APP_DBG_SIG("AC_DISPLAY_BUTON_MODE_RELEASED\n");
-	// 	timer_remove_attr(AC_TASK_DISPLAY_ID, AC_DISPLAY_SHOW_IDLE);
-	// 	SCREEN_TRAN(scr_idle_handle, &scr_idle);
-	// }
-	// 	break;
+		case AC_DISPLAY_SHOW_IDLE: {
+			APP_DBG_SIG("AC_DISPLAY_SHOW_IDLE\n");
+			SCREEN_TRAN(task_title_screen, &scr_title);
+		} break;
 
-	// case AC_DISPLAY_SHOW_LOGO: {
-	// 	APP_DBG_SIG("AC_DISPLAY_SHOW_LOGO\n");
-	// 	SCREEN_TRAN(scr_info_handle, &scr_info);
-	// }
-	// 	break;
-
-	case AC_DISPLAY_SHOW_IDLE: {
-		APP_DBG_SIG("AC_DISPLAY_SHOW_IDLE\n");
-		SCREEN_TRAN(task_title_screen, &scr_title);
-	} break;
-
-	default:
-		break;
+		default: {
+		} break;
 	}
 }
