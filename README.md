@@ -1,14 +1,14 @@
 # Ball Catch
 
-A classic ball bouncing game that runs on the AK Base Kit. Rather than breaking bricks, just keep the ball bouncing with your paddle and try to survive for as long as you can. Watch out though, more balls will keep coming the higher you score!
+A classic ball bouncing game that runs on the AK Base Kit developed using an in-house AK Framework. Rather than breaking bricks, just keep the ball bouncing with your paddle and try to survive for as long as you can. Watch out though, more balls will keep coming the higher you score!
 
 ## Images & Video
 
-<video src="https://github.com/user-attachments/assets/2ee973a8-629d-49c2-ab0d-aa061a60c8be" controls type="video/mp4"></video>
+<video src="https://github.com/user-attachments/assets/e547de54-59e4-4f2d-be0d-c80aa0070038" controls type="video/mp4"></video>
 
 <div align="center">
     <figure>
-        <img src="./resources/images/title.png" alt="Ball catch title screen"/>
+        <img src="./resources/images/title.png" alt="Ball catch title screen"/ width="500">
         <figcaption>Title</ficaption>
     </figure>
 </div>
@@ -17,7 +17,7 @@ A classic ball bouncing game that runs on the AK Base Kit. Rather than breaking 
 
 <div align="center">
     <figure>
-        <img src="./resources/images/game.png" alt="Ball catch game screen"/>
+        <img src="./resources/images/game.png" alt="Ball catch game screen"/ width="500">
         <figcaption>Game</ficaption>
     </figure>
 </div>
@@ -26,7 +26,7 @@ A classic ball bouncing game that runs on the AK Base Kit. Rather than breaking 
 
 <div align="center">
     <figure>
-        <img src="./resources/images/game_over.png" alt="Ball catch game over screen"/>
+        <img src="./resources/images/game_over.png" alt="Ball catch game over screen"/ width="500">
         <figcaption>Game over</ficaption>
     </figure>
 </div>
@@ -35,10 +35,16 @@ A classic ball bouncing game that runs on the AK Base Kit. Rather than breaking 
 
 <div align="center">
     <figure>
-        <img src="./resources/images/options.png" alt="Ball catch options screen"/>
+        <img src="./resources/images/options.png" alt="Ball catch options screen"/ width="500">
         <figcaption>Options</ficaption>
     </figure>
 </div>
+
+## Documentation (In Progress)
+
+- Game objects sequence
+- Game runtime sequence
+- Button runtime
 
 ## Materials
 
@@ -59,8 +65,7 @@ A classic ball bouncing game that runs on the AK Base Kit. Rather than breaking 
 1. Navigate to`./application`
 
     ```bash
-    cd ..
-    cd ..
+    cd ../..
     cd application/
     ```
 
@@ -75,6 +80,11 @@ A classic ball bouncing game that runs on the AK Base Kit. Rather than breaking 
     ```bash
     ak-flash /dev/ttyUSB0 ./build_ball/ball.bin 0x08003000
     ```
+
+## Tutorial
+
+- **UP**: Move paddle to the right
+- **DOWN**: Move paddle to the left
 
 ## Debugging
 
