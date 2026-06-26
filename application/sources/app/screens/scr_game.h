@@ -23,8 +23,8 @@
 typedef struct {
 	uint8_t x;
 	uint8_t y;
-	uint8_t x_speed;
-	uint8_t y_speed;
+	int8_t x_speed;
+	int8_t y_speed;
 } ball_t;
 
 typedef struct {
@@ -37,7 +37,7 @@ typedef struct {
 	uint8_t read_score;
 	uint8_t target_score;
 	uint8_t ball_counter;
-	uint8_t max_speed	= 2;
+	int8_t max_speed	= 2;
 	uint8_t ball_lost_x = 0;
 	uint8_t ball_lost_y = 0;
 	bar_t bar;

@@ -40,11 +40,9 @@ A classic ball bouncing game that runs on the AK Base Kit developed using an in-
     </figure>
 </div>
 
-## Documentation (In Progress)
+## In-Depth Documentation
 
-- Game objects sequence
-- Game runtime sequence
-- Button runtime
+For a more in-depth explanation of how the entire game works, check out [this doc](./resources/docs/runtime_sequence.md)
 
 ## Materials
 

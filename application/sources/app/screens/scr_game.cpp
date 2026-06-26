@@ -48,8 +48,8 @@ void init_game() {
 	game_data.bar							= bar_t{54, 50};
 	game_data.balls[game_data.ball_counter] = {
 		ball_t{(uint8_t)((rand() % 12) + 92), (uint8_t)((rand() % 15) + 20),
-			   (uint8_t)(rand() % 1 + game_data.max_speed),
-			   (uint8_t)(rand() % 1 + game_data.max_speed)}
+			   (int8_t)(rand() % game_data.max_speed + 1),
+			   game_data.max_speed}
 	   };
 	game_data.game_over = false;
 	timer_set(TASK_BALL_CATCH, CHANGE_POS, BALL_CATCH_RENDER_AND_PROCESS_TICK,
@@ -76,9 +76,10 @@ void is_touching_bar(ball_t &ball) {
 	if (ball.y + BALL_RADIUS >= game_data.bar.y - BAR_HEIGHT &&
 		ball.y - BALL_RADIUS <= game_data.bar.y + BAR_HEIGHT &&
 		ball.x >= game_data.bar.x && ball.x <= game_data.bar.x + BAR_WIDTH &&
-		game_data.game_over == false) {
+		ball.y_speed > 0 && game_data.game_over == false) {
 		BUZZER_PlayTones(tones_bang);
 		ball.y_speed = -ball.y_speed;
+		ball.y		 = game_data.bar.y - BALL_RADIUS - 1;
 		game_data.score++;
 	}
 }
@@ -110,8 +111,21 @@ void is_ball_spawning() {
 		game_data.target_score += 5;
 		game_data.balls[game_data.ball_counter] = {
 			(uint8_t)((rand() % 12) + 92), (uint8_t)((rand() % 10) + 20),
-			(uint8_t)(rand() % 1 + game_data.max_speed),
-			(uint8_t)(rand() % 1 + game_data.max_speed)};
+			(int8_t)(rand() % game_data.max_speed + 1), game_data.max_speed};
+	}
+}
+
+void change_ball_coords() {
+	for (int i = 0; i <= game_data.ball_counter; i++) {
+		if (game_data.game_over == false) {
+			game_data.balls[i].x += game_data.balls[i].x_speed;
+			game_data.balls[i].y += game_data.balls[i].y_speed;
+			is_game_over(game_data.balls[i]);
+		}
+		is_touching_side_wall(game_data.balls[i]);
+		is_touching_ceiling(game_data.balls[i]);
+		is_touching_bar(game_data.balls[i]);
+		is_ball_spawning();
 	}
 }
 
@@ -134,17 +148,7 @@ void task_game_screen(ak_msg_t *msg) {
 		} break;
 
 		case CHANGE_POS: {
-			for (int i = 0; i <= game_data.ball_counter; i++) {
-				if (game_data.game_over == false) {
-					game_data.balls[i].x += game_data.balls[i].x_speed;
-					game_data.balls[i].y += game_data.balls[i].y_speed;
-					is_game_over(game_data.balls[i]);
-				}
-				is_touching_side_wall(game_data.balls[i]);
-				is_touching_ceiling(game_data.balls[i]);
-				is_touching_bar(game_data.balls[i]);
-				is_ball_spawning();
-			}
+			change_ball_coords();
 		} break;
 		case RENDER_GAME: {
 		} break;
