@@ -37,8 +37,8 @@ A classic ball bouncing game that runs on the AK Base Kit developed using an in-
 
 <div align="center">
     <figure>
-        <p><img src="./resources/images/options.png" alt="Ball catch options screen"/ width="500"></p>
-        <figcaption>Options</ficaption>
+        <p><img src="./resources/images/settings.png" alt="Ball catch options screen"/ width="500"></p>
+        <figcaption>Settings</ficaption>
     </figure>
 </div>
 
