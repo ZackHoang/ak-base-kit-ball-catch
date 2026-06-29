@@ -2,9 +2,11 @@
 
 A classic ball bouncing game that runs on the AK Base Kit developed using an in-house AK Framework. Rather than breaking bricks, just keep the ball bouncing with your paddle and try to survive for as long as you can. Watch out though, more balls will keep coming the higher you score!
 
-## Images & Video
+## Demo
 
 <video src="https://github.com/user-attachments/assets/e547de54-59e4-4f2d-be0d-c80aa0070038" controls type="video/mp4"></video>
+
+## Screens
 
 <div align="center" >
     <figure>
