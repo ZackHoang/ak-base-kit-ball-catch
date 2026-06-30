@@ -12,7 +12,7 @@ A classic ball bouncing game that runs on the AK Base Kit developed using an in-
     <table>
         <tr>
             <td>
-                <img src="./resources/images/title.png" alt="Ball catch title screen"/ width="500">
+                <img src="./resources/images/title_screen.png" alt="Ball catch title screen"/ width="500">
             </td>
         </tr>
         <tr>
@@ -29,7 +29,7 @@ A classic ball bouncing game that runs on the AK Base Kit developed using an in-
     <table>
         <tr>
             <td>
-                <img src="./resources/images/game.png" alt="Ball catch title screen"/ width="500">
+                <img src="./resources/images/game_screen.png" alt="Ball catch title screen"/ width="500">
             </td>
         </tr>
         <tr>
@@ -46,7 +46,7 @@ A classic ball bouncing game that runs on the AK Base Kit developed using an in-
     <table>
         <tr>
             <td>
-                <img src="./resources/images/game_over.png" alt="Ball catch title screen"/ width="500">
+                <img src="./resources/images/game_over_screen.png" alt="Ball catch title screen"/ width="500">
             </td>
         </tr>
         <tr>
@@ -63,7 +63,7 @@ A classic ball bouncing game that runs on the AK Base Kit developed using an in-
     <table>
         <tr>
             <td>
-                <img src="./resources/images/settings.png" alt="Ball catch title screen"/ width="500">
+                <img src="./resources/images/settings_screen.png" alt="Ball catch title screen"/ width="500">
             </td>
         </tr>
         <tr>
