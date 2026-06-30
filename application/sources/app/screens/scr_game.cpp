@@ -5,15 +5,15 @@ game_data_t game_data;
 void render_game() {
 	view_render.drawRect(game_data.bar.x, game_data.bar.y, BAR_WIDTH,
 						 BAR_HEIGHT, WHITE);
-	view_render.setCursor(60, 15);
+	view_render.setCursor(60, 10);
 	view_render.setTextSize(1);
-	view_render.drawRect(12, 8, 104, 55, WHITE);
+	view_render.drawRect(12, 3, 104, 55, WHITE);
 	snprintf(game_data.score_display_buffer,
 			 sizeof(game_data.score_display_buffer), "Score: %d",
 			 game_data.score);
 	view_render.print(game_data.score_display_buffer);
-	for (int i = 14; i <= 115; i += 5) {
-		view_render.drawLine(i, 52, i, 62, WHITE);
+	for (int i = 16; i <= 115; i += 5) {
+		view_render.drawLine(i, 52, i, 57, WHITE);
 	}
 	for (int i = 0; i <= game_data.ball_counter; i++) {
 		view_render.drawCircle(game_data.balls[i].x, game_data.balls[i].y,
@@ -45,7 +45,7 @@ void init_game() {
 	game_data.read_score					= 0;
 	game_data.target_score					= 5;
 	game_data.ball_counter					= 0;
-	game_data.bar							= bar_t{54, 50};
+	game_data.bar							= bar_t{54, 45};
 	game_data.balls[game_data.ball_counter] = {
 		ball_t{(uint8_t)((rand() % 12) + 92), (uint8_t)((rand() % 15) + 20),
 			   (int8_t)(rand() % game_data.max_speed + 1),
@@ -85,7 +85,7 @@ void is_touching_bar(ball_t &ball) {
 }
 
 void is_game_over(ball_t &ball) {
-	if (ball.y - BALL_RADIUS > HEIGHT - 15) {
+	if (ball.y - BALL_RADIUS > HEIGHT - 10) {
 		game_data.game_over = true;
 		BUZZER_PlayTones(tone_game_over);
 		timer_remove_attr(TASK_BALL_CATCH, CHANGE_POS);

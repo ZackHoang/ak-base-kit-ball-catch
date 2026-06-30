@@ -4,14 +4,14 @@ uint8_t options[2] = {START, SETTINGS};
 uint8_t curr_opt   = START_CURSOR;
 
 void item_render() {
-	view_render.setCursor(5, 24);
+	view_render.setCursor(5, 19);
 	view_render.setTextSize(2);
 	view_render.print("BALL CATCH");
-	view_render.drawBitmap(45, 15, image_volleyball_bits, 20, 20, WHITE);
-	view_render.setCursor(45, 48);
+	view_render.drawBitmap(45, 10, image_volleyball_bits, 20, 20, WHITE);
+	view_render.setCursor(45, 43);
 	view_render.setTextSize(1);
 	view_render.print("Start");
-	view_render.setCursor(45, 56);
+	view_render.setCursor(45, 51);
 	view_render.print("Settings");
 	view_render.drawBitmap(31, options[curr_opt], image_arrow_right_bits, 7, 5,
 						   WHITE);

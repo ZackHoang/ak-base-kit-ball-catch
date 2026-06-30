@@ -6,8 +6,8 @@
 #include "scr_game.h"
 #include "scr_settings.h"
 
-#define START			50
-#define SETTINGS		57
+#define START			45
+#define SETTINGS		52
 #define START_CURSOR	0
 #define SETTINGS_CURSOR 1
 

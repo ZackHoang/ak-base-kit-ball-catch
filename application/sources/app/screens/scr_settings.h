@@ -5,9 +5,9 @@
 #include "bitmap.h"
 #include "scr_game.h"
 
-#define SOUND			  37
-#define BALL_SPEED		  47
-#define BACK			  57
+#define SOUND			  32
+#define BALL_SPEED		  42
+#define BACK			  52
 #define SOUND_ON		  1
 #define SOUND_OFF		  0
 #define SOUND_CURSOR	  0

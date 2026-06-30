@@ -9,37 +9,69 @@ A classic ball bouncing game that runs on the AK Base Kit developed using an in-
 ## Screens
 
 <div align="center" >
-    <figure>
-        <p><img src="./resources/images/title.png" alt="Ball catch title screen"/ width="500"></p>
-        <figcaption>Title</ficaption>
-    </figure>
+    <table>
+        <tr>
+            <td>
+                <img src="./resources/images/title.png" alt="Ball catch title screen"/ width="500">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p align="center">Title</p>
+            </td>
+        </tr>
+    </table>
 </div>
 
 <br></br>
 
-<div align="center">
-    <figure>
-        <p><img src="./resources/images/game.png" alt="Ball catch game screen"/ width="500"></p>
-        <figcaption>Game</ficaption>
-    </figure>
+<div align="center" >
+    <table>
+        <tr>
+            <td>
+                <img src="./resources/images/game.png" alt="Ball catch title screen"/ width="500">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p align="center">Game</p>
+            </td>
+        </tr>
+    </table>
 </div>
 
 <br></br>
 
-<div align="center">
-    <figure>
-        <p><img src="./resources/images/game_over.png" alt="Ball catch game over screen"/ width="500"></p>
-        <figcaption>Game over</ficaption>
-    </figure>
+<div align="center" >
+    <table>
+        <tr>
+            <td>
+                <img src="./resources/images/game_over.png" alt="Ball catch title screen"/ width="500">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p align="center">Game over</p>
+            </td>
+        </tr>
+    </table>
 </div>
 
 <br></br>
 
-<div align="center">
-    <figure>
-        <p><img src="./resources/images/settings.png" alt="Ball catch options screen"/ width="500"></p>
-        <figcaption>Settings</ficaption>
-    </figure>
+<div align="center" >
+    <table>
+        <tr>
+            <td>
+                <img src="./resources/images/settings.png" alt="Ball catch title screen"/ width="500">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p align="center">Settings</p>
+            </td>
+        </tr>
+    </table>
 </div>
 
 ## In-Depth Documentation
