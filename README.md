@@ -1,6 +1,6 @@
 # Ball Catch
 
-![Poster](./resources/images/poster_5.png)
+![Poster](./resources/images/poster.png)
 
 A classic ball bouncing game that runs on the AK Base Kit developed using an in-house AK Framework. Rather than breaking bricks, just keep the ball bouncing with your paddle and try to survive for as long as you can. Watch out though, more balls will keep coming the higher you score!
 
@@ -14,7 +14,7 @@ A classic ball bouncing game that runs on the AK Base Kit developed using an in-
     <table>
         <tr>
             <td>
-                <img src="./resources/images/title_screen.png" alt="Ball catch title screen"/ width="500">
+                <img src="./resources/images/screen-title.png" alt="Ball catch title screen"/ width="500">
             </td>
         </tr>
         <tr>
@@ -31,7 +31,7 @@ A classic ball bouncing game that runs on the AK Base Kit developed using an in-
     <table>
         <tr>
             <td>
-                <img src="./resources/images/game_screen.png" alt="Ball catch title screen"/ width="500">
+                <img src="./resources/images/screen-game.png" alt="Ball catch title screen"/ width="500">
             </td>
         </tr>
         <tr>
@@ -48,7 +48,7 @@ A classic ball bouncing game that runs on the AK Base Kit developed using an in-
     <table>
         <tr>
             <td>
-                <img src="./resources/images/game_over_screen.png" alt="Ball catch title screen"/ width="500">
+                <img src="./resources/images/screen-game-over.png" alt="Ball catch title screen"/ width="500">
             </td>
         </tr>
         <tr>
@@ -65,7 +65,7 @@ A classic ball bouncing game that runs on the AK Base Kit developed using an in-
     <table>
         <tr>
             <td>
-                <img src="./resources/images/settings_screen.png" alt="Ball catch title screen"/ width="500">
+                <img src="./resources/images/screen-settings.png" alt="Ball catch title screen"/ width="500">
             </td>
         </tr>
         <tr>
