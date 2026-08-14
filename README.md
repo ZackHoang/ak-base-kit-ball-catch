@@ -1,6 +1,6 @@
 # Ball Catch
 
-![Poster](./resources/images/poster.png)
+![Poster](./resources/images/poster_5.png)
 
 A classic ball bouncing game that runs on the AK Base Kit developed using an in-house AK Framework. Rather than breaking bricks, just keep the ball bouncing with your paddle and try to survive for as long as you can. Watch out though, more balls will keep coming the higher you score!
 
