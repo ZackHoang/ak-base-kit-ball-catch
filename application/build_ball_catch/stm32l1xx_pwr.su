@@ -1,0 +1,14 @@
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_pwr.c:123:6:PWR_DeInit	8	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_pwr.c:136:6:PWR_RTCAccessCmd	0	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_pwr.c:183:6:PWR_PVDLevelConfig	0	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_pwr.c:207:6:PWR_PVDCmd	0	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_pwr.c:243:6:PWR_WakeUpPinCmd	8	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_pwr.c:289:6:PWR_FastWakeUpCmd	0	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_pwr.c:302:6:PWR_UltraLowPowerCmd	0	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_pwr.c:398:6:PWR_VoltageScalingConfig	0	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_pwr.c:578:6:PWR_EnterLowPowerRunMode	0	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_pwr.c:608:6:PWR_EnterSleepMode	0	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_pwr.c:663:6:PWR_EnterSTOPMode	0	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_pwr.c:709:6:PWR_EnterSTANDBYMode	0	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_pwr.c:765:12:PWR_GetFlagStatus	0	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_pwr.c:788:6:PWR_ClearFlag	0	static

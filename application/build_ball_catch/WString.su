@@ -1,0 +1,82 @@
+sources/platform/stm32l/arduino/cores/WString.cpp:112:1:String::~String()	8	static
+sources/platform/stm32l/arduino/cores/WString.cpp:126:6:void String::invalidate()	8	static
+sources/platform/stm32l/arduino/cores/WString.cpp:144:15:unsigned char String::changeBuffer(unsigned int)	16	static
+sources/platform/stm32l/arduino/cores/WString.cpp:133:15:unsigned char String::reserve(unsigned int)	8	static
+sources/platform/stm32l/arduino/cores/WString.cpp:158:9:String& String::copy(const char*, unsigned int)	16	static
+sources/platform/stm32l/arduino/cores/WString.cpp:30:1:String::String(const char*)	16	static
+sources/platform/stm32l/arduino/cores/WString.cpp:168:9:String& String::copy(const __FlashStringHelper*, unsigned int)	0	static
+sources/platform/stm32l/arduino/cores/WString.cpp:179:6:void String::move(String&)	16	static
+sources/platform/stm32l/arduino/cores/WString.cpp:47:1:String::String(String&&)	8	static
+sources/platform/stm32l/arduino/cores/WString.cpp:51:1:String::String(StringSumHelper&&)	8	static
+sources/platform/stm32l/arduino/cores/WString.cpp:200:9:String& String::operator=(const String&)	8	static
+sources/platform/stm32l/arduino/cores/WString.cpp:36:1:String::String(const String&)	8	static
+sources/platform/stm32l/arduino/cores/WString.cpp:213:9:String& String::operator=(String&&)	8	static
+sources/platform/stm32l/arduino/cores/WString.cpp:219:9:String& String::operator=(StringSumHelper&&)	8	static
+sources/platform/stm32l/arduino/cores/WString.cpp:226:9:String& String::operator=(const char*)	16	static
+sources/platform/stm32l/arduino/cores/WString.cpp:57:1:String::String(char)	16	static
+sources/platform/stm32l/arduino/cores/WString.cpp:65:1:String::String(unsigned char, unsigned char)	24	static
+sources/platform/stm32l/arduino/cores/WString.cpp:72:1:String::String(int, unsigned char)	48	static
+sources/platform/stm32l/arduino/cores/WString.cpp:79:1:String::String(unsigned int, unsigned char)	48	static
+sources/platform/stm32l/arduino/cores/WString.cpp:86:1:String::String(long int, unsigned char)	48	static
+sources/platform/stm32l/arduino/cores/WString.cpp:93:1:String::String(long unsigned int, unsigned char)	48	static
+sources/platform/stm32l/arduino/cores/WString.cpp:100:1:String::String(float, unsigned char)	64	static
+sources/platform/stm32l/arduino/cores/WString.cpp:106:1:String::String(double, unsigned char)	64	static
+sources/platform/stm32l/arduino/cores/WString.cpp:41:1:String::String(const __FlashStringHelper*)	8	static
+sources/platform/stm32l/arduino/cores/WString.cpp:235:9:String& String::operator=(const __FlashStringHelper*)	0	static
+sources/platform/stm32l/arduino/cores/WString.cpp:252:15:unsigned char String::concat(const char*, unsigned int)	16	static
+sources/platform/stm32l/arduino/cores/WString.cpp:248:15:unsigned char String::concat(const String&)	0	static
+sources/platform/stm32l/arduino/cores/WString.cpp:265:15:unsigned char String::concat(const char*)	16	static
+sources/platform/stm32l/arduino/cores/WString.cpp:271:15:unsigned char String::concat(char)	16	static
+sources/platform/stm32l/arduino/cores/WString.cpp:278:15:unsigned char String::concat(unsigned char)	16	static
+sources/platform/stm32l/arduino/cores/WString.cpp:284:15:unsigned char String::concat(int)	24	static
+sources/platform/stm32l/arduino/cores/WString.cpp:290:15:unsigned char String::concat(unsigned int)	24	static
+sources/platform/stm32l/arduino/cores/WString.cpp:296:15:unsigned char String::concat(long int)	24	static
+sources/platform/stm32l/arduino/cores/WString.cpp:302:15:unsigned char String::concat(long unsigned int)	24	static
+sources/platform/stm32l/arduino/cores/WString.cpp:308:15:unsigned char String::concat(float)	48	static
+sources/platform/stm32l/arduino/cores/WString.cpp:314:15:unsigned char String::concat(double)	48	static
+sources/platform/stm32l/arduino/cores/WString.cpp:320:15:unsigned char String::concat(const __FlashStringHelper*)	16	static
+sources/platform/stm32l/arduino/cores/WString.cpp:338:18:StringSumHelper& operator+(const StringSumHelper&, const String&)	8	static
+sources/platform/stm32l/arduino/cores/WString.cpp:345:18:StringSumHelper& operator+(const StringSumHelper&, const char*)	16	static
+sources/platform/stm32l/arduino/cores/WString.cpp:352:18:StringSumHelper& operator+(const StringSumHelper&, char)	8	static
+sources/platform/stm32l/arduino/cores/WString.cpp:359:18:StringSumHelper& operator+(const StringSumHelper&, unsigned char)	8	static
+sources/platform/stm32l/arduino/cores/WString.cpp:366:18:StringSumHelper& operator+(const StringSumHelper&, int)	8	static
+sources/platform/stm32l/arduino/cores/WString.cpp:373:18:StringSumHelper& operator+(const StringSumHelper&, unsigned int)	8	static
+sources/platform/stm32l/arduino/cores/WString.cpp:380:18:StringSumHelper& operator+(const StringSumHelper&, long int)	8	static
+sources/platform/stm32l/arduino/cores/WString.cpp:387:18:StringSumHelper& operator+(const StringSumHelper&, long unsigned int)	8	static
+sources/platform/stm32l/arduino/cores/WString.cpp:394:18:StringSumHelper& operator+(const StringSumHelper&, float)	8	static
+sources/platform/stm32l/arduino/cores/WString.cpp:401:18:StringSumHelper& operator+(const StringSumHelper&, double)	8	static
+sources/platform/stm32l/arduino/cores/WString.cpp:408:18:StringSumHelper& operator+(const StringSumHelper&, const __FlashStringHelper*)	8	static
+sources/platform/stm32l/arduino/cores/WString.cpp:419:5:int String::compareTo(const String&) const	0	static
+sources/platform/stm32l/arduino/cores/WString.cpp:430:15:unsigned char String::equals(const String&) const	8	static
+sources/platform/stm32l/arduino/cores/WString.cpp:434:15:unsigned char String::equals(const char*) const	8	static
+sources/platform/stm32l/arduino/cores/WString.cpp:442:15:unsigned char String::operator<(const String&) const	8	static
+sources/platform/stm32l/arduino/cores/WString.cpp:446:15:unsigned char String::operator>(const String&) const	8	static
+sources/platform/stm32l/arduino/cores/WString.cpp:450:15:unsigned char String::operator<=(const String&) const	8	static
+sources/platform/stm32l/arduino/cores/WString.cpp:454:15:unsigned char String::operator>=(const String&) const	8	static
+sources/platform/stm32l/arduino/cores/WString.cpp:458:15:unsigned char String::equalsIgnoreCase(const String&) const	16	static
+sources/platform/stm32l/arduino/cores/WString.cpp:480:15:unsigned char String::startsWith(const String&, unsigned int) const	8	static
+sources/platform/stm32l/arduino/cores/WString.cpp:474:15:unsigned char String::startsWith(const String&) const	0	static
+sources/platform/stm32l/arduino/cores/WString.cpp:486:15:unsigned char String::endsWith(const String&) const	8	static
+sources/platform/stm32l/arduino/cores/WString.cpp:500:6:void String::setCharAt(unsigned int, char)	0	static
+sources/platform/stm32l/arduino/cores/WString.cpp:505:7:char& String::operator[](unsigned int)	0	static
+sources/platform/stm32l/arduino/cores/WString.cpp:514:6:char String::operator[](unsigned int) const	0	static
+sources/platform/stm32l/arduino/cores/WString.cpp:496:6:char String::charAt(unsigned int) const	0	static
+sources/platform/stm32l/arduino/cores/WString.cpp:520:6:void String::getBytes(unsigned char*, unsigned int, unsigned int) const	16	static
+sources/platform/stm32l/arduino/cores/WString.cpp:542:5:int String::indexOf(char, unsigned int) const	8	static
+sources/platform/stm32l/arduino/cores/WString.cpp:538:5:int String::indexOf(char) const	0	static
+sources/platform/stm32l/arduino/cores/WString.cpp:555:5:int String::indexOf(const String&, unsigned int) const	8	static
+sources/platform/stm32l/arduino/cores/WString.cpp:551:5:int String::indexOf(const String&) const	0	static
+sources/platform/stm32l/arduino/cores/WString.cpp:568:5:int String::lastIndexOf(char, unsigned int) const	24	static
+sources/platform/stm32l/arduino/cores/WString.cpp:564:5:int String::lastIndexOf(char) const	0	static
+sources/platform/stm32l/arduino/cores/WString.cpp:584:5:int String::lastIndexOf(const String&, unsigned int) const	24	static
+sources/platform/stm32l/arduino/cores/WString.cpp:580:5:int String::lastIndexOf(const String&) const	0	static
+sources/platform/stm32l/arduino/cores/WString.cpp:600:8:String String::substring(unsigned int, unsigned int) const	24	static
+sources/platform/stm32l/arduino/cores/WString.cpp:622:6:void String::replace(char, char)	0	static
+sources/platform/stm32l/arduino/cores/WString.cpp:631:6:void String::replace(const String&, const String&)	48	static
+sources/platform/stm32l/arduino/cores/WString.cpp:687:6:void String::remove(unsigned int, unsigned int)	16	static
+sources/platform/stm32l/arduino/cores/WString.cpp:678:6:void String::remove(unsigned int)	0	static
+sources/platform/stm32l/arduino/cores/WString.cpp:704:6:void String::toLowerCase()	8	static
+sources/platform/stm32l/arduino/cores/WString.cpp:712:6:void String::toUpperCase()	8	static
+sources/platform/stm32l/arduino/cores/WString.cpp:720:6:void String::trim()	24	static
+sources/platform/stm32l/arduino/cores/WString.cpp:739:6:long int String::toInt() const	0	static
+sources/platform/stm32l/arduino/cores/WString.cpp:745:7:float String::toFloat() const	8	static

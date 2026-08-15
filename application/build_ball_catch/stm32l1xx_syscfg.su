@@ -1,0 +1,13 @@
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_syscfg.c:114:6:SYSCFG_DeInit	8	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_syscfg.c:124:6:SYSCFG_RIDeInit	0	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_syscfg.c:144:6:SYSCFG_MemoryRemapConfig	0	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_syscfg.c:160:10:SYSCFG_GetBootMode	0	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_syscfg.c:171:6:SYSCFG_USBPuCmd	0	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_syscfg.c:193:6:SYSCFG_EXTILineConfig	8	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_syscfg.c:233:6:SYSCFG_RITIMSelect	0	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_syscfg.c:277:6:SYSCFG_RITIMInputCaptureConfig	0	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_syscfg.c:343:6:SYSCFG_RIResistorConfig	0	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_syscfg.c:371:6:SYSCFG_RIChannelSpeedConfig	0	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_syscfg.c:416:6:SYSCFG_RIIOSwitchConfig	0	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_syscfg.c:463:6:SYSCFG_RISwitchControlModeCmd	0	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_syscfg.c:500:6:SYSCFG_RIHysteresisConfig	0	static

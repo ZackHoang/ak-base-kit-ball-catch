@@ -1,0 +1,8 @@
+sources/ak/src/timer.c:242:9:timer_remove_msg	24	static
+sources/ak/src/timer.c:95:10:get_timer_msg_pool_used	0	static
+sources/ak/src/timer.c:99:10:get_timer_msg_pool_used_max	0	static
+sources/ak/src/timer.c:103:6:task_timer_tick	16	static
+sources/ak/src/timer.c:170:6:timer_init	8	static
+sources/ak/src/timer.c:181:6:timer_tick	16	static
+sources/ak/src/timer.c:195:9:timer_set	32	static
+sources/ak/src/timer.c:277:9:timer_remove_attr	16	static

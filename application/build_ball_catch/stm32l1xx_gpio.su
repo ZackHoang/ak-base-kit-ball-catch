@@ -1,0 +1,14 @@
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_gpio.c:119:6:GPIO_DeInit	8	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_gpio.c:169:6:GPIO_Init	24	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_gpio.c:233:6:GPIO_StructInit	0	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_gpio.c:253:6:GPIO_PinLockConfig	8	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_gpio.c:296:9:GPIO_ReadInputDataBit	0	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_gpio.c:317:10:GPIO_ReadInputData	0	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_gpio.c:331:9:GPIO_ReadOutputDataBit	0	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_gpio.c:352:10:GPIO_ReadOutputData	0	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_gpio.c:369:6:GPIO_SetBits	0	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_gpio.c:387:6:GPIO_ResetBits	0	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_gpio.c:406:6:GPIO_WriteBit	0	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_gpio.c:427:6:GPIO_Write	0	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_gpio.c:440:6:GPIO_ToggleBits	0	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_gpio.c:508:6:GPIO_PinAFConfig	8	static

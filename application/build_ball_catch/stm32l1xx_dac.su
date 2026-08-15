@@ -1,0 +1,17 @@
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_dac.c:159:6:DAC_DeInit	8	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_dac.c:177:6:DAC_Init	12	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_dac.c:211:6:DAC_StructInit	0	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_dac.c:235:6:DAC_Cmd	0	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_dac.c:260:6:DAC_SoftwareTriggerCmd	0	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_dac.c:282:6:DAC_DualSoftwareTriggerCmd	0	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_dac.c:311:6:DAC_WaveGenerationCmd	0	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_dac.c:337:6:DAC_SetChannel1Data	8	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_dac.c:361:6:DAC_SetChannel2Data	8	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_dac.c:390:6:DAC_SetDualChannelData	0	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_dac.c:421:10:DAC_GetDataOutputValue	8	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_dac.c:464:6:DAC_DMACmd	0	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_dac.c:510:6:DAC_ITConfig	0	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_dac.c:539:12:DAC_GetFlagStatus	0	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_dac.c:569:6:DAC_ClearFlag	0	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_dac.c:591:10:DAC_GetITStatus	0	static
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_dac.c:626:6:DAC_ClearITPendingBit	0	static
