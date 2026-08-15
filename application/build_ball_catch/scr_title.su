@@ -1,2 +1,0 @@
-sources/app/screens/scr_title.cpp:6:6:void item_render()	32	static
-sources/app/screens/scr_title.cpp:34:6:void task_title_screen(ak_msg_t*)	0	static
